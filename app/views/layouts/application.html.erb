@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kuorum</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag('application', :media => 'all') %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render :partial => 'layouts/navbar' %>
+
+<div id="main_content" class="container">
+	<div id="content" class="col-md-12 center-block">
+		<% flash.each do |name, msg| %>
+			<%= content_tag(:div, msg, class: "alert alert-info") %>
+		<% end %>
+
+		<%= yield %>
+		
+	</div>
+</div>
+
+</body>
+</html>

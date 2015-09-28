@@ -1,0 +1,257 @@
+<%= form_for(@datum) do |f| %>
+  <% if @datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@datum.errors.count, "error") %> prohibited this datum from being saved:</h2>
+
+      <ul>
+      <% @datum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sourceWebsite %><br>
+    <%= f.text_field :sourceWebsite %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :picture %><br>
+    <%= f.text_field :picture %>
+  </div>
+  <div class="field">
+    <%= f.label :politicalParty %><br>
+    <%= f.text_field :politicalParty %>
+  </div>
+  <div class="field">
+    <%= f.label :politicalPartyImage %><br>
+    <%= f.text_field :politicalPartyImage %>
+  </div>
+  <div class="field">
+    <%= f.label :verified %><br>
+    <%= f.text_field :verified %>
+  </div>
+  <div class="field">
+    <%= f.label :likes %><br>
+    <%= f.number_field :likes %>
+  </div>
+  <div class="field">
+    <%= f.label :followers %><br>
+    <%= f.number_field :followers %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter %><br>
+    <%= f.text_field :twitter %>
+  </div>
+  <div class="field">
+    <%= f.label :facebook %><br>
+    <%= f.text_field :facebook %>
+  </div>
+  <div class="field">
+    <%= f.label :linkedin %><br>
+    <%= f.text_field :linkedin %>
+  </div>
+  <div class="field">
+    <%= f.label :googlePlus %><br>
+    <%= f.text_field :googlePlus %>
+  </div>
+  <div class="field">
+    <%= f.label :instagram %><br>
+    <%= f.text_field :instagram %>
+  </div>
+  <div class="field">
+    <%= f.label :blog %><br>
+    <%= f.text_field :blog %>
+  </div>
+  <div class="field">
+    <%= f.label :youtubeChannel %><br>
+    <%= f.text_field :youtubeChannel %>
+  </div>
+  <div class="field">
+    <%= f.label :premium %><br>
+    <%= f.text_field :premium %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %><br>
+    <%= f.text_area :bio %>
+  </div>
+  <div class="field">
+    <%= f.label :quote1 %><br>
+    <%= f.text_area :quote1 %>
+  </div>
+  <div class="field">
+    <%= f.label :quote2 %><br>
+    <%= f.text_area :quote2 %>
+  </div>
+  <div class="field">
+    <%= f.label :sourceActivity %><br>
+    <%= f.text_field :sourceActivity %>
+  </div>
+  <div class="field">
+    <%= f.label :lastActivity1 %><br>
+    <%= f.text_area :lastActivity1 %>
+  </div>
+  <div class="field">
+    <%= f.label :lastActivity2 %><br>
+    <%= f.text_area :lastActivity2 %>
+  </div>
+  <div class="field">
+    <%= f.label :lastActivity3 %><br>
+    <%= f.text_area :lastActivity3 %>
+  </div>
+  <div class="field">
+    <%= f.label :lastActivity4 %><br>
+    <%= f.text_area :lastActivity4 %>
+  </div>
+  <div class="field">
+    <%= f.label :ideology1 %><br>
+    <%= f.number_field :ideology1 %>
+  </div>
+  <div class="field">
+    <%= f.label :ideology2 %><br>
+    <%= f.number_field :ideology2 %>
+  </div>
+  <div class="field">
+    <%= f.label :ideology3 %><br>
+    <%= f.number_field :ideology3 %>
+  </div>
+  <div class="field">
+    <%= f.label :ideology4 %><br>
+    <%= f.number_field :ideology4 %>
+  </div>
+  <div class="field">
+    <%= f.label :ideology5 %><br>
+    <%= f.number_field :ideology5 %>
+  </div>
+  <div class="field">
+    <%= f.label :following %><br>
+    <%= f.number_field :following %>
+  </div>
+  <div class="field">
+    <%= f.label :openProjects %><br>
+    <%= f.number_field :openProjects %>
+  </div>
+  <div class="field">
+    <%= f.label :closedProjects %><br>
+    <%= f.number_field :closedProjects %>
+  </div>
+  <div class="field">
+    <%= f.label :proposals %><br>
+    <%= f.number_field :proposals %>
+  </div>
+  <div class="field">
+    <%= f.label :debates %><br>
+    <%= f.number_field :debates %>
+  </div>
+  <div class="field">
+    <%= f.label :sponsorships %><br>
+    <%= f.number_field :sponsorships %>
+  </div>
+  <div class="field">
+    <%= f.label :victories %><br>
+    <%= f.number_field :victories %>
+  </div>
+  <div class="field">
+    <%= f.label :dateOfBirth %><br>
+    <%= f.text_field :dateOfBirth %>
+  </div>
+  <div class="field">
+    <%= f.label :placeOfBirth %><br>
+    <%= f.text_field :placeOfBirth %>
+  </div>
+  <div class="field">
+    <%= f.label :institutionalAddress %><br>
+    <%= f.text_area :institutionalAddress %>
+  </div>
+  <div class="field">
+    <%= f.label :institutionalTelephone %><br>
+    <%= f.text_field :institutionalTelephone %>
+  </div>
+  <div class="field">
+    <%= f.label :institutionalFax %><br>
+    <%= f.text_field :institutionalFax %>
+  </div>
+  <div class="field">
+    <%= f.label :institutionalMobilePhone %><br>
+    <%= f.text_field :institutionalMobilePhone %>
+  </div>
+  <div class="field">
+    <%= f.label :electoralAddress %><br>
+    <%= f.text_field :electoralAddress %>
+  </div>
+  <div class="field">
+    <%= f.label :electoralTelephone %><br>
+    <%= f.text_field :electoralTelephone %>
+  </div>
+  <div class="field">
+    <%= f.label :electoralFax %><br>
+    <%= f.text_field :electoralFax %>
+  </div>
+  <div class="field">
+    <%= f.label :electoralMobile %><br>
+    <%= f.text_field :electoralMobile %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :assistants %><br>
+    <%= f.text_field :assistants %>
+  </div>
+  <div class="field">
+    <%= f.label :completeName %><br>
+    <%= f.text_field :completeName %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br>
+    <%= f.text_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :region %><br>
+    <%= f.text_field :region %>
+  </div>
+  <div class="field">
+    <%= f.label :institution %><br>
+    <%= f.text_field :institution %>
+  </div>
+  <div class="field">
+    <%= f.label :constituency %><br>
+    <%= f.text_field :constituency %>
+  </div>
+  <div class="field">
+    <%= f.label :studies %><br>
+    <%= f.text_field :studies %>
+  </div>
+  <div class="field">
+    <%= f.label :university %><br>
+    <%= f.text_field :university %>
+  </div>
+  <div class="field">
+    <%= f.label :profession %><br>
+    <%= f.text_field :profession %>
+  </div>
+  <div class="field">
+    <%= f.label :cvLink %><br>
+    <%= f.text_field :cvLink %>
+  </div>
+  <div class="field">
+    <%= f.label :declarationLink %><br>
+    <%= f.text_field :declarationLink %>
+  </div>
+  <div class="field">
+    <%= f.label :officialWebsite %><br>
+    <%= f.text_field :officialWebsite %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,4 @@
+json.array!(@data) do |datum|
+  json.extract! datum, :id, :sourceWebsite, :name, :picture, :politicalParty, :politicalPartyImage, :verified, :likes, :followers, :email, :twitter, :facebook, :linkedin, :googlePlus, :instagram, :blog, :youtubeChannel, :premium, :bio, :quote1, :quote2, :sourceActivity, :lastActivity1, :lastActivity2, :lastActivity3, :lastActivity4, :ideology1, :ideology2, :ideology3, :ideology4, :ideology5, :following, :openProjects, :closedProjects, :proposals, :debates, :sponsorships, :victories, :dateOfBirth, :placeOfBirth, :institutionalAddress, :institutionalTelephone, :institutionalFax, :institutionalMobilePhone, :electoralAddress, :electoralTelephone, :electoralFax, :electoralMobile, :phone, :assistants, :completeName, :position, :region, :institution, :constituency, :studies, :university, :profession, :cvLink, :declarationLink, :officialWebsite
+  json.url datum_url(datum, format: :json)
+end

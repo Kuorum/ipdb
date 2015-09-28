@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @country.name %>
+</p>
+
+<p>
+  <strong>Abbreviation:</strong>
+  <%= @country.abbreviation %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @country.source %>
+</p>
+
+<p>
+  <strong>Scraper:</strong>
+  <%= @country.scraper %>
+</p>
+
+<p>
+  <strong>Scraped:</strong>
+  <%= @country.scraped %>
+</p>
+
+<%= link_to 'Edit', edit_country_path(@country) %> |
+<%= link_to 'Back', countries_path %>

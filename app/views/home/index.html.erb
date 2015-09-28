@@ -1,0 +1,40 @@
+<h1>Kuorum Scraper</h1>
+<div>
+
+	<h3>Countries</h3>
+
+	<div class="row">
+		<div class="col-md-12">
+			<table class="listing table table-striped">
+			<thead>
+		      <tr class="header">
+		   	  	<th></th>
+		   	  	<th>Name</th>
+		   	  	<th>Last updated</th>
+		   	  	<th>Scraped?</th>
+		   	  	<th></th>
+		   	  </tr>
+		    </thead>  
+
+		    <% i = 1; %>
+			<% @countries.each do |country| %>
+		      <tr>
+		      	<td><%= "#{i}" %></td>
+		        <td><%= link_to "#{country.name}", country %></td>
+		        <td><%= country.updated_at.strftime("%d/%m/%Y at %H:%M") %></td>
+		        <td><%= country.scraped %></td>
+		        <td>
+		        	<%= link_to "Scrape",:action => 'scrape', :region => country.abbreviation %> |
+		        	<%= link_to "View",:action => 'show', :region => country.abbreviation %> |
+		        	<%= link_to "Edit",:action => 'edit', :region => country.abbreviation %> |
+		        	<%= link_to "Download",:controller => 'data',:action => 'download', :region => country.abbreviation %>   
+		        </td>
+		      </tr>
+		      <% i += 1 %>
+		    <% end %>
+		    
+		    </table>
+		</div>    
+	</div>	
+
+</div>
