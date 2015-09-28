@@ -16,15 +16,11 @@
 
 		<ul class="nav navbar-nav navbar-right">
 		  <% if user_signed_in? %>
-            
-                   
-
 							<li><%= link_to 'Setting', edit_user_registration_path %></li>
 							<li><%= link_to 'Sign out', users_sign_out_path %></li>
 				     
 					<% else %>
 
-							<li><%= link_to "Sign up",new_user_registration_path %></li>  
 
 					        <li><%= link_to "Sign in",new_user_session_path %> </li>
 
