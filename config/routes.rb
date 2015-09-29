@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :regions
 devise_for :users, :controllers => { :registrations => "registrations" }, :skip => [:sessions]
   as :user do
     get 'sign-in' => 'devise/sessions#new', :as => :new_user_session
