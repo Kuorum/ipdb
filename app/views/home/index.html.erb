@@ -24,10 +24,10 @@
 		        <td><%= country.updated_at.strftime("%d/%m/%Y at %H:%M") %></td>
 		        <td><%= country.scraped %></td>
 		        <td>
-		        	<%= link_to "Scrape",:action => 'scrape', :region => country.abbreviation %> |
-		        	<%= link_to "View",:action => 'show', :region => country.abbreviation %> |
-		        	<%= link_to "Edit",:action => 'edit', :region => country.abbreviation %> |
-		        	<%= link_to "Download",:controller => 'data',:action => 'download', :region => country.abbreviation %>   
+		        	<%= link_to "Scrape",:action => 'scrape', :region => country.region %> |
+		        	<%= link_to "View",:action => 'show', :region => country.region %> |
+		        	<%= link_to "Edit",:action => 'edit', :region => country.region %> |
+		        	<%= link_to "Download",:controller => 'data',:action => 'download', :region => country.region %>   
 		        </td>
 		      </tr>
 		      <% i += 1 %>

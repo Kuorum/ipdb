@@ -217,7 +217,7 @@
   </div>
   <div class="field">
     <%= f.label :region %><br>
-    <%= f.text_field :region %>
+    <%= f.collection_select :region, Region.order(:name),:id,:name, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :institution %><br>

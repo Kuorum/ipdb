@@ -8,6 +8,8 @@ class DataController < ApplicationController
     @data = Datum.all
     @datum = Datum.all
 
+
+
     respond_to do |format|
       format.html
       format.csv { send_data @datum.to_csv }
@@ -26,6 +28,10 @@ class DataController < ApplicationController
   # GET /data/1
   # GET /data/1.json
   def show
+
+    @region =  Region.find(@datum.region)
+    @region_name =  @region.name
+
   end
 
   # GET /data/new
