@@ -2,6 +2,7 @@ require 'mechanize'
 require 'date'
 require 'json'
 require 'rake-progressbar'
+require 'active_record'
 
 region = '233' 
 region_abbreviation = 'NA-US' #Unites States
@@ -64,6 +65,9 @@ task :scraper_update_NA_US => [:environment] do
 		#puts JSON.pretty_generate(members)
 		
 		#bar.finished
+
+		country = Country.find_by_region('233')
+		country.touch 
 
 		puts "Scrapping ENDS..."
 
