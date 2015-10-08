@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :political_parties
   resources :regions
 devise_for :users, :controllers => { :registrations => "registrations" }, :skip => [:sessions]
   as :user do
@@ -9,7 +10,10 @@ devise_for :users, :controllers => { :registrations => "registrations" }, :skip 
     #get '/users/sign_out' => 'sessions#destroy'
     get '/users/sign_out' => 'devise/sessions#destroy'
 
+
   end
+
+
 
 
   resources :countries
@@ -25,5 +29,11 @@ devise_for :users, :controllers => { :registrations => "registrations" }, :skip 
   get "home/show" => "home#show", :as => "show"
   get "home/edit" => "home#edit", :as => "edit"
   get "data/download" => "data#download", :as => "download"
+
+  get "foo/bar"
+
+  
+  get "foo/bar", as: "update_text"
+
 
 end

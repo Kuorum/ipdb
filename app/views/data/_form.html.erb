@@ -11,247 +11,421 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :sourceWebsite %><br>
-    <%= f.text_field :sourceWebsite %>
+    <%= f.text_field :sourceWebsite, :class => "form-control" %>
   </div>
-  <div class="field">
+
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :picture %><br>
-    <%= f.text_field :picture %>
+    <%= f.text_field :picture, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :politicalParty %><br>
-    <%= f.text_field :politicalParty %>
+    <%= f.collection_select :politicalParty, PoliticalParty.order(:name), :name, :name, {include_blank: true}, {class: "form-control"} %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :politicalPartyImage %><br>
-    <%= f.text_field :politicalPartyImage %>
+    <%= f.text_field :politicalPartyImage, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :verified %><br>
-    <%= f.text_field :verified %>
+    <%= f.text_field :verified, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :likes %><br>
-    <%= f.number_field :likes %>
+    <%= f.number_field :likes, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :followers %><br>
-    <%= f.number_field :followers %>
+    <%= f.number_field :followers, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :twitter %><br>
-    <%= f.text_field :twitter %>
+    <%= f.text_field :twitter, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :facebook %><br>
-    <%= f.text_field :facebook %>
+    <%= f.text_field :facebook, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :linkedin %><br>
-    <%= f.text_field :linkedin %>
+    <%= f.text_field :linkedin, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :googlePlus %><br>
-    <%= f.text_field :googlePlus %>
+    <%= f.text_field :googlePlus, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :instagram %><br>
-    <%= f.text_field :instagram %>
+    <%= f.text_field :instagram, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :blog %><br>
-    <%= f.text_field :blog %>
+    <%= f.text_field :blog, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :youtubeChannel %><br>
-    <%= f.text_field :youtubeChannel %>
+    <%= f.text_field :youtubeChannel, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :premium %><br>
-    <%= f.text_field :premium %>
+    <%= f.text_field :premium, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :bio %><br>
-    <%= f.text_area :bio %>
+    <%= f.text_area :bio, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :quote1 %><br>
-    <%= f.text_area :quote1 %>
+    <%= f.text_area :quote1, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :quote2 %><br>
-    <%= f.text_area :quote2 %>
+    <%= f.text_area :quote2, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :sourceActivity %><br>
-    <%= f.text_field :sourceActivity %>
+    <%= f.text_field :sourceActivity, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :lastActivity1 %><br>
-    <%= f.text_area :lastActivity1 %>
+    <%= f.text_area :lastActivity1, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :lastActivity2 %><br>
-    <%= f.text_area :lastActivity2 %>
+    <%= f.text_area :lastActivity2, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :lastActivity3 %><br>
-    <%= f.text_area :lastActivity3 %>
+    <%= f.text_area :lastActivity3, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :lastActivity4 %><br>
-    <%= f.text_area :lastActivity4 %>
+    <%= f.text_area :lastActivity4, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :ideology1 %><br>
-    <%= f.number_field :ideology1 %>
+    <%= f.number_field :ideology1, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :ideology2 %><br>
-    <%= f.number_field :ideology2 %>
+    <%= f.number_field :ideology2, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :ideology3 %><br>
-    <%= f.number_field :ideology3 %>
+    <%= f.number_field :ideology3, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :ideology4 %><br>
-    <%= f.number_field :ideology4 %>
+    <%= f.number_field :ideology4, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :ideology5 %><br>
-    <%= f.number_field :ideology5 %>
+    <%= f.number_field :ideology5, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :following %><br>
-    <%= f.number_field :following %>
+    <%= f.number_field :following, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :openProjects %><br>
-    <%= f.number_field :openProjects %>
+    <%= f.number_field :openProjects, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :closedProjects %><br>
-    <%= f.number_field :closedProjects %>
+    <%= f.number_field :closedProjects, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :proposals %><br>
-    <%= f.number_field :proposals %>
+    <%= f.number_field :proposals, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :debates %><br>
-    <%= f.number_field :debates %>
+    <%= f.number_field :debates, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :sponsorships %><br>
-    <%= f.number_field :sponsorships %>
+    <%= f.number_field :sponsorships, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :victories %><br>
-    <%= f.number_field :victories %>
+    <%= f.number_field :victories, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :dateOfBirth %><br>
-    <%= f.text_field :dateOfBirth %>
+    <%= f.text_field :dateOfBirth, :class => "form-control"%>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :placeOfBirth %><br>
-    <%= f.text_field :placeOfBirth %>
+    <%= f.text_field :placeOfBirth, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :institutionalAddress %><br>
-    <%= f.text_area :institutionalAddress %>
+    <%= f.text_area :institutionalAddress, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :institutionalTelephone %><br>
-    <%= f.text_field :institutionalTelephone %>
+    <%= f.text_field :institutionalTelephone, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :institutionalFax %><br>
-    <%= f.text_field :institutionalFax %>
+    <%= f.text_field :institutionalFax, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :institutionalMobilePhone %><br>
-    <%= f.text_field :institutionalMobilePhone %>
+    <%= f.text_field :institutionalMobilePhone, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :electoralAddress %><br>
-    <%= f.text_field :electoralAddress %>
+    <%= f.text_field :electoralAddress, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :electoralTelephone %><br>
-    <%= f.text_field :electoralTelephone %>
+    <%= f.text_field :electoralTelephone, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :electoralFax %><br>
-    <%= f.text_field :electoralFax %>
+    <%= f.text_field :electoralFax, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :electoralMobile %><br>
-    <%= f.text_field :electoralMobile %>
+    <%= f.text_field :electoralMobile, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :assistants %><br>
-    <%= f.text_field :assistants %>
+    <%= f.text_field :assistants, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :completeName %><br>
-    <%= f.text_field :completeName %>
+    <%= f.text_field :completeName, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :position %><br>
-    <%= f.text_field :position %>
+    <%= f.text_field :position, :class => "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :region %><br>
-    <%= f.collection_select :region, Region.order(:name),:id,:name, include_blank: true %>
+  
+  <div class="form-group">
+
+    <br/><b><span class="glyphicon glyphicon-globe"></span> REGION</b><hr/>
+
+    <div class="row ">
+
+      <div class="col-md-6">
+
+          <table class="region-table">
+            <tr>
+              <td class="region-label"><b>Region name: &nbsp;</td>
+              <td colspan="2"><%= f.text_field :region, :class => "form-control" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="region-label"><b> Region Code: </b></td>
+              <td>Alliance:</td>
+              <td>
+        <%= f.collection_select :region_code_alliance, Region.order(:iso3166_2).where("length(iso3166_2) = 2"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+              </td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td class="region-label">Nation:</td>
+              <td>
+                <%= f.collection_select :region_code_nation, Region.order(:iso3166_2).where("length(iso3166_2) = 5"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="region-label">State:</td>
+              <td>
+                <%= f.collection_select :region_code_state, Region.order(:iso3166_2).where("length(iso3166_2) = 8"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="region-label">County:</td>
+              <td>
+                <%= f.collection_select :region_code_county, Region.order(:iso3166_2).where("length(iso3166_2) = 11"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="region-label">City:</td>
+              <td>
+                <%= f.collection_select :region_code_city, Region.order(:iso3166_2).where("length(iso3166_2) = 14"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+              </td>
+            </tr>
+          </table>
+
+      </div>
+
+      <div class="col-md-6">  
+         <table class="region-table">
+            <tr>
+              <td class="region-label"><b>Contituency name: &nbsp;</td>
+              <td colspan="2"><%= f.text_field :constituency, :class => "form-control" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b> Constituency Code: </b></td>
+              <td>Alliance:</td>
+              <td><%= f.collection_select :constituency_code_alliance, Region.order(:iso3166_2).where("length(iso3166_2) = 2"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Nation:</td>
+              <td>
+                <%= f.collection_select :constituency_code_nation, Region.order(:iso3166_2).where("length(iso3166_2) = 5"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>State:</td>
+              <td>
+                <%= f.collection_select :constituency_code_state, Region.order(:iso3166_2).where("length(iso3166_2) = 8"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Country:</td>
+              <td>
+                 <%= f.collection_select :constituency_code_county, Region.order(:iso3166_2).where("length(iso3166_2) = 11"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>City:</td>
+              <td>
+                  <%= f.collection_select :constituency_code_city, Region.order(:iso3166_2).where("length(iso3166_2) = 14"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+              </td>
+            </tr>
+          </table>
+
+      </div>
+    
+    </div>
+   
+
+    <!-- <%= f.collection_select :region, Region.order(:name),:id,:name, include_blank: true %> -->
   </div>
-  <div class="field">
+  
+  <div class="form-group">
+    <br/>
     <%= f.label :institution %><br>
-    <%= f.text_field :institution %>
+    <%= f.text_field :institution, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :constituency %><br>
-    <%= f.text_field :constituency %>
+    <%= f.text_field :constituency, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :studies %><br>
-    <%= f.text_field :studies %>
+    <%= f.text_field :studies, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :university %><br>
-    <%= f.text_field :university %>
+    <%= f.text_field :university, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :profession %><br>
-    <%= f.text_field :profession %>
+    <%= f.text_field :profession, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :cvLink %><br>
-    <%= f.text_field :cvLink %>
+    <%= f.text_field :cvLink, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :declarationLink %><br>
-    <%= f.text_field :declarationLink %>
+    <%= f.text_field :declarationLink, :class => "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :officialWebsite %><br>
-    <%= f.text_field :officialWebsite %>
+    <%= f.text_field :officialWebsite, :class => "form-control" %>
   </div>
+  
+  <div class="form-group">
+    <%= f.label :politicalExperience %><br>
+    <%= f.text_field :politicalExperience, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :causes %><br>
+    <%= f.text_field :causes, :class => "form-control" %>
+  </div>
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update", class: "btn btn-md btn-block btn-success" %>
   </div>
+
+  <br/>
+
 <% end %>

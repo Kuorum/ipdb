@@ -1,40 +1,40 @@
-<h1>Kuorum Scraper</h1>
-<div>
+<h1><span class="glyphicon glyphicon-home"></span> HOME</h1>
 
-	<h3>Countries</h3>
+<hr/>
 
-	<div class="row">
-		<div class="col-md-12">
-			<table class="listing table table-striped">
-			<thead>
-		      <tr class="header">
-		   	  	<th></th>
-		   	  	<th>Name</th>
-		   	  	<th>Last updated</th>
-		   	  	<th>Scraped?</th>
-		   	  	<th></th>
-		   	  </tr>
-		    </thead>  
+<br/>
 
-		    <% i = 1; %>
-			<% @countries.each do |country| %>
-		      <tr>
-		      	<td><%= "#{i}" %></td>
-		        <td><%= link_to "#{country.name}", country %></td>
-		        <td><%= country.updated_at.strftime("%d/%m/%Y at %H:%M") %></td>
-		        <td><%= country.scraped %></td>
-		        <td>
-		        	<%= link_to "Scrape",:action => 'scrape', :region => country.region %> |
-		        	<%= link_to "View",:action => 'show', :region => country.region %> |
-		        	<%= link_to "Edit",:action => 'edit', :region => country.region %> |
-		        	<%= link_to "Download",:controller => 'data',:action => 'download', :region => country.region %>   
-		        </td>
-		      </tr>
-		      <% i += 1 %>
-		    <% end %>
-		    
-		    </table>
-		</div>    
-	</div>	
+<div class="table-div">
+	<table class="listing table table-striped">
+	<thead>
+      <tr class="header">
+   	  	<th></th>
+   	  	<th>Name</th>
+   	  	<th>Last updated</th>
+   	  	<th>Scraped?</th>
+   	  	<th></th>
+   	  </tr>
+    </thead>  
 
-</div>
+    <% i = 1; %>
+	<% @countries.each do |country| %>
+      <tr>
+      	<td><b><%= "#{i}" %></b></td>
+        <td><%= link_to "#{country.name}", country %></td>
+        <td><%= country.updated_at.strftime("%d/%m/%Y at %H:%M") %></td>
+        <td><%= country.scraped %></td>
+        <td>
+        	<%= link_to "View", show_path(:region => country.region), :class => "btn btn-sm btn-info" %> 
+        	<%= link_to "Scrape New Data", scrape_path(:region => country.region), :class => "btn btn-sm btn-success" %> 
+          <!--
+        	<%= link_to "Download", download_path, :region => country.region, :class => "btn btn-sm btn-primary" %>  
+          --> 
+        </td>
+      </tr>
+      <% i += 1 %>
+    <% end %>
+    
+    </table>
+</div>    
+
+<br/>

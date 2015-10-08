@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @political_party.name %>
+</p>
+
+<p>
+  <strong>Leaning index:</strong>
+  <%= @political_party.leaning_index %>
+</p>
+
+<%= link_to 'Edit', edit_political_party_path(@political_party) %> |
+<%= link_to 'Back', political_parties_path %>

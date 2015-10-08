@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929132749) do
+ActiveRecord::Schema.define(version: 20151008181829) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -24,68 +24,88 @@ ActiveRecord::Schema.define(version: 20150929132749) do
   end
 
   create_table "data", force: :cascade do |t|
-    t.string   "sourceWebsite",            limit: 255
-    t.string   "name",                     limit: 255
-    t.string   "picture",                  limit: 255
-    t.string   "politicalParty",           limit: 255
-    t.string   "politicalPartyImage",      limit: 255
-    t.string   "verified",                 limit: 255
-    t.integer  "likes",                    limit: 4
-    t.integer  "followers",                limit: 4
-    t.string   "email",                    limit: 255
-    t.string   "twitter",                  limit: 255
-    t.string   "facebook",                 limit: 255
-    t.string   "linkedin",                 limit: 255
-    t.string   "googlePlus",               limit: 255
-    t.string   "instagram",                limit: 255
-    t.string   "blog",                     limit: 255
-    t.string   "youtubeChannel",           limit: 255
-    t.string   "premium",                  limit: 255
-    t.text     "bio",                      limit: 65535
-    t.text     "quote1",                   limit: 65535
-    t.text     "quote2",                   limit: 65535
-    t.string   "sourceActivity",           limit: 255
-    t.text     "lastActivity1",            limit: 65535
-    t.text     "lastActivity2",            limit: 65535
-    t.text     "lastActivity3",            limit: 65535
-    t.text     "lastActivity4",            limit: 65535
-    t.integer  "ideology1",                limit: 4
-    t.integer  "ideology2",                limit: 4
-    t.integer  "ideology3",                limit: 4
-    t.integer  "ideology4",                limit: 4
-    t.integer  "ideology5",                limit: 4
-    t.integer  "following",                limit: 4
-    t.integer  "openProjects",             limit: 4
-    t.integer  "closedProjects",           limit: 4
-    t.integer  "proposals",                limit: 4
-    t.integer  "debates",                  limit: 4
-    t.integer  "sponsorships",             limit: 4
-    t.integer  "victories",                limit: 4
-    t.string   "dateOfBirth",              limit: 255
-    t.string   "placeOfBirth",             limit: 255
-    t.text     "institutionalAddress",     limit: 65535
-    t.string   "institutionalTelephone",   limit: 255
-    t.string   "institutionalFax",         limit: 255
-    t.string   "institutionalMobilePhone", limit: 255
-    t.string   "electoralAddress",         limit: 255
-    t.string   "electoralTelephone",       limit: 255
-    t.string   "electoralFax",             limit: 255
-    t.string   "electoralMobile",          limit: 255
-    t.string   "phone",                    limit: 255
-    t.string   "assistants",               limit: 255
-    t.string   "completeName",             limit: 255
-    t.string   "position",                 limit: 255
-    t.string   "region",                   limit: 255
-    t.string   "institution",              limit: 255
-    t.string   "constituency",             limit: 255
-    t.string   "studies",                  limit: 255
-    t.string   "university",               limit: 255
-    t.string   "profession",               limit: 255
-    t.string   "cvLink",                   limit: 255
-    t.string   "declarationLink",          limit: 255
-    t.string   "officialWebsite",          limit: 255
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.string   "sourceWebsite",              limit: 255
+    t.string   "name",                       limit: 255
+    t.string   "picture",                    limit: 255
+    t.string   "politicalParty",             limit: 255
+    t.string   "politicalPartyImage",        limit: 255
+    t.string   "verified",                   limit: 255
+    t.integer  "likes",                      limit: 4
+    t.integer  "followers",                  limit: 4
+    t.string   "email",                      limit: 255
+    t.string   "twitter",                    limit: 255
+    t.string   "facebook",                   limit: 255
+    t.string   "linkedin",                   limit: 255
+    t.string   "googlePlus",                 limit: 255
+    t.string   "instagram",                  limit: 255
+    t.string   "blog",                       limit: 255
+    t.string   "youtubeChannel",             limit: 255
+    t.string   "premium",                    limit: 255
+    t.text     "bio",                        limit: 65535
+    t.text     "quote1",                     limit: 65535
+    t.text     "quote2",                     limit: 65535
+    t.string   "sourceActivity",             limit: 255
+    t.text     "lastActivity1",              limit: 65535
+    t.text     "lastActivity2",              limit: 65535
+    t.text     "lastActivity3",              limit: 65535
+    t.text     "lastActivity4",              limit: 65535
+    t.integer  "ideology1",                  limit: 4
+    t.integer  "ideology2",                  limit: 4
+    t.integer  "ideology3",                  limit: 4
+    t.integer  "ideology4",                  limit: 4
+    t.integer  "ideology5",                  limit: 4
+    t.integer  "following",                  limit: 4
+    t.integer  "openProjects",               limit: 4
+    t.integer  "closedProjects",             limit: 4
+    t.integer  "proposals",                  limit: 4
+    t.integer  "debates",                    limit: 4
+    t.integer  "sponsorships",               limit: 4
+    t.integer  "victories",                  limit: 4
+    t.string   "dateOfBirth",                limit: 255
+    t.string   "placeOfBirth",               limit: 255
+    t.text     "institutionalAddress",       limit: 65535
+    t.string   "institutionalTelephone",     limit: 255
+    t.string   "institutionalFax",           limit: 255
+    t.string   "institutionalMobilePhone",   limit: 255
+    t.string   "electoralAddress",           limit: 255
+    t.string   "electoralTelephone",         limit: 255
+    t.string   "electoralFax",               limit: 255
+    t.string   "electoralMobile",            limit: 255
+    t.string   "phone",                      limit: 255
+    t.string   "assistants",                 limit: 255
+    t.string   "completeName",               limit: 255
+    t.string   "position",                   limit: 255
+    t.string   "region",                     limit: 255
+    t.string   "institution",                limit: 255
+    t.string   "constituency",               limit: 255
+    t.string   "studies",                    limit: 255
+    t.string   "university",                 limit: 255
+    t.string   "profession",                 limit: 255
+    t.string   "cvLink",                     limit: 255
+    t.string   "declarationLink",            limit: 255
+    t.string   "officialWebsite",            limit: 255
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.text     "politicalExperience",        limit: 65535
+    t.text     "causes",                     limit: 65535
+    t.string   "region_code_alliance",       limit: 255
+    t.string   "region_code_nation",         limit: 255
+    t.string   "region_code_state",          limit: 255
+    t.string   "region_code_county",         limit: 255
+    t.string   "region_code_city",           limit: 255
+    t.string   "constituency_code_alliance", limit: 255
+    t.string   "constituency_code_nation",   limit: 255
+    t.string   "constituency_code_state",    limit: 255
+    t.string   "constituency_code_county",   limit: 255
+    t.string   "constituency_code_city",     limit: 255
+  end
+
+  create_table "political_parties", force: :cascade do |t|
+    t.string   "name",          limit: 255
+    t.decimal  "leaning_index",             precision: 64, scale: 12
+    t.decimal  "decimal",                   precision: 64, scale: 12
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
   end
 
   create_table "regions", force: :cascade do |t|

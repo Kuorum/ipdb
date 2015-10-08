@@ -1,2 +1,57 @@
+/*
+ *= require jquery-ui
+ */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+
+html, body { height: 100%; }
+body { padding: 0px; margin: 0px; background-color: rgb(225,225,225); }
+body, input { font-family: Arial; font-size: 12px; }
+img { border: 0; }
+h1 { font-size: 20pt; text-transform: uppercase; }
+h3 { font-size: 13pt; margin-bottom: 0; }
+a { color: #7389B6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+table { border-collapse: collapse; }
+th { text-align: left; font-size: 11pt; }
+td img { padding: 0; }
+
+#container { min-height: 100%; position: relative; }
+#header { background-color: rgb(0,39,77); color: #FFF; border-bottom: 2px solid rgb(8,58,127); min-height: 70px; }
+#menu { background-color: rgb(0,24,49); border-bottom: 4px solid #BA303A; }
+#content { position: relative; margin: 10px auto 0 auto; padding: 15px 25px 15px 25px; background-color: #FFF; border-radius: 8px; border-right: 1px solid #CCC; border-bottom: 1px solid #AAA; }
+#footer { position: absolute; bottom: 0; width: 100%; background-color: rgb(0,24,49); color: #FFF; border-top: 4px solid #BA303A; }
+#footer_spacer { height: 70px; }
+
+.table-div{
+border:2px solid #ccc;overflow: auto; overflow-y: hidden;border-radius:5px;
+}
+
+tr.header{
+	background-color: #333;
+	color:#fff;
+}
+
+
+
+.region-table tr td{
+	padding: 10px 10px 10px 0;
+}
+
+.region-label{
+	width: 20%;
+}
+
+.navbar-right {
+	margin: 10px 0 0 0;
+}
+
+.navbar-right .btn {
+	margin-right:15px;
+}
+
+
+

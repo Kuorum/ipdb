@@ -97,13 +97,13 @@ task :scraper_NA_US => [:environment] do
 
 
 		# Insert data to database
-		Datum.create!(members)
+	# Datum.create!(members)
 
 
 		# Set country as scraped
-	    country = Country.find_by_region(region_id)
-	    country.scraped = true
-	    country.save
+	#country = Country.find_by_region(region_id)
+	#country.scraped = true
+	#country.save
 
 		
 		#bar.finished

@@ -1,146 +1,40 @@
-<p id="notice"><%= notice %></p>
+<h1>ALL DATA</h1>
 
-<h1>Listing Data</h1>
+<hr/>
 
-<%= link_to 'New Data', new_datum_path %>
+<br/>
 
-<br/><br/>
-
-<div style="border:2px solid #ccc;overflow: auto; overflow-y: hidden;border-radius:5px;">
+<div class="table-div">
   <table class="listing table table-striped">
     <thead>
       <tr class="header">
-        <th>Sourcewebsite</th>
+        <th>No</th>
         <th>Name</th>
-        <th>Picture</th>
         <th>Politicalparty</th>
-        <th>Politicalpartyimage</th>
-        <th>Verified</th>
-        <th>Likes</th>
-        <th>Followers</th>
-        <th>Email</th>
-        <th>Twitter</th>
-        <th>Facebook</th>
-        <th>Linkedin</th>
-        <th>Googleplus</th>
-        <th>Instagram</th>
-        <th>Blog</th>
-        <th>Youtubechannel</th>
-        <th>Premium</th>
-        <th>Bio</th>
-        <th>Quote1</th>
-        <th>Quote2</th>
-        <th>Sourceactivity</th>
-        <th>Lastactivity1</th>
-        <th>Lastactivity2</th>
-        <th>Lastactivity3</th>
-        <th>Lastactivity4</th>
-        <th>Ideology1</th>
-        <th>Ideology2</th>
-        <th>Ideology3</th>
-        <th>Ideology4</th>
-        <th>Ideology5</th>
-        <th>Following</th>
-        <th>Openprojects</th>
-        <th>Closedprojects</th>
-        <th>Proposals</th>
-        <th>Debates</th>
-        <th>Sponsorships</th>
-        <th>Victories</th>
-        <th>Dateofbirth</th>
-        <th>Placeofbirth</th>
-        <th>Institutionaladdress</th>
-        <th>Institutionaltelephone</th>
-        <th>Institutionalfax</th>
-        <th>Institutionalmobilephone</th>
-        <th>Electoraladdress</th>
-        <th>Electoraltelephone</th>
-        <th>Electoralfax</th>
-        <th>Electoralmobile</th>
-        <th>Phone</th>
-        <th>Assistants</th>
-        <th>Completename</th>
-        <th>Position</th>
         <th>Region</th>
         <th>Institution</th>
         <th>Constituency</th>
-        <th>Studies</th>
-        <th>University</th>
-        <th>Profession</th>
-        <th>Cvlink</th>
-        <th>Declarationlink</th>
-        <th>Officialwebsite</th>
-        <th colspan="3"></th>
+        <th></th>
       </tr>
     </thead>
 
     <tbody>
+
+    <% i = 1 %>
       <% @data.each do |datum| %>
         <tr>
-          <td><%= datum.sourceWebsite %></td>
+          <td><%= i %></td>
           <td><%= datum.name %></td>
-          <td><%= datum.picture %></td>
           <td><%= datum.politicalParty %></td>
-          <td><%= datum.politicalPartyImage %></td>
-          <td><%= datum.verified %></td>
-          <td><%= datum.likes %></td>
-          <td><%= datum.followers %></td>
-          <td><%= datum.email %></td>
-          <td><%= datum.twitter %></td>
-          <td><%= datum.facebook %></td>
-          <td><%= datum.linkedin %></td>
-          <td><%= datum.googlePlus %></td>
-          <td><%= datum.instagram %></td>
-          <td><%= datum.blog %></td>
-          <td><%= datum.youtubeChannel %></td>
-          <td><%= datum.premium %></td>
-          <td><%= datum.bio %></td>
-          <td><%= datum.quote1 %></td>
-          <td><%= datum.quote2 %></td>
-          <td><%= datum.sourceActivity %></td>
-          <td><%= datum.lastActivity1 %></td>
-          <td><%= datum.lastActivity2 %></td>
-          <td><%= datum.lastActivity3 %></td>
-          <td><%= datum.lastActivity4 %></td>
-          <td><%= datum.ideology1 %></td>
-          <td><%= datum.ideology2 %></td>
-          <td><%= datum.ideology3 %></td>
-          <td><%= datum.ideology4 %></td>
-          <td><%= datum.ideology5 %></td>
-          <td><%= datum.following %></td>
-          <td><%= datum.openProjects %></td>
-          <td><%= datum.closedProjects %></td>
-          <td><%= datum.proposals %></td>
-          <td><%= datum.debates %></td>
-          <td><%= datum.sponsorships %></td>
-          <td><%= datum.victories %></td>
-          <td><%= datum.dateOfBirth %></td>
-          <td><%= datum.placeOfBirth %></td>
-          <td><%= datum.institutionalAddress %></td>
-          <td><%= datum.institutionalTelephone %></td>
-          <td><%= datum.institutionalFax %></td>
-          <td><%= datum.institutionalMobilePhone %></td>
-          <td><%= datum.electoralAddress %></td>
-          <td><%= datum.electoralTelephone %></td>
-          <td><%= datum.electoralFax %></td>
-          <td><%= datum.electoralMobile %></td>
-          <td><%= datum.phone %></td>
-          <td><%= datum.assistants %></td>
-          <td><%= datum.completeName %></td>
-          <td><%= datum.position %></td>
           <td><%= datum.region %></td>
           <td><%= datum.institution %></td>
           <td><%= datum.constituency %></td>
-          <td><%= datum.studies %></td>
-          <td><%= datum.university %></td>
-          <td><%= datum.profession %></td>
-          <td><%= datum.cvLink %></td>
-          <td><%= datum.declarationLink %></td>
-          <td><%= datum.officialWebsite %></td>
-          <td><%= link_to 'Show', datum %></td>
-          <td><%= link_to 'Edit', edit_datum_path(datum) %></td>
-          <td><%= link_to 'Destroy', datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+            <%= link_to 'View more', datum, :class => "btn btn-sm btn-info" %>
+            <%= link_to 'Edit', edit_datum_path(datum), :class => "btn btn-sm btn-success" %>
+          </td>
         </tr>
+        <% i += 1 %>
       <% end %>
     </tbody>
   </table>

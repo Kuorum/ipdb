@@ -1,37 +1,47 @@
-<h1>EDIT DATA</h1>
+<h1><span class="glyphicon glyphicon-list"></span> LISTING DATA</h1>
+<b>COUNTRY: <span style="color:#337ab7"><%= @region_name.titleize %></span></b>
+
+<hr/>
+
+<br/>
+
 <div>
 
-	<h3>Country: <%= @region_name %></h3>
+	<div class="table-div">
+		<table class="listing table table-striped">
+		<thead>
+	      <tr class="header">
+	   	  	<th></th>
+	   	  	<th>Name</th>
+	   	  	<th>Country</th>
+	   	  	<th></th>
+	   	  </tr>
+	    </thead>  
 
-	<div class="row">
-		<div class="col-md-12">
-			<table class="listing table table-striped">
-			<thead>
-		      <tr class="header">
-		   	  	<th></th>
-		   	  	<th>Name</th>
-		   	  	<th>Country</th>
-		   	  	<th></th>
-		   	  </tr>
-		    </thead>  
+	    <% i = 1; %>
+		<% @datum.each do |data| %>
+	      <tr>
+	      	<td><b><%= "#{i}" %></b></td>
 
-		    <% i = 1; %>
-			<% @datum.each do |data| %>
-		      <tr>
-		      	<td><%= "#{i}" %></td>
+	        <td><%= link_to "#{data.name}", data %></td>
+	        <td><%= @region_name.titleize %></td>
+	      	<td>
+	      		<%= link_to "View", data, class: "btn btn-info btn-sm" %> 
+	      		<%= link_to "Edit", edit_datum_path(data), class: "btn btn-success btn-sm" %> 
+	      	</td>
+	      </tr>
+	      <% i += 1 %>
+	    <% end %>
+	    
+	    </table>
+	</div>   
 
-		        <td><%= link_to "#{data.name}", data %></td>
-		        <td><%= link_to "#{@region_name}", data %></td>
-		      	<td>
-		      		<%= link_to "View", data %> |
-		      		<%= link_to "Edit", edit_datum_path(data) %> 
-		      	</td>
-		      </tr>
-		      <% i += 1 %>
-		    <% end %>
-		    
-		    </table>
-		</div>    
-	</div>	
+	<br/>
+
+	<hr/>
+
+	<%= link_to '< Back', root_path, class: "btn btn-primary btn-md" %> 
+
+	<br/><br/>
 
 </div>

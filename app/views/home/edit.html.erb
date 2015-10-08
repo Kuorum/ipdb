@@ -3,35 +3,34 @@
 
 	<h3>Country: <%= params[:region] %></h3>
 
-	<div class="row">
-		<div class="col-md-12">
-			<table class="listing table table-striped">
-			<thead>
-		      <tr class="header">
-		   	  	<th></th>
-		   	  	<th>Name</th>
-		   	  	<th>Country</th>
-		   	  	<th></th>
-		   	  </tr>
-		    </thead>  
+	<div class="table-div">
+		<table class="listing table table-striped">
+		<thead>
+	      <tr class="header">
+	   	  	<th></th>
+	   	  	<th>Name</th>
+	   	  	<th>Country</th>
+	   	  	<th></th>
+	   	  </tr>
+	    </thead>  
 
-		    <% i = 1; %>
-			<% @datum.each do |data| %>
-		      <tr>
-		      	<td><%= "#{i}" %></td>
+	    <% i = 1; %>
+		<% @datum.each do |data| %>
+	      <tr>
+	      	<td><%= "#{i}" %></td>
 
-		        <td><%= link_to "#{data.name}", data %></td>
-		        <td><%= link_to "#{data.region}", data %></td>
-		      	<td>
-		      		<%= link_to "View", data %> |
-		      		<%= link_to "Edit", edit_datum_path(data) %> 
-		      	</td>
-		      </tr>
-		      <% i += 1 %>
-		    <% end %>
-		    
-		    </table>
-		</div>    
-	</div>	
+	        <td><%= link_to "#{data.name}", data %></td>
+	        <td><%= link_to "#{data.region}", data %></td>
+	      	<td>
+	      		<%= link_to "View", data %> |
+	      		<%= link_to "Edit", edit_datum_path(data) %> 
+	      	</td>
+	      </tr>
+	      <% i += 1 %>
+	    <% end %>
+	    
+	    </table>
+	</div>    
+
 
 </div>

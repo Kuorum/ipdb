@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Political Parties</h1>
+
+<hr/>
+
+<br/>
+
+<table class="listing table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Leaning index</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @political_parties.each do |political_party| %>
+      <tr>
+        <td><%= political_party.name %></td>
+        <td><%= political_party.leaning_index %></td>
+        <td><%= link_to 'Show', political_party %></td>
+        <td><%= link_to 'Edit', edit_political_party_path(political_party) %></td>
+        <td><%= link_to 'Destroy', political_party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Political party', new_political_party_path, :class => "btn btn-md btn-primary" %>

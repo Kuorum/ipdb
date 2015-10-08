@@ -1,304 +1,390 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Sourcewebsite:</strong>
-  <%= @datum.sourceWebsite %>
-</p>
+<h1><span class="glyphicon glyphicon-user"></span> LISTING POLITICIAN DETAILS</h1>
+<b>POLITICIAN: <span style="color:#337ab7"><%= @datum.name %></span></b>
 
-<p>
-  <strong>Name:</strong>
-  <%= @datum.name %>
-</p>
+<hr/>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @datum.picture %>
-</p>
+<br/>
 
-<p>
-  <strong>Politicalparty:</strong>
-  <%= @datum.politicalParty %>
-</p>
+<div class="table-div">
+  <table class="listing table table-striped">
+  <thead>
+      <tr class="header">
+        <th>Column</th>
+        <th>Details</th>
+      </tr>
+  </thead>  
 
-<p>
-  <strong>Politicalpartyimage:</strong>
-  <%= @datum.politicalPartyImage %>
-</p>
+  <tr><td> 
+    <strong>Sourcewebsite</strong></td><td>
+    <%= @datum.sourceWebsite %>
+  </td> </tr>
 
-<p>
-  <strong>Verified:</strong>
-  <%= @datum.verified %>
-</p>
+  <tr><td> 
+    <strong>Name</strong></td><td>
+    <%= @datum.name %>
+  </td> </tr>
 
-<p>
-  <strong>Likes:</strong>
-  <%= @datum.likes %>
-</p>
+  <tr><td> 
+    <strong>Picture</strong></td><td>
+    <%= @datum.picture %>
+  </td> </tr>
 
-<p>
-  <strong>Followers:</strong>
-  <%= @datum.followers %>
-</p>
+  <tr><td> 
+    <strong>Politicalparty</strong></td><td>
+    <%= @datum.politicalParty %>
+  </td> </tr>
 
-<p>
-  <strong>Email:</strong>
-  <%= @datum.email %>
-</p>
+  <tr><td> 
+    <strong>Politicalpartyimage</strong></td><td>
+    <%= @datum.politicalPartyImage %>
+  </td> </tr>
 
-<p>
-  <strong>Twitter:</strong>
-  <%= @datum.twitter %>
-</p>
+  <tr><td> 
+    <strong>Verified</strong></td><td>
+    <%= @datum.verified %>
+  </td> </tr>
 
-<p>
-  <strong>Facebook:</strong>
-  <%= @datum.facebook %>
-</p>
+  <tr><td> 
+    <strong>Likes</strong></td><td>
+    <%= @datum.likes %>
+  </td> </tr>
 
-<p>
-  <strong>Linkedin:</strong>
-  <%= @datum.linkedin %>
-</p>
+  <tr><td> 
+    <strong>Followers</strong></td><td>
+    <%= @datum.followers %>
+  </td> </tr>
 
-<p>
-  <strong>Googleplus:</strong>
-  <%= @datum.googlePlus %>
-</p>
+  <tr><td> 
+    <strong>Email</strong></td><td>
+    <%= @datum.email %>
+  </td> </tr>
 
-<p>
-  <strong>Instagram:</strong>
-  <%= @datum.instagram %>
-</p>
+  <tr><td> 
+    <strong>Twitter</strong></td><td>
+    <%= @datum.twitter %>
+  </td> </tr>
 
-<p>
-  <strong>Blog:</strong>
-  <%= @datum.blog %>
-</p>
+  <tr><td> 
+    <strong>Facebook</strong></td><td>
+    <%= @datum.facebook %>
+  </td> </tr>
 
-<p>
-  <strong>Youtubechannel:</strong>
-  <%= @datum.youtubeChannel %>
-</p>
+  <tr><td> 
+    <strong>Linkedin</strong></td><td>
+    <%= @datum.linkedin %>
+  </td> </tr>
 
-<p>
-  <strong>Premium:</strong>
-  <%= @datum.premium %>
-</p>
+  <tr><td> 
+    <strong>Googleplus</strong></td><td>
+    <%= @datum.googlePlus %>
+  </td> </tr>
 
-<p>
-  <strong>Bio:</strong>
-  <%= @datum.bio %>
-</p>
+  <tr><td> 
+    <strong>Instagram</strong></td><td>
+    <%= @datum.instagram %>
+  </td> </tr>
 
-<p>
-  <strong>Quote1:</strong>
-  <%= @datum.quote1 %>
-</p>
+  <tr><td> 
+    <strong>Blog</strong></td><td>
+    <%= @datum.blog %>
+  </td> </tr>
 
-<p>
-  <strong>Quote2:</strong>
-  <%= @datum.quote2 %>
-</p>
+  <tr><td> 
+    <strong>Youtubechannel</strong></td><td>
+    <%= @datum.youtubeChannel %>
+  </td> </tr>
 
-<p>
-  <strong>Sourceactivity:</strong>
-  <%= @datum.sourceActivity %>
-</p>
+  <tr><td> 
+    <strong>Premium</strong></td><td>
+    <%= @datum.premium %>
+  </td> </tr>
 
-<p>
-  <strong>Lastactivity1:</strong>
-  <%= @datum.lastActivity1 %>
-</p>
+  <tr><td> 
+    <strong>Bio</strong></td><td>
+    <%= @datum.bio %>
+  </td> </tr>
 
-<p>
-  <strong>Lastactivity2:</strong>
-  <%= @datum.lastActivity2 %>
-</p>
+  <tr><td> 
+    <strong>Quote1</strong></td><td>
+    <%= @datum.quote1 %>
+  </td> </tr>
 
-<p>
-  <strong>Lastactivity3:</strong>
-  <%= @datum.lastActivity3 %>
-</p>
+  <tr><td> 
+    <strong>Quote2</strong></td><td>
+    <%= @datum.quote2 %>
+  </td> </tr>
 
-<p>
-  <strong>Lastactivity4:</strong>
-  <%= @datum.lastActivity4 %>
-</p>
+  <tr><td> 
+    <strong>Sourceactivity</strong></td><td>
+    <%= @datum.sourceActivity %>
+  </td> </tr>
 
-<p>
-  <strong>Ideology1:</strong>
-  <%= @datum.ideology1 %>
-</p>
+  <tr><td> 
+    <strong>Lastactivity1</strong></td><td>
+    <%= @datum.lastActivity1 %>
+  </td> </tr>
 
-<p>
-  <strong>Ideology2:</strong>
-  <%= @datum.ideology2 %>
-</p>
+  <tr><td> 
+    <strong>Lastactivity2</strong></td><td>
+    <%= @datum.lastActivity2 %>
+  </td> </tr>
 
-<p>
-  <strong>Ideology3:</strong>
-  <%= @datum.ideology3 %>
-</p>
+  <tr><td> 
+    <strong>Lastactivity3</strong></td><td>
+    <%= @datum.lastActivity3 %>
+  </td> </tr>
 
-<p>
-  <strong>Ideology4:</strong>
-  <%= @datum.ideology4 %>
-</p>
+  <tr><td> 
+    <strong>Lastactivity4</strong></td><td>
+    <%= @datum.lastActivity4 %>
+  </td> </tr>
 
-<p>
-  <strong>Ideology5:</strong>
-  <%= @datum.ideology5 %>
-</p>
+  <tr><td> 
+    <strong>Ideology1</strong></td><td>
+    <%= @datum.ideology1 %>
+  </td> </tr>
 
-<p>
-  <strong>Following:</strong>
-  <%= @datum.following %>
-</p>
+  <tr><td> 
+    <strong>Ideology2</strong></td><td>
+    <%= @datum.ideology2 %>
+  </td> </tr>
 
-<p>
-  <strong>Openprojects:</strong>
-  <%= @datum.openProjects %>
-</p>
+  <tr><td> 
+    <strong>Ideology3</strong></td><td>
+    <%= @datum.ideology3 %>
+  </td> </tr>
 
-<p>
-  <strong>Closedprojects:</strong>
-  <%= @datum.closedProjects %>
-</p>
+  <tr><td> 
+    <strong>Ideology4</strong></td><td>
+    <%= @datum.ideology4 %>
+  </td> </tr>
 
-<p>
-  <strong>Proposals:</strong>
-  <%= @datum.proposals %>
-</p>
+  <tr><td> 
+    <strong>Ideology5</strong></td><td>
+    <%= @datum.ideology5 %>
+  </td> </tr>
 
-<p>
-  <strong>Debates:</strong>
-  <%= @datum.debates %>
-</p>
+  <tr><td> 
+    <strong>Following</strong></td><td>
+    <%= @datum.following %>
+  </td> </tr>
 
-<p>
-  <strong>Sponsorships:</strong>
-  <%= @datum.sponsorships %>
-</p>
+  <tr><td> 
+    <strong>Openprojects</strong></td><td>
+    <%= @datum.openProjects %>
+  </td> </tr>
 
-<p>
-  <strong>Victories:</strong>
-  <%= @datum.victories %>
-</p>
+  <tr><td> 
+    <strong>Closedprojects</strong></td><td>
+    <%= @datum.closedProjects %>
+  </td> </tr>
 
-<p>
-  <strong>Dateofbirth:</strong>
-  <%= @datum.dateOfBirth %>
-</p>
+  <tr><td> 
+    <strong>Proposals</strong></td><td>
+    <%= @datum.proposals %>
+  </td> </tr>
 
-<p>
-  <strong>Placeofbirth:</strong>
-  <%= @datum.placeOfBirth %>
-</p>
+  <tr><td> 
+    <strong>Debates</strong></td><td>
+    <%= @datum.debates %>
+  </td> </tr>
 
-<p>
-  <strong>Institutionaladdress:</strong>
-  <%= @datum.institutionalAddress %>
-</p>
+  <tr><td> 
+    <strong>Sponsorships</strong></td><td>
+    <%= @datum.sponsorships %>
+  </td> </tr>
 
-<p>
-  <strong>Institutionaltelephone:</strong>
-  <%= @datum.institutionalTelephone %>
-</p>
+  <tr><td> 
+    <strong>Victories</strong></td><td>
+    <%= @datum.victories %>
+  </td> </tr>
 
-<p>
-  <strong>Institutionalfax:</strong>
-  <%= @datum.institutionalFax %>
-</p>
+  <tr><td> 
+    <strong>Dateofbirth</strong></td><td>
+    <%= @datum.dateOfBirth %>
+  </td> </tr>
 
-<p>
-  <strong>Institutionalmobilephone:</strong>
-  <%= @datum.institutionalMobilePhone %>
-</p>
+  <tr><td> 
+    <strong>Placeofbirth</strong></td><td>
+    <%= @datum.placeOfBirth %>
+  </td> </tr>
 
-<p>
-  <strong>Electoraladdress:</strong>
-  <%= @datum.electoralAddress %>
-</p>
+  <tr><td> 
+    <strong>Institutionaladdress</strong></td><td>
+    <%= @datum.institutionalAddress %>
+  </td> </tr>
 
-<p>
-  <strong>Electoraltelephone:</strong>
-  <%= @datum.electoralTelephone %>
-</p>
+  <tr><td> 
+    <strong>Institutionaltelephone</strong></td><td>
+    <%= @datum.institutionalTelephone %>
+  </td> </tr>
 
-<p>
-  <strong>Electoralfax:</strong>
-  <%= @datum.electoralFax %>
-</p>
+  <tr><td> 
+    <strong>Institutionalfax</strong></td><td>
+    <%= @datum.institutionalFax %>
+  </td> </tr>
 
-<p>
-  <strong>Electoralmobile:</strong>
-  <%= @datum.electoralMobile %>
-</p>
+  <tr><td> 
+    <strong>Institutionalmobilephone</strong></td><td>
+    <%= @datum.institutionalMobilePhone %>
+  </td> </tr>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @datum.phone %>
-</p>
+  <tr><td> 
+    <strong>Electoraladdress</strong></td><td>
+    <%= @datum.electoralAddress %>
+  </td> </tr>
 
-<p>
-  <strong>Assistants:</strong>
-  <%= @datum.assistants %>
-</p>
+  <tr><td> 
+    <strong>Electoraltelephone</strong></td><td>
+    <%= @datum.electoralTelephone %>
+  </td> </tr>
 
-<p>
-  <strong>Completename:</strong>
-  <%= @datum.completeName %>
-</p>
+  <tr><td> 
+    <strong>Electoralfax</strong></td><td>
+    <%= @datum.electoralFax %>
+  </td> </tr>
 
-<p>
-  <strong>Position:</strong>
-  <%= @datum.position %>
-</p>
+  <tr><td> 
+    <strong>Electoralmobile</strong></td><td>
+    <%= @datum.electoralMobile %>
+  </td> </tr>
 
-<p>
-  <strong>Region:</strong>
-  <%= @region_name %>
-</p>
+  <tr><td> 
+    <strong>Phone</strong></td><td>
+    <%= @datum.phone %>
+  </td> </tr>
 
-<p>
-  <strong>Institution:</strong>
-  <%= @datum.institution %>
-</p>
+  <tr><td> 
+    <strong>Assistants</strong></td><td>
+    <%= @datum.assistants %>
+  </td> </tr>
 
-<p>
-  <strong>Constituency:</strong>
-  <%= @datum.constituency %>
-</p>
+  <tr><td> 
+    <strong>Completename</strong></td><td>
+    <%= @datum.completeName %>
+  </td> </tr>
 
-<p>
-  <strong>Studies:</strong>
-  <%= @datum.studies %>
-</p>
+  <tr><td> 
+    <strong>Position</strong></td><td>
+    <%= @datum.position %>
+  </td> </tr>
 
-<p>
-  <strong>University:</strong>
-  <%= @datum.university %>
-</p>
+  <tr><td> 
+    <strong>Region</strong></td><td>
+    <%= @region_name %>
+  </td> </tr>
 
-<p>
-  <strong>Profession:</strong>
-  <%= @datum.profession %>
-</p>
+  <tr><td> 
+    <strong>Region Alliance</strong></td><td>
+    <%= @datum.region_code_alliance %>
+  </td> </tr>
 
-<p>
-  <strong>Cvlink:</strong>
-  <%= @datum.cvLink %>
-</p>
+  <tr><td> 
+    <strong>Region Nation</strong></td><td>
+    <%= @datum.region_code_nation %>
+  </td> </tr>
 
-<p>
-  <strong>Declarationlink:</strong>
-  <%= @datum.declarationLink %>
-</p>
+  <tr><td> 
+    <strong>Region State</strong></td><td>
+    <%= @datum.region_code_state %>
+  </td> </tr>
 
-<p>
-  <strong>Officialwebsite:</strong>
-  <%= @datum.officialWebsite %>
-</p>
+  <tr><td> 
+    <strong>Region County</strong></td><td>
+    <%= @datum.region_code_county %>
+  </td> </tr>
 
-<%= link_to 'Edit', edit_datum_path(@datum) %> |
-<%= link_to 'Back', data_path %>
+  <tr><td> 
+    <strong>Region City</strong></td><td>
+    <%= @datum.region_code_city %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Institution</strong></td><td>
+    <%= @datum.institution %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency</strong></td><td>
+    <%= @datum.constituency %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency Alliance</strong></td><td>
+    <%= @datum.region_code_alliance %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency Nation</strong></td><td>
+    <%= @datum.constituency_code_nation %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency State</strong></td><td>
+    <%= @datum.constituency_code_state %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency County</strong></td><td>
+    <%= @datum.constituency_code_county %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency City</strong></td><td>
+    <%= @datum.constituency_code_city %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Studies</strong></td><td>
+    <%= @datum.studies %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>University</strong></td><td>
+    <%= @datum.university %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Profession</strong></td><td>
+    <%= @datum.profession %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Cvlink</strong></td><td>
+    <%= @datum.cvLink %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Declarationlink</strong></td><td>
+    <%= @datum.declarationLink %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Officialwebsite</strong></td><td>
+    <%= @datum.officialWebsite %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Political Experience</strong></td><td>
+    <%= @datum.politicalExperience %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Causes</strong></td><td>
+    <%= @datum.causes %>
+  </td> </tr>
+
+  </table>
+
+</div>  
+
+<br/>
+
+<hr/>
+
+<%= link_to '< Back', show_path(:region => @datum.region), class: "btn btn-primary btn-md" %>
+<%= link_to 'Edit', edit_datum_path(@datum), class: "btn btn-success btn-md" %> 
+
+<br/><br/>
+

@@ -1,0 +1,24 @@
+<script>
+      $(function(){
+      
+      
+      $('#menu_One').on('change', function(){
+        var value = $('option:selected',this).attr('value');
+        alert(value);
+      });
+      
+      
+    });
+</script>
+
+  <div id="wrap">
+    
+    <select id="menu_One">
+      <option value="1">Menu One 1</option>
+      <option value="2">Menu One 2</option>
+      <option value="3">Menu One 3</option>
+      <option value="4">Menu One 4</option>
+      <option value="5">Menu One 5</option>  
+    </select>  
+
+  </div>

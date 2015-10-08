@@ -2,7 +2,6 @@ require 'mechanize'
 require 'date'
 require 'json'
 require 'rake-progressbar'
-require 'active_record'
 
 region = '233' 
 region_abbreviation = 'NA-US' #Unites States
@@ -53,12 +52,48 @@ task :scraper_update_NA_US => [:environment] do
 
 		  # Update Data
 		  #puts name
-		  data = Datum.find_by_name(name)
-	      data.bio = bio
-	      data.lastActivity1 = stripActivities[1]
-		  data.lastActivity2 = stripActivities[2]
-		  data.lastActivity3 = stripActivities[3]
-	      data.save
+		  #data = Datum.find_by_name(name)  ## need to put if find name is success?
+
+		  #puts name
+
+		  #data = Datum.where("name = ?", name.strip)
+
+		  datas = Datum.where(:name => name )
+		  
+		  #puts data.size
+
+			if (datas.size > 0)			
+				
+				datas.each do |data|
+					
+					data.bio = bio
+				  	data.lastActivity1 = stripActivities[1]
+				  	data.lastActivity2 = stripActivities[2]
+				  	data.lastActivity3 = stripActivities[3]
+				  	data.save
+
+				  	if data.save					    
+					    country = Country.find_by_region('233')
+						country.touch
+						puts "Update successfull! #{Time.now}"
+					else
+						puts "Update Unsuccessfull! #{Time.now}"	
+					end
+					
+				end
+			
+			end  	
+
+		  #if (data)
+
+		  #	data = Datum.where(:name => name )  			
+		  	#data.bio = bio
+	      	#data.lastActivity1 = stripActivities[1]
+		  	#data.lastActivity2 = stripActivities[2]
+		  	#data.lastActivity3 = stripActivities[3]
+	      	#data.save
+		  
+		  #end
 
 		end
 
@@ -66,8 +101,7 @@ task :scraper_update_NA_US => [:environment] do
 		
 		#bar.finished
 
-		country = Country.find_by_region('233')
-		country.touch 
+		 
 
 		puts "Scrapping ENDS..."
 
