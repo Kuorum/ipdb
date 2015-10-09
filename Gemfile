@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby "2.0.0"
 
-gem 'mysql2'	
+gem 'mysql2', '~> 0.3.18'
 
 group :development, :test do
 
