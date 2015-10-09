@@ -21,8 +21,14 @@
       <tr>
       	<td><b><%= "#{i}" %></b></td>
         <td><%= link_to "#{country.name}", country %></td>
-        <td><%= country.updated_at.strftime("%d/%m/%Y at %H:%M") %></td>
-        <td><%= country.scraped %></td>
+        <td><%= country.updated_at.strftime("%d %B %Y - %H:%M") %></td>
+        <td style="font-size:16px;">
+          <% if (country.scraped == true) %>
+            <span class="glyphicon glyphicon-ok" style="margin:0 20px 0 20px;color:#5CB85C;"></span>
+          <% else %>
+            <span class="glyphicon glyphicon-remove" style="margin:0 20px 0 20px;color:#D9534F;"></span>
+          <% end %>  
+        </td>
         <td>
         	<%= link_to "View", show_path(:region => country.region), :class => "btn btn-sm btn-info" %> 
         	<%= link_to "Scrape New Data", scrape_path(:region => country.region), :class => "btn btn-sm btn-success" %> 
