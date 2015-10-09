@@ -76,3 +76,7 @@ gem "better_errors"
 
 #for user authentication 
 gem "devise"
+
+gem 'execjs'
+
+gem 'therubyracer', :platforms => :ruby
