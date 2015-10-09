@@ -17,12 +17,16 @@ class HomeController < ApplicationController
   	scrape_update_script = 'scraper_update_' +  region_file_name
 
     
-    country = Country.find_by_region(region_id)
-  	if (country.scraped == true)
-  	  %x[rake #{scrape_update_script}]
-	  else
-	    %x[rake #{scrape_script}]
-	  end
+    country = Country.where(:region => region_id)
+    country.each do |c|
+      if (c.scraped == true)
+        puts "running update script..."
+        %x[rake #{scrape_update_script}]
+      else
+        puts "running scrape script..."
+        %x[rake #{scrape_script}]
+      end
+    end  
 	  
   	redirect_to root_url
   

@@ -65,7 +65,7 @@ task :scraper_update_NA_US => [:environment] do
 			if (datas.size > 0)			
 				
 				datas.each do |data|
-					
+					puts data.name
 					data.bio = bio
 				  	data.lastActivity1 = stripActivities[1]
 				  	data.lastActivity2 = stripActivities[2]
