@@ -2,12 +2,20 @@ source 'https://rubygems.org'
 
 ruby "2.0.0"
 
+gem 'mysql2'	
+
 group :development, :test do
 
-  gem 'mysql2'	
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem "rails-erd"
+
+  gem 'capistrano',           require: false
+  gem 'capistrano-rvm',       require: false
+  gem 'capistrano-rails',     require: false
+  gem 'capistrano-bundler',   require: false
+  #gem 'capistrano-passenger', require: false
+  gem 'capistrano3-puma',     require: false
 
 end
 
@@ -15,6 +23,7 @@ group :production do
   gem 'pg'
   gem 'rails_12factor', '0.0.2'
   gem 'thin'
+  gem 'puma'
 end
 
 

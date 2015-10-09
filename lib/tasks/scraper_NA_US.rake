@@ -3,7 +3,7 @@ require 'date'
 require 'json'
 require 'rake-progressbar'
 
-region_id = '233'
+region = 'United States Of America'
 region_abbreviation = 'NA-US' #Unites States
 source = 'https://www.congress.gov/'
 
@@ -83,7 +83,7 @@ task :scraper_NA_US => [:environment] do
 		    lastActivity3: stripActivities[3],
 		    dateOfBirth: dateOfBirth,
 		    electoralAddress: electoralAddress,
-		    region: region_id,
+		    region: region,
 		    institution: institution.strip,
 		    constituency: constituency,
 		    officialWebsite: website

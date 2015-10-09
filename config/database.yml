@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: kuorum_production
-  username: kuorum
-  password: <%= ENV['KUORUM_DATABASE_PASSWORD'] %>
+  database: ipdb_production
+  username: ipdb
+  #password: <%= ENV['KUORUM_DATABASE_PASSWORD'] %>
+  password: 1122334455ade
