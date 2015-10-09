@@ -50,6 +50,6 @@ test:
 production:
   <<: *default
   database: ipdb_production
-  username: ipdb
+  username: root
   #password: <%= ENV['KUORUM_DATABASE_PASSWORD'] %>
   password: 1122334455ade
