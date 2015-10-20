@@ -1,22 +1,22 @@
 class AddMoreFeildsToData < ActiveRecord::Migration
   def change
-    add_column :data, :political_leaning_index, :decimal
-    add_column :data, :cause1, :string
-    add_column :data, :cause2, :string
-    add_column :data, :cause3, :string
-    add_column :data, :cause4, :string
-    add_column :data, :cause5, :string
-    add_column :data, :known_for1, :string
-    add_column :data, :known_for2, :string
-    add_column :data, :known_for3, :string
-    add_column :data, :known_for4, :string
-    add_column :data, :known_for5, :string
-    add_column :data, :known_for_link1, :string
-    add_column :data, :known_for_link2, :string
-    add_column :data, :known_for_link3, :string
-    add_column :data, :known_for_link4, :string
-    add_column :data, :known_for_link5, :string
-    dd_column :data, :lastActivity5, :string
+    #add_column :data, :political_leaning_index, :decimal
+    #add_column :data, :cause1, :string
+    #add_column :data, :cause2, :string
+    #add_column :data, :cause3, :string
+    #add_column :data, :cause4, :string
+    #add_column :data, :cause5, :string
+    #add_column :data, :known_for1, :string
+    #add_column :data, :known_for2, :string
+    #add_column :data, :known_for3, :string
+    #add_column :data, :known_for4, :string
+    #add_column :data, :known_for5, :string
+    #add_column :data, :known_for_link1, :string
+    #add_column :data, :known_for_link2, :string
+    #add_column :data, :known_for_link3, :string
+    #dd_column :data, :known_for_link4, :string
+    #add_column :data, :known_for_link5, :string
+    add_column :data, :lastActivity5, :string
     add_column :data, :lastActivity1Date, :string
     add_column :data, :lastActivity2Date, :string
     add_column :data, :lastActivity3Date, :string
