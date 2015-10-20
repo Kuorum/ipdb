@@ -20,7 +20,7 @@
 	<% @countries.each do |country| %>
       <tr>
       	<td><b><%= "#{i}" %></b></td>
-        <td><%= link_to "#{country.name}", country %></td>
+        <td><%= link_to "#{country.name}", show_path(:region => country.region) %></td>
         <td><%= country.updated_at.strftime("%d %B %Y - %H:%M") %></td>
         <td style="font-size:16px;">
           <% if (country.scraped == true) %>
@@ -32,9 +32,14 @@
         <td>
         	<%= link_to "View", show_path(:region => country.region), :class => "btn btn-sm btn-info" %> 
         	<%= link_to "Scrape New Data", scrape_path(:region => country.region), :class => "btn btn-sm btn-success" %> 
-          <!--
-        	<%= link_to "Download", download_path, :region => country.region, :class => "btn btn-sm btn-primary" %>  
-          --> 
+          
+          <br/><br/>
+
+          <%= form_tag({controller: "process", action: "download_csv"}, method: "post") do |f| %>
+              <%= hidden_field_tag :region_name, country.name %>
+              <%= submit_tag "Download CSV", :class => "btn btn-sm btn-warning" %>
+          <% end %> 
+           
         </td>
       </tr>
       <% i += 1 %>

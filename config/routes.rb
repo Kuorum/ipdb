@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :geo_area_categories
+  resources :geo_areas
   resources :political_parties
   resources :regions
-devise_for :users, :controllers => { :registrations => "registrations" }, :skip => [:sessions]
+  devise_for :users, :controllers => { :registrations => "registrations" }, :skip => [:sessions]
   as :user do
     get 'sign-in' => 'devise/sessions#new', :as => :new_user_session
     post 'sign-in' => 'devise/sessions#create', :as => :user_session
@@ -14,15 +16,13 @@ devise_for :users, :controllers => { :registrations => "registrations" }, :skip 
   end
 
 
-
-
   resources :countries
   get 'home/index'
 
   resources :data
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
-  root :to => "home#index"
+  root :to => "regions#index"
 
    
   get "home/scrape" => "home#scrape", :as => "scrape"
@@ -32,8 +32,25 @@ devise_for :users, :controllers => { :registrations => "registrations" }, :skip 
 
   get "foo/bar"
 
+  post "process/download_csv" => "process/download_csv", :as => "download_csv"
+
   
   get "foo/bar", as: "update_text"
+
+  
+  get "pages/alliance" => "pages/alliance", :as => "page/alliance"
+  get "pages/nation" => "pages/nation", :as => "page/nation"
+  get "pages/state" => "pages/state", :as => "page/state"
+  get "pages/county" => "pages/county", :as => "page/county"
+  get "pages/city" => "pages/city", :as => "page/city"
+  
+  get "pages/politicians" => "pages/politicians", :as => "page/politicians"
+  get "pages/parties" => "pages/parties", :as => "page/parties"
+
+
+  resources :regions do
+    resources :political_parties
+  end
 
 
 end

@@ -1,0 +1,22 @@
+<%= form_for(@geo_area_category) do |f| %>
+  <% if @geo_area_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@geo_area_category.errors.count, "error") %> prohibited this geo_area_category from being saved:</h2>
+
+      <ul>
+      <% @geo_area_category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

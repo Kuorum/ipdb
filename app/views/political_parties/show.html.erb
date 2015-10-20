@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @political_party.name %>
@@ -10,5 +8,4 @@
   <%= @political_party.leaning_index %>
 </p>
 
-<%= link_to 'Edit', edit_political_party_path(@political_party) %> |
-<%= link_to 'Back', political_parties_path %>
+<%= link_to 'Back', region_political_parties_path(:region_id => @political_party.region_id) %>

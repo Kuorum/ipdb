@@ -26,5 +26,16 @@ module Kuorum
 
     config.time_zone = 'London'
     config.active_record.default_timezone = :local
+
+    ActionMailer::Base.smtp_settings = {
+      :address              => 'smtp.mandrillapp.com',
+      :port                 => 587,
+      :user_name            => "inaki.dominguez@kuorum.org ",
+      :password             => "bFjj1j2PNOYLOoBHqv9qyQ",
+      :authentication       => 'login',
+      :enable_starttls_auto => true
+    }
+
+
   end
 end

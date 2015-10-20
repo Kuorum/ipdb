@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-10">
+    <h1><span class="glyphicon glyphicon-globe"></span> Geo Area details</h1>
+  </div>
+  <div class="col-md-2">
+    <%= link_to 'Scrape New Data', scrape_path(:region => @geo_area.id), :class => "btn btn-md btn-success", :style => "margin:25px 0 0 0;"  %>
+  </div>
+</div>
+
+<hr/>
+
+<br/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+	  <thead>
+	      <tr class="header">
+	        <th>Column</th>
+	        <th>Details</th>
+	      </tr>
+	  </thead>  
+
+	  <tr><td> 
+	    <strong>Name</strong></td><td>
+	    <%= @geo_area.name %>
+	  </td> </tr>
+
+	  <tr><td> 
+	    <strong>Code</strong></td><td>
+	    <%= @geo_area.code %>
+	  </td> </tr>
+
+	  <tr><td> 
+	    <strong>Category</strong></td><td>
+	    <%= @geo_area.category %>
+	  </td> </tr>
+
+	  <tr><td> 
+	    <strong>Parent</strong></td><td>
+	    <%= @geo_area.parent_id %>
+	  </td> </tr>
+  </table>
+</div>
+
+<br/><br/>
+<hr/>
+<%= link_to '< Back', geo_areas_path, :class => "btn btn-primary btn-md" %>
+<%= link_to 'Edit', edit_geo_area_path(@geo_area), :class => "btn btn-success btn-md" %> 
+

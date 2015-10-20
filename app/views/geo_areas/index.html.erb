@@ -1,0 +1,144 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-10">
+    <h1><span class="glyphicon glyphicon-globe"></span> Listing Geo Areas</h1>
+  </div>
+  <div class="col-md-2">
+    <%= link_to '+ New Geo area', new_geo_area_path, :class => "btn btn-md btn-success", :style => "margin:25px 0 0 0;"  %>
+  </div>
+</div>
+
+<hr/>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <% if params[:all] == "true" %>
+
+      <!-- SHOW ALL LIST OF GEO AREAS -->
+       <div class="table-div">
+        <table class="listing table table-striped">
+          <thead>
+            <tr class="header">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Code</th>
+              <th>Category</th>
+              <th>Parent</th>
+              <th ></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @geo_areas.each do |geo_area| %>
+              <tr>
+                <td><%= geo_area.id %></td>
+                <td><%= geo_area.name %></td>
+                 <td><%= geo_area.code %></td>
+                 <td>
+                 <% 
+                    gac_name = ""
+                    ga_category = GeoAreaCategory.where(:id  => geo_area.category )
+                    ga_category.each do |gac|
+                        gac_name = gac.name   
+                    end
+                  %>
+                  <%= gac_name %>
+                 </td>
+                  <td><%= geo_area.parent_id %></td>
+
+                <td>
+                  <%= link_to 'Show', geo_area %> |
+                  <%= link_to 'Edit', edit_geo_area_path(geo_area) %> |
+                  <%= link_to 'Destroy', geo_area, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      
+    <% else %>
+     
+     <!-- Alliance -->
+      <ul class="geo-area-list">
+        <%  
+          alliances = GeoArea.where(:category => 1)
+          alliances.each do |alliance|
+        %>
+        <li> <h2><%= alliance.name  %></h2> 
+          <!-- Nation -->
+          <ul>
+            <%  
+              nations = GeoArea.where(:category => 2).where(:parent_id => alliance.id)
+              nations.each do |nation|
+            %>
+              <li>
+                <h3>
+                  <%= link_to "#{ nation.name}", geo_area_path( nation.id) %> &nbsp;
+                  <%= link_to "Politicians", show_path(:geo_area_id => nation.id), :class => "btn btn-sm btn-info" %> 
+                  <%= link_to "Parties", geo_area_political_parties_path(:geo_area_id => nation.id), :class => "btn btn-sm btn-primary" %>
+                </h3> 
+                <!-- State -->
+                <ul>
+                  <%  
+                    states = GeoArea.where(:category => 3).where(:parent_id => nation.id)
+                    states.each do |state|
+                  %>
+                    <li> 
+                      <h3>
+                         <%= link_to "#{ state.name}", geo_area_path( state.id) %> &nbsp;
+                        <%= link_to "Politicians", show_path(:geo_area_id => state.id), :class => "btn btn-sm btn-info" %> 
+                        <%= link_to "Parties", geo_area_political_parties_path(:geo_area_id => state.id), :class => "btn btn-sm btn-primary" %> 
+                      </h3> 
+                      <!-- County -->
+                      <ul>
+                        <%  
+                          counties = GeoArea.where(:category => 4).where(:parent_id => state.id)
+                          counties.each do |county|
+                        %>
+                          <li> 
+                            <h3>
+                              <%= link_to "#{ county.name}", geo_area_path( county.id) %> &nbsp;
+                              <%= link_to "Politicians", show_path(:geo_area_id => county.id), :class => "btn btn-sm btn-info" %> 
+                              <%= link_to "Parties", geo_area_political_parties_path(:geo_area_id => county.id), :class => "btn btn-sm btn-primary" %> 
+                            </h3>
+                            <!-- City -->
+                            <ul>
+                               <%  
+                                 cities = GeoArea.where(:category => 5).where(:parent_id => county.id)
+                                 cities.each do |city|
+                               %>
+                                <li>
+                                  <h3>
+                                    <%= link_to "#{city.name}", geo_area_path( city.id) %>
+                                    <%= link_to "#{ county.name}", geo_area_path( county.id) %> &nbsp;
+                                    <%= link_to "Politicians", show_path(:geo_area_id => city.id), :class => "btn btn-sm btn-info" %> 
+                                    <%= link_to "Parties", geo_area_political_parties_path(:geo_area_id => county.id), :class => "btn btn-sm btn-primary" %> 
+                                  </h3>  
+                                </li>
+
+                                
+                              <% end %>
+                            </ul>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </li>  
+        <% end %>
+      </ul>
+
+    <% end %>
+  
+  </div>
+</div>    
+
+<br>
+

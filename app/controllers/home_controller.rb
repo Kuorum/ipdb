@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!
  
   def index
  	  @countries = Country.all
@@ -33,9 +32,9 @@ class HomeController < ApplicationController
   end	
 
   def show
-  	@datum = Datum.where(region: params[:region])
+  	@datum = Datum.where(region_id: params[:region_id])
 
-    region = Region.find(params[:region])
+    region = Region.find(params[:region_id])
     @region_name = region.name
 
   end	

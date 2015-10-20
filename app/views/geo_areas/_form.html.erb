@@ -1,0 +1,126 @@
+<script>
+    $(function(){
+
+      
+          $('.form-alliance, .form-nation, .form-state, .form-county, .form-city').hide();
+      
+
+          function reset() {
+              $('.form-alliance, .form-nation, .form-state, .form-county, .form-city').slideUp("fast");
+          }
+
+
+          $('#geo_area_category').on('change', function(){
+
+              reset();
+              
+              var value = $('option:selected',this).attr('value');
+              
+              if (value == 2) {
+                 $('.form-alliance').slideDown("fast");
+              } else if (value == 3) {
+                 $('.form-nation').slideDown("fast");
+              } else if (value == 4) {
+                 $('.form-state').slideDown("fast");
+              } else if (value == 5) {
+                 $('.form-county').slideDown("fast");
+              } else {
+                  
+              }
+
+          });
+
+          $('#parent_id1').on('change', function(){
+              var parent_id_value = $('option:selected',this).attr('value');
+              $("#geo_area_parent_id").val(parent_id_value);
+          });
+
+          $('#parent_id2').on('change', function(){
+              var parent_id_value = $('option:selected',this).attr('value');
+              $("#geo_area_parent_id").val(parent_id_value);
+          });
+
+          $('#parent_id3').on('change', function(){
+              var parent_id_value = $('option:selected',this).attr('value');
+              $("#geo_area_parent_id").val(parent_id_value);
+          });
+
+          $('#parent_id4').on('change', function(){
+              var parent_id_value = $('option:selected',this).attr('value');
+              $("#geo_area_parent_id").val(parent_id_value);
+          });
+
+          $('#parent_id5').on('change', function(){
+              var parent_id_value = $('option:selected',this).attr('value');
+              $("#geo_area_parent_id").val(parent_id_value);
+          });
+          
+    });  
+</script>
+
+<%= form_for(@geo_area) do |f| %>
+  <% if @geo_area.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@geo_area.errors.count, "error") %> prohibited this geo_area from being saved:</h2>
+
+      <ul>
+      <% @geo_area.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :code %><br>
+    <%= f.text_field :code, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :category %><br>
+
+    <%= f.collection_select :category, GeoAreaCategory.order(:id), :id, :name, {include_blank: true}, {class: "form-control"} %>
+  
+  </div>
+
+  <div class="form-group form-alliance">
+    <%= f.label :parent_alliance %><br>
+  <%= select_tag "parent_id1", options_from_collection_for_select(GeoArea.where(:category => 1).order(:id), "id", "name"), :class => "form-control", :prompt => "" %>
+
+  </div>
+
+  <div class="form-group form-nation">
+    <%= f.label :parent_nation %><br>
+    <%= select_tag "parent_id2", options_from_collection_for_select(GeoArea.where(:category => 2).order(:id), "id", "name"), :class => "form-control", :prompt => "" %>
+  </div>
+
+  <div class="form-group form-state">
+    <%= f.label :parent_state %><br>
+    <%= select_tag "parent_id3", options_from_collection_for_select(GeoArea.where(:category => 3).order(:id), "id", "name"), :class => "form-control", :prompt => "" %>
+  </div>
+
+  <div class="form-group form-county">
+    <%= f.label :parent_county %><br>
+   <%= select_tag "parent_id4", options_from_collection_for_select(GeoArea.where(:category => 4).order(:id), "id", "name"), :class => "form-control", :prompt => "" %>
+  </div>
+
+  <div class="form-group form-city">
+    <%= f.label :parent_city %><br>
+    <%= select_tag "parent_id5", options_from_collection_for_select(GeoArea.where(:category => 4).order(:id), "id", "name"), :class => "form-control", :prompt => "" %>
+  </div>
+
+  <br/>
+
+  <div class="actions">
+     <%= f.hidden_field :parent_id %>
+    <%= f.submit "Submit", :class => "btn btn-block btn-success btn-md" %>
+  </div>
+
+<% end %>
+
+<br/>

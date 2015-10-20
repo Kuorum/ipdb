@@ -1,0 +1,86 @@
+<% if !params[:nation_id].empty? %>
+
+	<% 
+		if Region.exists?(params[:nation_id])
+			alliance = Region.find(params[:alliance_id]) 
+			nation = Region.find(params[:nation_id])
+			states = Region.order(:iso3166_2).where("length(iso3166_2) = ?", 8).where('iso3166_2 LIKE ?', '%'+nation.iso3166_2+'%')
+
+			
+	%>
+		<h1 class="breadcrumb">
+			<%= link_to '<span class="glyphicon glyphicon-globe"></span>'.html_safe, root_path %>
+			<span class="glyphicon glyphicon-chevron-right"></span>
+			<%= link_to "#{alliance.name}", page_alliance_path(:alliance_id => alliance.id) %>
+			<span class="glyphicon glyphicon-chevron-right"></span>
+			<span style="color:#95A5A6"><%= nation.name %> </span>
+		</h1>
+		 
+		<hr/>
+
+		<br/>
+
+		<h3>Add new state </h3>
+
+		<br/>
+
+		<div class="row">
+		<!-- FORM starts -->
+			<div>
+				<%= form_for(@region) do |f| %>
+				  <% if @region.errors.any? %>
+				    <div id="error_explanation">
+				      <h2><%= pluralize(@region.errors.count, "error") %> prohibited this region from being saved:</h2>
+
+				      <ul>
+				      <% @region.errors.full_messages.each do |message| %>
+				        <li><%= message %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
+
+				  	<div class="col-md-4">
+				  	  <div class="form-group">
+					    <%= f.text_field :name, :class => "form-control", :placeholder => "Name" %>
+					  </div>
+				  	</div>
+				  	<div class="col-md-4">
+					  <div class="form-group">
+					    <%= f.text_field :iso3166_2, :class => "form-control", :placeholder => "2 letter code (eg. US)" %>
+					  </div>
+				  	</div>
+				  	<div class="col-md-4">
+					  <div class="actions">
+					    <%= f.hidden_field :parent_code, :value => nation.iso3166_2 %>
+					    <%= f.submit "Add", :class => "btn btn-success btn-md btn-block" %>
+					  </div>
+				  	</div> 		  
+				<% end %>
+			</div>
+		</div>
+		<!-- FORM stops -->
+
+		<br/>
+
+		<% states.each do |state| %>
+			<li>
+	            <h3>
+	              <%= link_to "#{ state.name.titleize }", page_state_path(:alliance_id => alliance.id, :nation_id => nation.id,:state_id => state.id) %> &nbsp;
+	              <%= link_to "Politicians", show_path(:region_id => state.id), :class => "btn btn-sm btn-info" %> 
+	              <%= link_to "Parties", region_political_parties_path(:region_id => state.id), :class => "btn btn-sm btn-primary" %>
+	            </h3> 
+	        </li>  
+		<% end %> 
+
+		<br/>
+
+	<% else %>
+	  	<h1>Data Not Found!</h1>
+	<%	end	%>	
+	
+<% else %>
+
+ <h1>Data Not Found!</h1>
+
+<% end %>

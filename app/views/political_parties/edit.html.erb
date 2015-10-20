@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @political_party %> |
-<%= link_to 'Back', political_parties_path %>
+<%= link_to 'Show', region_political_party_path(:geo_area_id => @political_party.region_id) %> |
+<%= link_to 'Back', region_political_parties_path(:geo_area_id => @political_party.region_id)  %>

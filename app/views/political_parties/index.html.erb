@@ -1,6 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Political Parties</h1>
+<div class="row">
+  <div class="col-md-10">
+    <h1>Political Parties</h1>
+    <h5>GEOGRAPHICAL AREA: <span style="color:#95A5A6"><%= @region_name.titleize %></span></h5>
+  </div>
+  <div class="col-md-2">
+    <%= link_to '+ New Political party', new_region_political_party_path(:region_id => params[:region_id]), :class => "btn btn-md btn-success", :style => "margin-top:35px;" %>
+  </div>
+</div>
 
 <hr/>
 
@@ -8,7 +14,7 @@
 
 <table class="listing table table-striped">
   <thead>
-    <tr>
+    <tr class="header">
       <th>Name</th>
       <th>Leaning index</th>
       <th colspan="3"></th>
@@ -20,14 +26,21 @@
       <tr>
         <td><%= political_party.name %></td>
         <td><%= political_party.leaning_index %></td>
-        <td><%= link_to 'Show', political_party %></td>
-        <td><%= link_to 'Edit', edit_political_party_path(political_party) %></td>
-        <td><%= link_to 'Destroy', political_party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td>
+          <%= link_to 'Show', [political_party.region, political_party] %> |
+          <%= link_to 'Edit', edit_political_party_path(political_party.region, political_party) %> |
+          <%= link_to 'Destroy', [political_party.region, political_party] , method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<br/>
 
-<%= link_to 'New Political party', new_political_party_path, :class => "btn btn-md btn-primary" %>
+<hr/>
+
+<%= link_to '< Back', root_path, class: "btn btn-primary btn-md" %>
+
+

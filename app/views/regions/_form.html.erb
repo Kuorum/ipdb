@@ -11,15 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :iso3166_2 %><br>
-    <%= f.text_field :iso3166_2 %>
-  </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => "form-control" %>
   </div>
+
+  <br/>
+
+  <div class="form-group">
+    <b>2-character Code (eg. NA)</b><br>
+    <%= f.text_field :iso3166_2, :class => "form-control" %>
+  </div>
+
+  <br/>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", :class => "btn btn-success btn-md btn-block" %>
   </div>
+
+  <br/>
+
 <% end %>

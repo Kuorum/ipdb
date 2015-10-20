@@ -1,0 +1,54 @@
+class AddMoreFeildsToData < ActiveRecord::Migration
+  def change
+    add_column :data, :political_leaning_index, :decimal
+    add_column :data, :cause1, :string
+    add_column :data, :cause2, :string
+    add_column :data, :cause3, :string
+    add_column :data, :cause4, :string
+    add_column :data, :cause5, :string
+    add_column :data, :known_for1, :string
+    add_column :data, :known_for2, :string
+    add_column :data, :known_for3, :string
+    add_column :data, :known_for4, :string
+    add_column :data, :known_for5, :string
+    add_column :data, :known_for_link1, :string
+    add_column :data, :known_for_link2, :string
+    add_column :data, :known_for_link3, :string
+    add_column :data, :known_for_link4, :string
+    add_column :data, :known_for_link5, :string
+    dd_column :data, :lastActivity5, :string
+    add_column :data, :lastActivity1Date, :string
+    add_column :data, :lastActivity2Date, :string
+    add_column :data, :lastActivity3Date, :string
+    add_column :data, :lastActivity4Date, :string
+    add_column :data, :lastActivity5Date, :string
+    add_column :data, :lastActivity1Action, :string
+    add_column :data, :lastActivity2Action, :string
+    add_column :data, :lastActivity3Action, :string
+    add_column :data, :lastActivity4Action, :string
+    add_column :data, :lastActivity5Action, :string
+    add_column :data, :lastActivity1Outcome, :string
+    add_column :data, :lastActivity2Outcome, :string
+    add_column :data, :lastActivity3Outcome, :string
+    add_column :data, :lastActivity4Outcome, :string
+    add_column :data, :lastActivity5Outcome, :string
+    add_column :data, :political_experience1, :string
+    add_column :data, :political_experience2, :string
+    add_column :data, :political_experience3, :string
+    add_column :data, :political_experience4, :string
+    add_column :data, :political_experience5, :string
+    add_column :data, :political_experience1_content, :text
+    add_column :data, :political_experience2_content, :text
+    add_column :data, :political_experience3_content, :text
+    add_column :data, :political_experience4_content, :text
+    add_column :data, :political_experience5_content, :text
+    add_column :data, :political_experience1_date, :text
+    add_column :data, :political_experience2_date, :text
+    add_column :data, :political_experience3_date, :text
+    add_column :data, :political_experience4_date, :text
+    add_column :data, :political_experience5_date, :text
+    add_column :data, :school, :text
+    add_column :data, :family, :text
+    add_column :data, :pinterest, :text
+  end
+end

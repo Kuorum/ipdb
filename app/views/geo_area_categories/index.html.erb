@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Geo Area Categories</h1>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+  <thead>
+    <tr class="header">
+      <th>Id</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+
+  <tbody>
+    <% @geo_area_categories.each do |geo_area_category| %>
+      <tr>
+        <td><%= geo_area_category.id %></td>
+        <td><%= geo_area_category.name %></td>
+        <td><%= link_to 'Show', geo_area_category %></td>
+        <td><%= link_to 'Edit', edit_geo_area_category_path(geo_area_category) %></td>
+        <td><%= link_to 'Destroy', geo_area_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'New Geo area category', new_geo_area_category_path %>

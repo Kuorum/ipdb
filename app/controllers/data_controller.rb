@@ -1,5 +1,4 @@
 class DataController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_datum, only: [:show, :edit, :update, :destroy]
 
   # GET /data
@@ -29,7 +28,7 @@ class DataController < ApplicationController
   # GET /data/1.json
   def show
 
-    @region =  Region.find(@datum.region)
+    @region =  Region.find(@datum.region_id)
     @region_name =  @region.name
 
   end
@@ -91,6 +90,6 @@ class DataController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def datum_params
-      params.require(:datum).permit(:sourceWebsite, :name, :picture, :politicalParty, :politicalPartyImage, :verified, :likes, :followers, :email, :twitter, :facebook, :linkedin, :googlePlus, :instagram, :blog, :youtubeChannel, :premium, :bio, :quote1, :quote2, :sourceActivity, :lastActivity1, :lastActivity2, :lastActivity3, :lastActivity4, :ideology1, :ideology2, :ideology3, :ideology4, :ideology5, :following, :openProjects, :closedProjects, :proposals, :debates, :sponsorships, :victories, :dateOfBirth, :placeOfBirth, :institutionalAddress, :institutionalTelephone, :institutionalFax, :institutionalMobilePhone, :electoralAddress, :electoralTelephone, :electoralFax, :electoralMobile, :phone, :assistants, :completeName, :position, :region, :institution, :constituency, :studies, :university, :profession, :cvLink, :declarationLink, :officialWebsite, :politicalExperience, :causes, :region_code_alliance, :region_code_nation, :region_code_state, :region_code_county, :region_code_city, :constituency_code_alliance, :constituency_code_nation, :constituency_code_state, :constituency_code_country, :constituency_code_city)
+      params.require(:datum).permit(:sourceWebsite, :name, :picture, :politicalParty, :politicalPartyImage, :verified, :likes, :followers, :email, :twitter, :facebook, :linkedin, :googlePlus, :instagram, :blog, :youtubeChannel, :premium, :bio, :quote1, :quote2, :sourceActivity, :lastActivity1Date, :lastActivity2Date, :lastActivity3Date, :lastActivity4Date, :lastActivity5Date, :lastActivity1, :lastActivity2, :lastActivity3, :lastActivity4, :lastActivity5, :lastActivity1Action, :lastActivity2Action, :lastActivity3Action, :lastActivity4Action, :lastActivity5Action, :lastActivity1Outcome, :lastActivity2Outcome, :lastActivity3Outcome, :lastActivity4Outcome, :lastActivity5Outcome, :lastActivity1Link, :lastActivity2Link, :lastActivity3Link, :lastActivity4Link, :lastActivity5Link, :political_leaning_index, :ideology1, :ideology2, :ideology3, :ideology4, :ideology5, :following, :openProjects, :closedProjects, :proposals, :debates, :sponsorships, :victories, :dateOfBirth, :placeOfBirth, :institutionalAddress, :institutionalTelephone, :institutionalFax, :institutionalMobilePhone, :electoralAddress, :electoralTelephone, :electoralFax, :electoralMobile, :phone, :assistants, :completeName, :position, :region, :institution, :constituency, :studies, :university, :profession, :cvLink, :declarationLink, :officialWebsite, :politicalExperience, :causes, :region_code_alliance, :region_code_nation, :region_code_state, :region_code_county, :region_code_city, :constituency_code_alliance, :constituency_code_nation, :constituency_code_state, :constituency_code_country, :constituency_code_city, :known_for1, :known_for2, :known_for3, :known_for4, :known_for5, :known_for_link1, :known_for_link2, :known_for_link3, :known_for_link4, :known_for_link5)
     end
 end

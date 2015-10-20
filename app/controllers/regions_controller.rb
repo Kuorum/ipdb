@@ -24,11 +24,15 @@ class RegionsController < ApplicationController
   # POST /regions
   # POST /regions.json
   def create
-    @region = Region.new(region_params)
+    combined_iso = "#{params[:region][:parent_code].to_s}-#{params[:region][:iso3166_2].to_s}"    
+    iso3166_2 = combined_iso
+    name = params[:region][:name]
+
+    @region = Region.new(:iso3166_2 => iso3166_2, :name => name)
 
     respond_to do |format|
       if @region.save
-        format.html { redirect_to @region, notice: 'Region was successfully created.' }
+        format.html { redirect_to :back, notice: 'Region was successfully created.' }
         format.json { render :show, status: :created, location: @region }
       else
         format.html { render :new }

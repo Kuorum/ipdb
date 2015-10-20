@@ -1,0 +1,67 @@
+
+<div class="row">
+  <div class="col-md-9">
+    <h1><span class="glyphicon glyphicon-user"></span> POLITICIANS</h1>
+    <h5>GEOGRAPHICAL AREA: <span style="color:#95A5A6"><%= @region_name.titleize %></span></h5>
+  </div>
+  <div class="col-md-3">
+    <div style="margin:35px 0 0 0;text-align:right;">
+      <table>
+        <tr>
+          <td>
+          <% if current_user.role_id == 1 %>
+            <%= link_to "Scrape new data", "#", class: "btn btn-primary btn-sm" %>&nbsp;&nbsp;
+          <% end %>  
+          </td>
+          <td>
+            <%= form_tag({controller: "process", action: "download_csv"}, method: "post") do |f| %>
+              <%= hidden_field_tag :region_id, params[:region_id] %>
+              <%= submit_tag "Download CSV", :class => "btn btn-sm btn-success" %>
+            <% end %> 
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<br/>
+
+<div class="table-div">
+	<table class="listing table table-striped">
+	<thead>
+      <tr class="header">
+   	  	<th></th>
+   	  	<th>Name</th>
+   	  	<th>Country</th>
+   	  	<th></th>
+   	  </tr>
+    </thead>  
+
+    <% i = 1; %>
+	<% @datum.each do |data| %>
+      <tr>
+      	<td><b><%= "#{i}" %></b></td>
+
+        <td><%= link_to "#{data.name}", data %></td>
+        <td><%= @region_name.titleize %></td>
+      	<td>
+      		<%= link_to "View", data, class: "btn btn-info btn-sm" %> &nbsp;
+      		<%= link_to "Edit", edit_datum_path(data), class: "btn btn-success btn-sm" %> 
+      	</td>
+      </tr>
+      <% i += 1 %>
+    <% end %>
+    
+    </table>
+</div>   
+
+<br/>
+
+<hr/>
+
+<%= link_to '< Back', url_for(:back), class: "btn btn-primary btn-md" %>
+
+<br/>
