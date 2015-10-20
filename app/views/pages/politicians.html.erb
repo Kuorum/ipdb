@@ -10,7 +10,7 @@
         <tr>
           <td>
           <% if current_user.role_id == 1 %>
-            <%= link_to "Scrape new data", "#", class: "btn btn-primary btn-sm" %>&nbsp;&nbsp;
+            <%= link_to "Scrape new data", scrape_path(:region_id => params[:region_id]), class: "btn btn-primary btn-sm" %>&nbsp;&nbsp;
           <% end %>  
           </td>
           <td>
@@ -48,7 +48,7 @@
         <td><%= link_to "#{data.name}", data %></td>
         <td><%= @region_name.titleize %></td>
       	<td>
-      		<%= link_to "View", data, class: "btn btn-info btn-sm" %> &nbsp;
+      		<%= link_to "View details", data, class: "btn btn-info btn-sm" %> &nbsp;
       		<%= link_to "Edit", edit_datum_path(data), class: "btn btn-success btn-sm" %> 
       	</td>
       </tr>

@@ -65,6 +65,7 @@
 	              <%= link_to "#{ nation.name.titleize }", page_nation_path(:alliance_id => alliance.id, :nation_id => nation.id) %> &nbsp;
 	              <%= link_to "Politicians", page_politicians_path(:region_id => nation.id), :class => "btn btn-sm btn-info" %> 
 	              <%= link_to "Parties", region_political_parties_path(:region_id => nation.id), :class => "btn btn-sm btn-primary" %>
+	              <%= link_to 'Destroy', alliance, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %>
 	            </h3> 
 	        </li>  
 		<% end %> 

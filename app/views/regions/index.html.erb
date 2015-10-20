@@ -4,14 +4,12 @@
   <div class="col-md-10">
     <h1><span class="glyphicon glyphicon-globe"></span> Geographical Areas</h1>
   </div>
-  <div class="col-md-2">
-    <%= link_to '+ New Alliance', new_region_path, :class => "btn btn-md btn-success", :style => "margin:20px 0 0 0;"  %>
-  </div>
 </div>
 
 <hr/>
 
 <br/>
+
 
 
 <% if params[:all] == "true" %>
@@ -40,6 +38,50 @@
 
 <% else %>
 
+
+    <h3>Add new nation </h3>
+
+    <br/>
+
+    <div class="row">
+    <!-- FORM starts -->
+      <div>
+        <%= form_for(@region) do |f| %>
+          <% if @region.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@region.errors.count, "error") %> prohibited this region from being saved:</h2>
+
+              <ul>
+              <% @region.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+            <div class="col-md-4">
+              <div class="form-group">
+              <%= f.text_field :name, :class => "form-control", :placeholder => "Name" %>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="form-group">
+              <%= f.text_field :iso3166_2, :class => "form-control", :placeholder => "2 letter code (eg. NA)" %>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="actions">
+              <%= f.hidden_field :parent_code, :value => "none" %>
+              <%= f.submit "Add", :class => "btn btn-success btn-md btn-block" %>
+            </div>
+            </div>      
+        <% end %>
+      </div>
+    </div>
+    <!-- FORM stops -->
+
+    <br/>
+
   <!-- Alliance -->
   <ul class="geo-area-list">
     <%  
@@ -49,6 +91,7 @@
     <li> 
       <h2>
         <%= link_to "#{alliance.name.titleize }", page_alliance_path(:alliance_id => alliance.id) %>
+        <%= link_to 'Destroy', alliance, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %>
       </h2> 
     </li>  
     <% end %>

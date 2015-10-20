@@ -2,7 +2,6 @@ require 'mechanize'
 require 'date'
 require 'time'
 require 'json'
-require 'rake-progressbar'
 
 
 region_abbreviation = 'NA-US' #Unites States
@@ -19,16 +18,11 @@ task :scraper_NA_US => [:environment] do
 		puts "Scrapping BEGINS... #{Time.now}"
 		puts "Scrapping page #{pg_number} ..."
 
-		page = agent.get("https://www.congress.gov/members?pageSize=250&page=#{pg_number}")
+		page = agent.get("https://www.congress.gov/members?pageSize=25&page=#{pg_number}")
 		page_links = page.links_with(href: %r{.*/member/\w+})
 
-		page_links_size = page_links.size
-
 		member_links = page_links
-		#bar = RakeProgressbar.new(page_links_size)
-
-		#count = 0
-
+		
 		members = member_links.map do |link|		
 
 		  member = link.click
@@ -241,6 +235,36 @@ task :scraper_NA_US => [:environment] do
 		  #stripActivities = activities.reject { |x| x.length  == 1 }
 		  #stripActivities = activities.reject { |x| x  == "||" }
 
+		  url1 = ""
+		  url2 = ""
+		  url3 = ""
+		  url4 = ""
+		  url5 = ""
+
+		  match = /href\s*=\s*"([^"]*)"/.match(lastActivity1Link)
+		  if match
+			url1 = match[1]
+		  end
+
+		  match = /href\s*=\s*"([^"]*)"/.match(lastActivity2Link)
+		  if match
+			url2 = match[1]
+		  end
+
+		  match = /href\s*=\s*"([^"]*)"/.match(lastActivity3Link)
+		  if match
+			url3 = match[1]
+		  end
+
+		  match = /href\s*=\s*"([^"]*)"/.match(lastActivity4Link)
+		  if match
+			url4 = match[1]
+		  end
+
+		  match = /href\s*=\s*"([^"]*)"/.match(lastActivity5Link)
+		  if match
+			url5 = match[1]
+		  end
 
 
 		  {
@@ -275,14 +299,14 @@ task :scraper_NA_US => [:environment] do
 		    lastActivity3Outcome:lastActivity3Outcome,
 		    lastActivity4Outcome:lastActivity4Outcome,
 		    lastActivity5Outcome:lastActivity5Outcome,
-		    lastActivity1Link:lastActivity1Link,
-		    lastActivity2Link:lastActivity2Link,
-		    lastActivity3Link:lastActivity3Link,
-		    lastActivity4Link:lastActivity4Link,
-		    lastActivity5Link:lastActivity5Link,
+		    lastActivity1Link:url1,
+		    lastActivity2Link:url2,
+		    lastActivity3Link:url3,
+		    lastActivity4Link:url4,
+		    lastActivity5Link:url5,
 		    dateOfBirth: dateOfBirth,
 		    electoralAddress: electoralAddress,
-		    
+		    region_id: region_id,
 		    region:region_name,
 			region_code_alliance:region_code_alliance,
 			region_code_nation:region_code_nation,
@@ -295,22 +319,19 @@ task :scraper_NA_US => [:environment] do
 			constituency_code_state:constituency_code_state,
 			constituency_code_county:constituency_code_county,
 			constituency_code_city:constituency_code_city,
-
 		    institution: institution,
 		    constituency: constituency,
-		    officialWebsite: website,
+		    officialWebsite: website
 		  }
 
-		  #bar.inc
-		  #count += 1
 
 		end
 
-		puts JSON.pretty_generate(members)
+		#puts JSON.pretty_generate(members)
 
 
 		# Insert data to database
-		#Datum.create!(members)
+		Datum.create!(members)
 
 
 		# Set country as scraped
@@ -318,8 +339,6 @@ task :scraper_NA_US => [:environment] do
 		#country.scraped = true
 		#country.save
 
-		
-		#bar.finished
 
 		puts "Scrapping ENDS... #{Time.now}"
 		#puts "Total number of records being scraped: #{count}"

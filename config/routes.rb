@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   root :to => "regions#index"
 
    
-  get "home/scrape" => "home#scrape", :as => "scrape"
+  #get "home/scrape" => "home#scrape", :as => "scrape"
   get "home/show" => "home#show", :as => "show"
   get "home/edit" => "home#edit", :as => "edit"
   get "data/download" => "data#download", :as => "download"
@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get "foo/bar"
 
   post "process/download_csv" => "process/download_csv", :as => "download_csv"
+  get "process/scrape" => "process/scrape", :as => "scrape"
 
   
   get "foo/bar", as: "update_text"

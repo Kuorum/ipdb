@@ -5,6 +5,8 @@ class RegionsController < ApplicationController
   # GET /regions.json
   def index
     @regions = Region.all
+
+    @region = Region.new
   end
 
   # GET /regions/1
@@ -24,8 +26,16 @@ class RegionsController < ApplicationController
   # POST /regions
   # POST /regions.json
   def create
-    combined_iso = "#{params[:region][:parent_code].to_s}-#{params[:region][:iso3166_2].to_s}"    
-    iso3166_2 = combined_iso
+
+    iso3166_2 = ""
+
+    if params[:region][:parent_code].to_s != "none"
+      combined_iso = "#{params[:region][:parent_code].to_s}-#{params[:region][:iso3166_2].to_s}"    
+      iso3166_2 = combined_iso
+    else
+      iso3166_2 = params[:region][:iso3166_2].to_s
+    end  
+
     name = params[:region][:name]
 
     @region = Region.new(:iso3166_2 => iso3166_2, :name => name)
@@ -60,7 +70,7 @@ class RegionsController < ApplicationController
   def destroy
     @region.destroy
     respond_to do |format|
-      format.html { redirect_to regions_url, notice: 'Region was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Region was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
