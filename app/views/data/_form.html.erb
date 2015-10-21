@@ -11,16 +11,18 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :sourceWebsite %><br>
-    <%= f.text_field :sourceWebsite, :class => "form-control" %>
-  </div>
+  <h3><span class="glyphicon glyphicon-info-sign"></span>PERSONAL INFO </h3><hr/>
 
   <div class="form-group">
     <%= f.label :name %><br>
     <%= f.text_field :name, :class => "form-control" %>
   </div>
-  
+
+  <div class="form-group">
+    <%= f.label :complete_Name %><br>
+    <%= f.text_field :completeName, :class => "form-control" %>
+  </div>
+
   <div class="form-group">
     <%= f.label :bio %><br>
     <%= f.text_area :bio, :class => "form-control" %>
@@ -30,163 +32,83 @@
     <%= f.label :family %><br>
     <%= f.text_area :family, :class => "form-control" %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :date_Of_Birth %><br>
+    <%= f.text_field :dateOfBirth, :class => "form-control"%>
+  </div>
   
+  <div class="form-group">
+    <%= f.label :place_Of_Birth %><br>
+    <%= f.text_field :placeOfBirth, :class => "form-control" %>
+  </div>
+
   <div class="form-group">
     <%= f.label :picture %><br>
     <%= f.text_field :picture, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :verified %><br>
-    <%= f.text_field :verified, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :premium %><br>
-    <%= f.text_field :premium, :class => "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :likes %><br>
-    <%= f.number_field :likes, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :followers %><br>
-    <%= f.number_field :followers, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
     <%= f.label :email %><br>
     <%= f.text_field :email, :class => "form-control" %>
   </div>
-  
-  <br/>
-  <br/>
 
-  <br/><h3><span class="glyphicon glyphicon-king"></span> POLITICAL PARTY</h3><hr/>
-
-  <div class="form-group">
-    <%= f.label :politicalParty %><br>
-    <%= f.collection_select :politicalParty, PoliticalParty.order(:name), :name, :name, {include_blank: true}, {class: "form-control"} %>
+   <div class="form-group">
+    <%= f.label :studies %><br>
+    <%= f.text_field :studies, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :politicalPartyImage %><br>
-    <%= f.text_field :politicalPartyImage, :class => "form-control" %>
+    <%= f.label :university %><br>
+    <%= f.text_field :university, :class => "form-control" %>
   </div>
 
-  <br/>
-  <br/>
-
-  <br/><h3><span class="glyphicon glyphicon-king"></span> POLITICAL EXPERIENCE</h3><hr/>
-
-  <div class="row">
-    <!-- EXPERIENCE 1 -->
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience1 %><br>
-          <%= f.text_field :political_experience1, :class => "form-control" %>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience1_content %><br>
-          <%= f.text_field :political_experience1_content, :class => "form-control" %>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience1_date %><br>
-          <%= f.text_field :political_experience1_date, :class => "form-control" %>
-        </div>  
-    </div>
-
-    <!-- EXPERIENCE 2 -->
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience2 %><br>
-          <%= f.text_field :political_experience2, :class => "form-control" %>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience2_content %><br>
-          <%= f.text_field :political_experience2_content, :class => "form-control" %>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience2_date %><br>
-          <%= f.text_field :political_experience2_date, :class => "form-control" %>
-        </div>  
-    </div>
-
-    <!-- EXPERIENCE 3 -->
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience3 %><br>
-          <%= f.text_field :political_experience3, :class => "form-control" %>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience3_content %><br>
-          <%= f.text_field :political_experience3_content, :class => "form-control" %>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience3_date %><br>
-          <%= f.text_field :political_experience3_date, :class => "form-control" %>
-        </div>  
-    </div>
-
-    <!-- EXPERIENCE 4 -->
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience4 %><br>
-          <%= f.text_field :political_experience4, :class => "form-control" %>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience4_content %><br>
-          <%= f.text_field :political_experience4_content, :class => "form-control" %>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience4_date %><br>
-          <%= f.text_field :political_experience4_date, :class => "form-control" %>
-        </div>  
-    </div>
-
-    <!-- EXPERIENCE 5 -->
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience5 %><br>
-          <%= f.text_field :political_experience5, :class => "form-control" %>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience5_content %><br>
-          <%= f.text_field :political_experience5_content, :class => "form-control" %>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-          <%= f.label :political_experience5_date %><br>
-          <%= f.text_field :political_experience5_date, :class => "form-control" %>
-        </div>  
-    </div>
-
+  <div class="form-group">
+    <br/>
+    <%= f.label :school %><br>
+    <%= f.text_field :school, :class => "form-control" %>
   </div>
-
-  <br/>
-  <br/>
   
+  <div class="form-group">
+    <%= f.label :profession %><br>
+    <%= f.text_field :profession, :class => "form-control" %>
+  </div>
+    
+  <div class="form-group">
+    <%= f.label :position %><br>
+    <%= f.text_field :position, :class => "form-control" %>
+  </div>
+ 
+  <div class="form-group">
+    <br/>
+    <%= f.label :institution %><br>
+    <%= f.text_field :institution, :class => "form-control" %>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :cv_link %><br>
+    <%= f.text_field :cvLink, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :declaration_link %><br>
+    <%= f.text_field :declarationLink, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :quote1 %><br>
+    <%= f.text_area :quote1, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :quote2 %><br>
+    <%= f.text_area :quote2, :class => "form-control" %>
+  </div>
+
+  <br/>
+  <br/>
+
   <br/><h3><span class="glyphicon glyphicon-thumbs-up"></span> SOCIAL NETWORKS</h3><hr/>
   
   <div class="form-group">
@@ -228,351 +150,32 @@
     <%= f.label :youtubeChannel %><br>
     <%= f.text_field :youtubeChannel, :class => "form-control" %>
   </div>
-
+  
   <br/>
   <br/>
   
-
-  <br/><h3><span class="glyphicon glyphicon-equalizer"></span> POLITICAL ACTIVITIES</h3><hr/>
-
-  <div class="form-group">
-    <%= f.label :sourceActivity %><br>
-    <%= f.text_field :sourceActivity, :class => "form-control" %>
-  </div>
-
-  <div class="row">
-    <!-- ACTIVITY 1 -->
-    <div class="col-md-4">
-      <div class="form-group">
-        <%= f.label :lastActivity1 %><br>
-        <%= f.text_field :lastActivity1, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity1Date %><br>
-        <%= f.text_field :lastActivity1Date, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity1Action %><br>
-        <%= f.text_field :lastActivity1Action, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity1Outcome %><br>
-        <%= f.text_field :lastActivity1Outcome, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity1Link %><br>
-        <%= f.text_field :lastActivity1Link, :class => "form-control" %>
-      </div>
-    </div>
-  </div> 
-
-  <div class="row">
-    <!-- ACTIVITY 2 -->
-    <div class="col-md-4">
-      <div class="form-group">
-        <%= f.label :lastActivity2 %><br>
-        <%= f.text_field :lastActivity2, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity2Date %><br>
-        <%= f.text_field :lastActivity2Date, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity2Action %><br>
-        <%= f.text_field :lastActivity2Action, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity2Outcome %><br>
-        <%= f.text_field :lastActivity2Outcome, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity2Link %><br>
-        <%= f.text_field :lastActivity2Link, :class => "form-control" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <!-- ACTIVITY 3 -->
-    <div class="col-md-4">
-      <div class="form-group">
-        <%= f.label :lastActivity3 %><br>
-        <%= f.text_field :lastActivity3, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity3Date %><br>
-        <%= f.text_field :lastActivity3Date, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity3Action %><br>
-        <%= f.text_field :lastActivity3Action, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity3Outcome %><br>
-        <%= f.text_field :lastActivity3Outcome, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity3Link %><br>
-        <%= f.text_field :lastActivity3Link, :class => "form-control" %>
-      </div>
-    </div>
-  </div>
-  
-  <div class="row">
-    <!-- ACTIVITY 4 -->
-    <div class="col-md-4">
-      <div class="form-group">
-        <%= f.label :lastActivity4 %><br>
-        <%= f.text_field :lastActivity4, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity4Date %><br>
-        <%= f.text_field :lastActivity4Date, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity4Action %><br>
-        <%= f.text_field :lastActivity4Action, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity4Outcome %><br>
-        <%= f.text_field :lastActivity4Outcome, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity4Link %><br>
-        <%= f.text_field :lastActivity4Link, :class => "form-control" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <!-- ACTIVITY 5 -->
-    <div class="col-md-4">
-      <div class="form-group">
-        <%= f.label :lastActivity5 %><br>
-        <%= f.text_field :lastActivity5, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity5Date %><br>
-        <%= f.text_field :lastActivity5Date, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity5Action %><br>
-        <%= f.text_field :lastActivity5Action, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity5Outcome %><br>
-        <%= f.text_field :lastActivity5Outcome, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.label :lastActivity5Link %><br>
-        <%= f.text_field :lastActivity5Link, :class => "form-control" %>
-      </div>
-    </div>
-  </div>
-
-  <br/>
-  <br/>
-
-  <br/><h3><span class="glyphicon glyphicon-screenshot"></span> CAUSES </h3><hr/>
+  <h3><span class="glyphicon glyphicon-signal"></span> STATS </h3><hr/>
 
   <div class="form-group">
-    <%= f.label :cause1 %><br>
-    <%= f.text_field :cause1, :class => "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :cause2 %><br>
-    <%= f.text_field :cause2, :class => "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :cause3 %><br>
-    <%= f.text_field :cause3, :class => "form-control" %>
+    <%= f.label :likes %><br>
+    <%= f.number_field :likes, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :cause4 %><br>
-    <%= f.text_field :cause4, :class => "form-control" %>
+    <%= f.label :followers %><br>
+    <%= f.number_field :followers, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :cause5 %><br>
-    <%= f.text_field :cause5, :class => "form-control" %>
-  </div>
-
-  <br/>
-  <br/>
-
-  <br/><h3><span class="glyphicon glyphicon-eye-open"></span> KNOWN FOR </h3><hr/>
-
-  <div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :known_for1 %><br>
-          <%= f.text_field :known_for1, :class => "form-control" %>
-        </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :known_for_link1 %><br>
-          <%= f.text_field :known_for_link1, :class => "form-control" %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :known_for2 %><br>
-          <%= f.text_field :known_for2, :class => "form-control" %>
-        </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :known_for_link2 %><br>
-          <%= f.text_field :known_for_link2, :class => "form-control" %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :known_for3 %><br>
-          <%= f.text_field :known_for3, :class => "form-control" %>
-        </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :known_for_link3 %><br>
-          <%= f.text_field :known_for_link3, :class => "form-control" %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :known_for4 %><br>
-          <%= f.text_field :known_for4, :class => "form-control" %>
-        </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :known_for_link4 %><br>
-          <%= f.text_field :known_for_link4, :class => "form-control" %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :known_for5 %><br>
-          <%= f.text_field :known_for5, :class => "form-control" %>
-        </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :known_for_link5 %><br>
-          <%= f.text_field :known_for_link5, :class => "form-control" %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <br/>
-  <br/>
-
-  <div class="form-group">
-    <%= f.label :quote1 %><br>
-    <%= f.text_area :quote1, :class => "form-control" %>
+    <%= f.label :verified %><br>
+    <%= f.text_field :verified, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :quote2 %><br>
-    <%= f.text_area :quote2, :class => "form-control" %>
+    <%= f.label :premium %><br>
+    <%= f.text_field :premium, :class => "form-control" %>
   </div>
-  
-  <div class="form-group">
-    <%= f.label :ideology1 %><br>
-    <%= f.number_field :ideology1, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :ideology2 %><br>
-    <%= f.number_field :ideology2, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :ideology3 %><br>
-    <%= f.number_field :ideology3, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :ideology4 %><br>
-    <%= f.number_field :ideology4, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :ideology5 %><br>
-    <%= f.number_field :ideology5, :class => "form-control" %>
-  </div>
-  
+
   <div class="form-group">
     <%= f.label :following %><br>
     <%= f.number_field :following, :class => "form-control" %>
@@ -607,54 +210,49 @@
     <%= f.label :victories %><br>
     <%= f.number_field :victories, :class => "form-control" %>
   </div>
+
+  <br/>
+  <br/>
   
+  <br/><h3><span class="glyphicon glyphicon-earphone"></span> POLITICAL CONTACT</h3><hr/>
+
   <div class="form-group">
-    <%= f.label :dateOfBirth %><br>
-    <%= f.text_field :dateOfBirth, :class => "form-control"%>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :placeOfBirth %><br>
-    <%= f.text_field :placeOfBirth, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :institutionalAddress %><br>
+    <%= f.label :institutional_Address %><br>
     <%= f.text_area :institutionalAddress, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :institutionalTelephone %><br>
+    <%= f.label :institutional_Telephone %><br>
     <%= f.text_field :institutionalTelephone, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :institutionalFax %><br>
+    <%= f.label :institutional_Fax %><br>
     <%= f.text_field :institutionalFax, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :institutionalMobilePhone %><br>
+    <%= f.label :institutional_MobilePhone %><br>
     <%= f.text_field :institutionalMobilePhone, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :electoralAddress %><br>
+    <%= f.label :electoral_Address %><br>
     <%= f.text_field :electoralAddress, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :electoralTelephone %><br>
+    <%= f.label :electoral_Telephone %><br>
     <%= f.text_field :electoralTelephone, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :electoralFax %><br>
+    <%= f.label :electoral_Fax %><br>
     <%= f.text_field :electoralFax, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :electoralMobile %><br>
+    <%= f.label :electoral_Mobile %><br>
     <%= f.text_field :electoralMobile, :class => "form-control" %>
   </div>
   
@@ -667,20 +265,467 @@
     <%= f.label :assistants %><br>
     <%= f.text_field :assistants, :class => "form-control" %>
   </div>
-  
-  <div class="form-group">
-    <%= f.label :completeName %><br>
-    <%= f.text_field :completeName, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :position %><br>
-    <%= f.text_field :position, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
 
-    <br/><h3><span class="glyphicon glyphicon-globe"></span> REGION</h3><hr/>
+  <br/>
+  <br/>
+
+  <br/><h3><span class="glyphicon glyphicon-king"></span> POLITICAL PARTY</h3><hr/>
+
+  <div class="form-group">
+    <%= f.label :political_Party %><br>
+    <%= f.collection_select :politicalParty, PoliticalParty.order(:name), :name, :name, {include_blank: true}, {class: "form-control"} %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :political_Party_Image %><br>
+    <%= f.text_field :politicalPartyImage, :class => "form-control" %>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :ideology_1 %><br>
+    <%= f.number_field :ideology1, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ideolog_y2 %><br>
+    <%= f.number_field :ideology2, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ideology_3 %><br>
+    <%= f.number_field :ideology3, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ideology_4 %><br>
+    <%= f.number_field :ideology4, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ideology_5 %><br>
+    <%= f.number_field :ideology5, :class => "form-control" %>
+  </div>
+  
+
+  <br/>
+  <br/>
+
+  <br/><h3><span class="glyphicon glyphicon-king"></span> POLITICAL EXPERIENCE</h3><hr/>
+
+  <div class="row">
+    <!-- EXPERIENCE 1 -->
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_1 %><br>
+          <%= f.text_field :political_experience1, :class => "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_1_content %><br>
+          <%= f.text_field :political_experience1_content, :class => "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_1_date %><br>
+          <%= f.text_field :political_experience1_date, :class => "form-control" %>
+        </div>  
+    </div>
+
+    <!-- EXPERIENCE 2 -->
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_2 %><br>
+          <%= f.text_field :political_experience2, :class => "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_2_content %><br>
+          <%= f.text_field :political_experience2_content, :class => "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_2_date %><br>
+          <%= f.text_field :political_experience2_date, :class => "form-control" %>
+        </div>  
+    </div>
+
+    <!-- EXPERIENCE 3 -->
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_3 %><br>
+          <%= f.text_field :political_experience3, :class => "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience3_content %><br>
+          <%= f.text_field :political_experience3_content, :class => "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_3_date %><br>
+          <%= f.text_field :political_experience3_date, :class => "form-control" %>
+        </div>  
+    </div>
+
+    <!-- EXPERIENCE 4 -->
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_4 %><br>
+          <%= f.text_field :political_experience4, :class => "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_4_content %><br>
+          <%= f.text_field :political_experience4_content, :class => "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_4_date %><br>
+          <%= f.text_field :political_experience4_date, :class => "form-control" %>
+        </div>  
+    </div>
+
+    <!-- EXPERIENCE 5 -->
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_5 %><br>
+          <%= f.text_field :political_experience5, :class => "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_5_content %><br>
+          <%= f.text_field :political_experience5_content, :class => "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :political_experience_5_date %><br>
+          <%= f.text_field :political_experience5_date, :class => "form-control" %>
+        </div>  
+    </div>
+
+  </div>
+
+  <br/>
+  <br/>
+  
+  <br/><h3><span class="glyphicon glyphicon-equalizer"></span> POLITICAL ACTIVITIES</h3><hr/>
+
+  <div class="form-group">
+    <%= f.label :sourceActivity %><br>
+    <%= f.text_field :sourceActivity, :class => "form-control" %>
+  </div>
+
+  <div class="row">
+    <!-- ACTIVITY 1 -->
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :last_Activity_1 %><br>
+        <%= f.text_field :lastActivity1, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :last_Activity_1_Date %><br>
+        <%= f.text_field :lastActivity1Date, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :last_Activity_1_Action %><br>
+        <%= f.text_field :lastActivity1Action, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :last_Activity_1_Outcome %><br>
+        <%= f.text_field :lastActivity1Outcome, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :last_Activity_1_Link %><br>
+        <%= f.text_field :lastActivity1Link, :class => "form-control" %>
+      </div>
+    </div>
+  </div> 
+
+  <div class="row">
+    <!-- ACTIVITY 2 -->
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :lastActivity_2 %><br>
+        <%= f.text_field :lastActivity2, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_2_Date %><br>
+        <%= f.text_field :lastActivity2Date, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :last_Activity_2_Action %><br>
+        <%= f.text_field :lastActivity2Action, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :last_Activity_2_Outcome %><br>
+        <%= f.text_field :lastActivity2Outcome, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :last_Activity_2_Link %><br>
+        <%= f.text_field :lastActivity2Link, :class => "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- ACTIVITY 3 -->
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :lastActivity_3 %><br>
+        <%= f.text_field :lastActivity3, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_3_Date %><br>
+        <%= f.text_field :lastActivity3Date, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_3_Action %><br>
+        <%= f.text_field :lastActivity3Action, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_3_Outcome %><br>
+        <%= f.text_field :lastActivity3Outcome, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_3_Link %><br>
+        <%= f.text_field :lastActivity3Link, :class => "form-control" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <!-- ACTIVITY 4 -->
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :lastActivity_4 %><br>
+        <%= f.text_field :lastActivity4, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_4_Date %><br>
+        <%= f.text_field :lastActivity4Date, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_4_Action %><br>
+        <%= f.text_field :lastActivity4Action, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_4_Outcome %><br>
+        <%= f.text_field :lastActivity4Outcome, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_4_Link %><br>
+        <%= f.text_field :lastActivity4Link, :class => "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- ACTIVITY 5 -->
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :lastActivity_5 %><br>
+        <%= f.text_field :lastActivity5, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_5_Date %><br>
+        <%= f.text_field :lastActivity5Date, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_5_Action %><br>
+        <%= f.text_field :lastActivity5Action, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_5_Outcome %><br>
+        <%= f.text_field :lastActivity5Outcome, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <%= f.label :lastActivity_5_Link %><br>
+        <%= f.text_field :lastActivity5Link, :class => "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+
+  <br/><h3><span class="glyphicon glyphicon-screenshot"></span> CAUSES </h3><hr/>
+
+  <div class="form-group">
+    <%= f.label :cause_1 %><br>
+    <%= f.text_field :cause1, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cause_2 %><br>
+    <%= f.text_field :cause2, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cause_3 %><br>
+    <%= f.text_field :cause3, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :cause_4 %><br>
+    <%= f.text_field :cause4, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cause_5 %><br>
+    <%= f.text_field :cause5, :class => "form-control" %>
+  </div>
+
+  <br/>
+  <br/>
+
+  <br/><h3><span class="glyphicon glyphicon-eye-open"></span> KNOWN FOR </h3><hr/>
+
+  <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :known_for_1 %><br>
+          <%= f.text_field :known_for1, :class => "form-control" %>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :known_for_link_1 %><br>
+          <%= f.text_field :known_for_link1, :class => "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :known_for_2 %><br>
+          <%= f.text_field :known_for2, :class => "form-control" %>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :known_for_link_2 %><br>
+          <%= f.text_field :known_for_link2, :class => "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :known_for_3 %><br>
+          <%= f.text_field :known_for3, :class => "form-control" %>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :known_for_link_3 %><br>
+          <%= f.text_field :known_for_link3, :class => "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :known_for_4 %><br>
+          <%= f.text_field :known_for4, :class => "form-control" %>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :known_for_link_4 %><br>
+          <%= f.text_field :known_for_link4, :class => "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :known_for_5 %><br>
+          <%= f.text_field :known_for5, :class => "form-control" %>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :known_for_link_5 %><br>
+          <%= f.text_field :known_for_link5, :class => "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+
+    <div class="form-group">
+
+    <br/><h3><span class="glyphicon glyphicon-globe"></span> GEOGRAPHICAL AREAS</h3><hr/>
 
     <div class="row ">
 
@@ -782,66 +827,26 @@
 
     <!-- <%= f.collection_select :region, Region.order(:name),:id,:name, include_blank: true %> -->
   </div>
-  
-  <div class="form-group">
-    <br/>
-    <%= f.label :institution %><br>
-    <%= f.text_field :institution, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :constituency %><br>
-    <%= f.text_field :constituency, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :studies %><br>
-    <%= f.text_field :studies, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :university %><br>
-    <%= f.text_field :university, :class => "form-control" %>
-  </div>
 
-  <div class="form-group">
-    <br/>
-    <%= f.label :school %><br>
-    <%= f.text_field :school, :class => "form-control" %>
-  </div>
+  <br/>
+  <br/>
+
+  <hr/>
   
   <div class="form-group">
-    <%= f.label :profession %><br>
-    <%= f.text_field :profession, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :cvLink %><br>
-    <%= f.text_field :cvLink, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :declarationLink %><br>
-    <%= f.text_field :declarationLink, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :officialWebsite %><br>
+    <%= f.label :official_Website %><br>
     <%= f.text_field :officialWebsite, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :politicalExperience %><br>
-    <%= f.text_field :politicalExperience, :class => "form-control" %>
+    <%= f.label :sourceWebsite %><br>
+    <%= f.text_field :sourceWebsite, :class => "form-control" %>
   </div>
-  
-  <div class="form-group">
-    <%= f.label :causes %><br>
-    <%= f.text_field :causes, :class => "form-control" %>
-  </div>
+
+  <br/><br/>
   
   <div class="actions">
-    <%= f.submit "Update", class: "btn btn-md btn-block btn-success" %>
+    <%= f.submit "Update", class: "btn btn-lg btn-block btn-success" %>
   </div>
 
   <br/>

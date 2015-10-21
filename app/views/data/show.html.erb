@@ -10,19 +10,38 @@
   <table class="listing table table-striped">
   <thead>
       <tr class="header">
-        <th>Column</th>
-        <th>Details</th>
+        <th colspan="2"><span class="glyphicon glyphicon-info-sign"></span> Personal Info</th>
       </tr>
   </thead>  
 
   <tr><td> 
-    <strong>Source website</strong></td><td>
-    <%= @datum.sourceWebsite %>
+    <strong>Name</strong></td><td>
+    <%= @datum.name %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Name</strong></td><td>
-    <%= @datum.name %>
+    <strong>Complete name</strong></td><td>
+    <%= @datum.completeName %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Bio</strong></td><td>
+    <%= @datum.bio %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Family</strong></td><td>
+    <%= @datum.family %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Date of birth</strong></td><td>
+    <%= @datum.dateOfBirth %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Place of birth</strong></td><td>
+    <%= @datum.placeOfBirth %>
   </td> </tr>
 
   <tr><td> 
@@ -31,35 +50,74 @@
   </td> </tr>
 
   <tr><td> 
-    <strong>Political party</strong></td><td>
-    <%= @datum.politicalParty %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Political party image</strong></td><td>
-    <%= @datum.politicalPartyImage %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Verified</strong></td><td>
-    <%= @datum.verified %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Likes</strong></td><td>
-    <%= @datum.likes %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Followers</strong></td><td>
-    <%= @datum.followers %>
-  </td> </tr>
-
-  <tr><td> 
     <strong>Email</strong></td><td>
     <%= @datum.email %>
   </td> </tr>
 
+   <tr><td> 
+    <strong>Studies</strong></td><td>
+    <%= @datum.studies %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>University</strong></td><td>
+    <%= @datum.university %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>School</strong></td><td>
+    <%= @datum.school %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Profession</strong></td><td>
+    <%= @datum.profession %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Position</strong></td><td>
+    <%= @datum.position %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Institution</strong></td><td>
+    <%= @datum.institution %>
+  </td> </tr>
+
+   <tr><td> 
+    <strong>Cvlink</strong></td><td>
+    <%= @datum.cvLink %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Declarationlink</strong></td><td>
+    <%= @datum.declarationLink %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Quote1</strong></td><td>
+    <%= @datum.quote1 %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Quote2</strong></td><td>
+    <%= @datum.quote2 %>
+  </td> </tr>
+
+  </table>
+</div>
+ 
+<br/><br/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+
+  <thead>
+    <tr class="header">
+      <th colspan="2"><span class="glyphicon glyphicon-thumbs-up"></span> SOCIAL NETWORKS</th>
+    </tr>
+  </thead> 
+  
   <tr><td> 
     <strong>Twitter</strong></td><td>
     <%= @datum.twitter %>
@@ -86,163 +144,175 @@
   </td> </tr>
 
   <tr><td> 
+    <strong>Pinterest</strong></td><td>
+    <%= @datum.pinterest %>
+  </td> </tr>
+
+  <tr><td> 
     <strong>Blog</strong></td><td>
     <%= @datum.blog %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Youtubechannel</strong></td><td>
+    <strong>Youtube channel</strong></td><td>
     <%= @datum.youtubeChannel %>
   </td> </tr>
 
+  </table>
+</div>    
+
+<div class="table-div">
+  <table class="listing table table-striped">
+
+  <thead>
+    <tr class="header">
+      <th colspan="2"><span class="glyphicon glyphicon-signal"></span> STATS</th>
+    </tr>
+  </thead> 
+
+  <tr><td> 
+    <strong>Likes</strong></td><td>
+    <%= @datum.likes %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Followers</strong></td><td>
+    <%= @datum.followers %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Verified</strong></td><td>
+    <%= @datum.verified %>
+  </td> </tr>
+  
   <tr><td> 
     <strong>Premium</strong></td><td>
     <%= @datum.premium %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Bio</strong></td><td>
-    <%= @datum.bio %>
+    <strong>Following</strong></td><td>
+    <%= @datum.following %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Quote1</strong></td><td>
-    <%= @datum.quote1 %>
+    <strong>Open projects</strong></td><td>
+    <%= @datum.openProjects %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Quote2</strong></td><td>
-    <%= @datum.quote2 %>
+    <strong>Closed projects</strong></td><td>
+    <%= @datum.closedProjects %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Source activity</strong></td><td>
-    <%= @datum.sourceActivity %>
+    <strong>Proposals</strong></td><td>
+    <%= @datum.proposals %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Lastactivity 1</strong></td><td>
-    <%= @datum.lastActivity1 %>
+    <strong>Debates</strong></td><td>
+    <%= @datum.debates %>
   </td> </tr>
 
   <tr><td> 
-    <strong>LastActivity 1 Date</strong></td><td>
-    <%= @datum.lastActivity1Date %>
+    <strong>Sponsorships</strong></td><td>
+    <%= @datum.sponsorships %>
   </td> </tr>
 
   <tr><td> 
-    <strong>LastActivity 1 Action</strong></td><td>
-    <%= @datum.lastActivity1Action %>
+    <strong>Victories</strong></td><td>
+    <%= @datum.victories %>
+  </td> </tr>
+
+  </table>
+</div>  
+
+<br/>
+<br/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+
+  <thead>
+    <tr class="header">
+      <th colspan="2"><span class="glyphicon glyphicon-earphone"></span> POLITICAL CONTACT</th>
+    </tr>
+  </thead> 
+
+ <tr><td> 
+    <strong>Institutional address</strong></td><td>
+    <%= @datum.institutionalAddress %>
   </td> </tr>
 
   <tr><td> 
-    <strong>lastActivity 1 Outcome</strong></td><td>
-    <%= @datum.lastActivity1Outcome %>
+    <strong>Institutional telephone</strong></td><td>
+    <%= @datum.institutionalTelephone %>
   </td> </tr>
 
   <tr><td> 
-    <strong>LastActivity 1 Link</strong></td><td>
-    <%= @datum.lastActivity1Link %>
+    <strong>Institutional fax</strong></td><td>
+    <%= @datum.institutionalFax %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Lastactivity 2</strong></td><td>
-    <%= @datum.lastActivity2 %>
-  </td> </tr>
-
-    <tr><td>  
-    <strong>LastActivity 2 Date</strong></td><td>
-    <%= @datum.lastActivity2Date %>
+    <strong>Institutional mobilephone</strong></td><td>
+    <%= @datum.institutionalMobilePhone %>
   </td> </tr>
 
   <tr><td> 
-    <strong>LastActivity 2 Action</strong></td><td>
-    <%= @datum.lastActivity2Action %>
+    <strong>Electoral address</strong></td><td>
+    <%= @datum.electoralAddress %>
   </td> </tr>
 
   <tr><td> 
-    <strong>lastActivity 2 Outcome</strong></td><td>
-    <%= @datum.lastActivity2Outcome %>
+    <strong>Electoral telephone</strong></td><td>
+    <%= @datum.electoralTelephone %>
   </td> </tr>
 
   <tr><td> 
-    <strong>LastActivity 2 Link</strong></td><td>
-    <%= @datum.lastActivity2Link %>
+    <strong>Electoral fax</strong></td><td>
+    <%= @datum.electoralFax %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Lastactivity 3</strong></td><td>
-    <%= @datum.lastActivity3 %>
-  </td> </tr>
-
-    <tr><td> 
-    <strong>LastActivity 3 Date</strong></td><td>
-    <%= @datum.lastActivity3Date %>
+    <strong>Electoral mobile</strong></td><td>
+    <%= @datum.electoralMobile %>
   </td> </tr>
 
   <tr><td> 
-    <strong>LastActivity 3 Action</strong></td><td>
-    <%= @datum.lastActivity3Action %>
+    <strong>Phone</strong></td><td>
+    <%= @datum.phone %>
   </td> </tr>
 
   <tr><td> 
-    <strong>lastActivity 3 Outcome</strong></td><td>
-    <%= @datum.lastActivity3Outcome %>
+    <strong>Assistants</strong></td><td>
+    <%= @datum.assistants %>
+  </td> </tr>
+
+  </table>
+</div>  
+
+<br/>
+<br/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+
+  <thead>
+    <tr class="header">
+      <th colspan="2"><span class="glyphicon glyphicon-king"></span> POLITICAL PARTY</th>
+    </tr>
+  </thead> 
+
+  <tr><td> 
+    <strong>Political party</strong></td><td>
+    <%= @datum.politicalParty %>
   </td> </tr>
 
   <tr><td> 
-    <strong>LastActivity 3 Link</strong></td><td>
-    <%= @datum.lastActivity3Link %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Lastactivity 4</strong></td><td>
-    <%= @datum.lastActivity4 %>
-  </td> </tr>
-
-    <tr><td> 
-    <strong>LastActivity 4 Date</strong></td><td>
-    <%= @datum.lastActivity4Date %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>LastActivity 4 Action</strong></td><td>
-    <%= @datum.lastActivity4Action %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>lastActivity 4 Outcome</strong></td><td>
-    <%= @datum.lastActivity4Outcome %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>LastActivity 4 Link</strong></td><td>
-    <%= @datum.lastActivity4Link %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Lastactivity 5</strong></td><td>
-    <%= @datum.lastActivity5 %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>LastActivity 5 Date</strong></td><td>
-    <%= @datum.lastActivity5Date %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>LastActivity 5 Action</strong></td><td>
-    <%= @datum.lastActivity5Action %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>lastActivity 5 Outcome</strong></td><td>
-    <%= @datum.lastActivity5Outcome %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>LastActivity 5 Link</strong></td><td>
-    <%= @datum.lastActivity5Link %>
+    <strong>Political party image</strong></td><td>
+    <%= @datum.politicalPartyImage %>
   </td> </tr>
 
   <tr><td> 
@@ -270,217 +340,198 @@
     <%= @datum.ideology5 %>
   </td> </tr>
 
+  </table>
+ </div> 
+
+<br/>
+<br/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+
+  <thead>
+    <tr class="header">
+      <th colspan="4"><span class="glyphicon glyphicon-king"></span> POLITICAL EXPERIENCE</th>
+    </tr>
+  </thead> 
+
+  <tr>
+    <td></td>
+    <td><b>Experience</b></td>
+    <td><b>Content</b></td>
+    <td><b>Date</b></td>
+  </tr>
+
+  <tr>
+    <td><strong>Political Experience 1</strong></td> 
+    <td><%= @datum.political_experience1 %></td>
+    <td><%= @datum.political_experience1_content %></td> 
+    <td><%= @datum.political_experience1_date %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Political Experience 2</strong></td> 
+    <td><%= @datum.political_experience2 %></td>
+    <td><%= @datum.political_experience2_content %></td> 
+    <td><%= @datum.political_experience2_date %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Political Experience 3</strong></td> 
+    <td><%= @datum.political_experience3 %></td>
+    <td><%= @datum.political_experience3_content %></td> 
+    <td><%= @datum.political_experience3_date %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Political Experience 4</strong></td> 
+    <td><%= @datum.political_experience4 %></td>
+    <td><%= @datum.political_experience4_content %></td> 
+    <td><%= @datum.political_experience4_date %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Political Experience 5</strong></td> 
+    <td><%= @datum.political_experience5 %></td>
+    <td><%= @datum.political_experience5_content %></td> 
+    <td><%= @datum.political_experience5_date %></td>
+  </tr>
+
+
+  </table>
+</div>
+
+<br/>
+<br/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+
+  <thead>
+    <tr class="header">
+      <th colspan="6"><span class="glyphicon glyphicon-equalizer"></span> POLITICAL ACTIVITIES</th>
+    </tr>
+  </thead> 
+
+   <tr>
+    <td> <strong>Source activity</strong></td>
+    <td colspan="5"> 
+      <%= @datum.sourceActivity %>
+    </td> 
+   </tr>
+
+   <tr>
+     <td></td>
+     <td><b>Activity</b></td>
+     <td><b>Date</b></td>
+     <td><b>Action</b></td>
+     <td><b>Outcome</b></td>
+     <td><b>Link</b></td>
+   </tr>
+
+   <tr>
+    <td><b>1</b></td>
+    <td><%= @datum.lastActivity1 %></td>
+    <td><%= @datum.lastActivity1Date %></td>
+    <td><%= @datum.lastActivity1Action %></td>
+    <td><%= @datum.lastActivity1Outcome %></td>
+    <td><%= @datum.lastActivity1Link %></td>
+   </tr>
+
+  <tr>
+    <td><b>2</b></td>
+    <td><%= @datum.lastActivity2 %></td>
+    <td><%= @datum.lastActivity2Date %></td>
+    <td><%= @datum.lastActivity2Action %></td>
+    <td><%= @datum.lastActivity2Outcome %></td>
+    <td><%= @datum.lastActivity2Link %></td>
+   </tr>
+
+   <tr>
+    <td><b>3</b></td>
+    <td><%= @datum.lastActivity3 %></td>
+    <td><%= @datum.lastActivity3Date %></td>
+    <td><%= @datum.lastActivity3Action %></td>
+    <td><%= @datum.lastActivity3Outcome %></td>
+    <td><%= @datum.lastActivity3Link %></td>
+   </tr>
+
+   <tr>
+    <td><b>4</b></td>
+    <td><%= @datum.lastActivity4 %></td>
+    <td><%= @datum.lastActivity4Date %></td>
+    <td><%= @datum.lastActivity4Action %></td>
+    <td><%= @datum.lastActivity4Outcome %></td>
+    <td><%= @datum.lastActivity4Link %></td>
+   </tr>
+
+  <tr>
+    <td><b>5</b></td>
+    <td><%= @datum.lastActivity5 %></td>
+    <td><%= @datum.lastActivity5Date %></td>
+    <td><%= @datum.lastActivity5Action %></td>
+    <td><%= @datum.lastActivity5Outcome %></td>
+    <td><%= @datum.lastActivity5Link %></td>
+   </tr>
+
+  </table>
+</div>  
+
+<br/>
+<br/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+
+  <thead>
+    <tr class="header">
+      <th colspan="6"><span class="glyphicon glyphicon-screenshot"></span> CAUSES</th>
+    </tr>
+  </thead> 
+
+
   <tr><td> 
-    <strong>Following</strong></td><td>
-    <%= @datum.following %>
+    <strong>Cause 1</strong></td><td>
+    <%= @datum.cause1 %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Openprojects</strong></td><td>
-    <%= @datum.openProjects %>
+    <strong>Cause 2</strong></td><td>
+    <%= @datum.cause2 %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Closedprojects</strong></td><td>
-    <%= @datum.closedProjects %>
+    <strong>Cause 3</strong></td><td>
+    <%= @datum.cause3 %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Proposals</strong></td><td>
-    <%= @datum.proposals %>
+    <strong>Cause 4</strong></td><td>
+    <%= @datum.cause4 %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Debates</strong></td><td>
-    <%= @datum.debates %>
+    <strong>Cause 5</strong></td><td>
+    <%= @datum.cause5 %>
   </td> </tr>
 
-  <tr><td> 
-    <strong>Sponsorships</strong></td><td>
-    <%= @datum.sponsorships %>
-  </td> </tr>
+  </table>
 
-  <tr><td> 
-    <strong>Victories</strong></td><td>
-    <%= @datum.victories %>
-  </td> </tr>
+</div>
 
-  <tr><td> 
-    <strong>Dateofbirth</strong></td><td>
-    <%= @datum.dateOfBirth %>
-  </td> </tr>
+<br/>
+<br/>
 
-  <tr><td> 
-    <strong>Placeofbirth</strong></td><td>
-    <%= @datum.placeOfBirth %>
-  </td> </tr>
+<div class="table-div">
+  <table class="listing table table-striped">
 
-  <tr><td> 
-    <strong>Institutional address</strong></td><td>
-    <%= @datum.institutionalAddress %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Institutional telephone</strong></td><td>
-    <%= @datum.institutionalTelephone %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Institutional fax</strong></td><td>
-    <%= @datum.institutionalFax %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Institutional mobilephone</strong></td><td>
-    <%= @datum.institutionalMobilePhone %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Electoral address</strong></td><td>
-    <%= @datum.electoralAddress %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Electoraltelephone</strong></td><td>
-    <%= @datum.electoralTelephone %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Electoralfax</strong></td><td>
-    <%= @datum.electoralFax %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Electoralmobile</strong></td><td>
-    <%= @datum.electoralMobile %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Phone</strong></td><td>
-    <%= @datum.phone %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Assistants</strong></td><td>
-    <%= @datum.assistants %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Completename</strong></td><td>
-    <%= @datum.completeName %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Position</strong></td><td>
-    <%= @datum.position %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Region</strong></td><td>
-    <%= @region_name %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Region Alliance</strong></td><td>
-    <%= @datum.region_code_alliance %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Region Nation</strong></td><td>
-    <%= @datum.region_code_nation %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Region State</strong></td><td>
-    <%= @datum.region_code_state %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Region County</strong></td><td>
-    <%= @datum.region_code_county %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Region City</strong></td><td>
-    <%= @datum.region_code_city %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Institution</strong></td><td>
-    <%= @datum.institution %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Constituency</strong></td><td>
-    <%= @datum.constituency %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Constituency Alliance</strong></td><td>
-    <%= @datum.region_code_alliance %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Constituency Nation</strong></td><td>
-    <%= @datum.constituency_code_nation %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Constituency State</strong></td><td>
-    <%= @datum.constituency_code_state %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Constituency County</strong></td><td>
-    <%= @datum.constituency_code_county %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Constituency City</strong></td><td>
-    <%= @datum.constituency_code_city %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Studies</strong></td><td>
-    <%= @datum.studies %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>University</strong></td><td>
-    <%= @datum.university %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Profession</strong></td><td>
-    <%= @datum.profession %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Cvlink</strong></td><td>
-    <%= @datum.cvLink %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Declarationlink</strong></td><td>
-    <%= @datum.declarationLink %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Officialwebsite</strong></td><td>
-    <%= @datum.officialWebsite %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Political Experience</strong></td><td>
-    <%= @datum.politicalExperience %>
-  </td> </tr>
-
-  <tr><td> 
-    <strong>Causes</strong></td><td>
-    <%= @datum.causes %>
-  </td> </tr>
-
-  <tr><td> 
+  <thead>
+    <tr class="header">
+      <th colspan="6"><span class="glyphicon glyphicon-eye-open"></span> KNOWN FOR</th>
+    </tr>
+  </thead> 
+ 
+   <tr><td> 
     <strong>Known for 1</strong></td><td>
     <%= @datum.known_for1 %>
   </td> </tr>
@@ -528,14 +579,107 @@
    <tr><td> 
     <strong>Known for link 5</strong></td><td>
     <%= @datum.known_for_link5 %>
+  </td> </tr> 
+ </table>
+</div> 
+
+<br/>
+<br/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+
+  <thead>
+    <tr class="header">
+      <th colspan="6"><span class="glyphicon glyphicon-globe"></span> GEOGRAPHICAL AREAS</th>
+    </tr>
+  </thead> 
+
+  <tr><td> 
+    <strong>Region</strong></td><td>
+    <%= @region_name %>
+  </td> </tr>
+
+<tr><td> 
+    <strong>Region Alliance</strong></td><td>
+    <%= @datum.region_code_alliance %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Region Nation</strong></td><td>
+    <%= @datum.region_code_nation %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Region State</strong></td><td>
+    <%= @datum.region_code_state %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Region County</strong></td><td>
+    <%= @datum.region_code_county %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Region City</strong></td><td>
+    <%= @datum.region_code_city %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency</strong></td><td>
+    <%= @datum.constituency %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency Alliance</strong></td><td>
+    <%= @datum.region_code_alliance %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency Nation</strong></td><td>
+    <%= @datum.constituency_code_nation %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency State</strong></td><td>
+    <%= @datum.constituency_code_state %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency County</strong></td><td>
+    <%= @datum.constituency_code_county %>
+  </td> </tr>
+
+  <tr><td> 
+    <strong>Constituency City</strong></td><td>
+    <%= @datum.constituency_code_city %>
   </td> </tr>
 
   </table>
-
 </div>  
 
 <br/>
 
+<hr/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+
+    <tr><td> 
+      <strong>Officialwebsite</strong></td><td>
+      <%= @datum.officialWebsite %>
+    </td> </tr>
+
+    <tr><td> 
+      <strong>Source website</strong></td><td>
+      <%= @datum.sourceWebsite %>
+    </td> </tr>
+
+  </table>
+
+</div> 
+  
+<br/>
 <hr/>
 
 <!--
