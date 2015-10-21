@@ -152,9 +152,10 @@
   </div>
   
   <br/>
-  <br/>
+  <br/> 
+
   
-  <h3><span class="glyphicon glyphicon-signal"></span> STATS </h3><hr/>
+  <br/><h3><span class="glyphicon glyphicon-signal"></span> STATS </h3><hr/>
 
   <div class="form-group">
     <%= f.label :likes %><br>
@@ -278,32 +279,54 @@
   
   <div class="form-group">
     <%= f.label :political_Party_Image %><br>
-    <%= f.text_field :politicalPartyImage, :class => "form-control" %>
+ 
+    <%  
+      party_image = ""  
+      ideology1 = 0.0
+      ideology2 = 0.0
+      ideology3 = 0.0
+      ideology4 = 0.0
+      ideology5 = 0.0
+
+
+      political_party = PoliticalParty.where("name LIKE ?",  '%'+@datum.politicalParty+'%')
+      political_party.each do |pp|
+        party_image = pp.image
+        ideology1 = pp.leaning_index
+        ideology2 = pp.leaning_index
+        ideology3 = pp.leaning_index
+        ideology4 = pp.leaning_index
+        ideology5 = pp.leaning_index
+      end  
+
+      #party_image =  political_party.region_id
+    %>
+    <%= f.text_field :politicalPartyImage, :class => "form-control", :value => party_image, :disabled => "disabled" %><br>
   </div>
 
    <div class="form-group">
     <%= f.label :ideology_1 %><br>
-    <%= f.text_field :ideology1, :class => "form-control" %>
+    <%= f.text_field :ideology1, :class => "form-control", :value => ideology1, :disabled => "disabled"  %>
   </div>
   
   <div class="form-group">
-    <%= f.label :ideolog_y2 %><br>
-    <%= f.text_field :ideology2, :class => "form-control" %>
+    <%= f.label :ideology_2 %><br>
+    <%= f.text_field :ideology2, :class => "form-control", :value => ideology2, :disabled => "disabled" %>
   </div>
   
   <div class="form-group">
     <%= f.label :ideology_3 %><br>
-    <%= f.text_field :ideology3, :class => "form-control" %>
+    <%= f.text_field :ideology3, :class => "form-control", :value => ideology3, :disabled => "disabled" %>
   </div>
   
   <div class="form-group">
     <%= f.label :ideology_4 %><br>
-    <%= f.text_field :ideology4, :class => "form-control" %>
+    <%= f.text_field :ideology4, :class => "form-control", :value => ideology4, :disabled => "disabled" %>
   </div>
   
   <div class="form-group">
     <%= f.label :ideology_5 %><br>
-    <%= f.text_field :ideology5, :class => "form-control" %>
+    <%= f.text_field :ideology5, :class => "form-control", :value => ideology5, :disabled => "disabled" %>
   </div>
   
 

@@ -83,6 +83,6 @@ class PoliticalPartiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def political_party_params
-      params.require(:political_party).permit(:name, :leaning_index)
+      params.require(:political_party).permit(:name, :leaning_index, :image)
     end
 end

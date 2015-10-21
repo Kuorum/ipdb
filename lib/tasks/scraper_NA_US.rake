@@ -5,7 +5,6 @@ require 'json'
 
 
 region_abbreviation = 'NA-US' #Unites States
-source = 'https://www.congress.gov/'
 
 task :scraper_NA_US => [:environment] do
 
@@ -23,9 +22,11 @@ task :scraper_NA_US => [:environment] do
 
 		member_links = page_links
 		
-		members = member_links.map do |link|		
+		members = member_links.map do |link|	
 
 		  member = link.click
+
+		  source = link.href
 
 		  # Get name
 		  name = member.search('title').text.split('|')[0]

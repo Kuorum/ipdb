@@ -17,6 +17,7 @@
     <tr class="header">
       <th>Name</th>
       <th>Leaning index</th>
+      <th>Image link</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,11 +27,12 @@
       <tr>
         <td><%= political_party.name %></td>
         <td><%= political_party.leaning_index %></td>
+        <td><%= political_party.image %></td>
 
         <td>
-          <%= link_to 'Show', [political_party.region, political_party] %> |
-          <%= link_to 'Edit', edit_region_political_party_path(political_party.region, political_party)%> |
-          <%= link_to 'Destroy', [political_party.region, political_party] , method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', [political_party.region, political_party], :class => "btn btn-sm btn-info" %> &nbsp;
+          <%= link_to 'Edit', edit_region_political_party_path(political_party.region, political_party), :class => "btn btn-sm btn-success" %> &nbsp;
+          <%= link_to 'Destroy', [political_party.region, political_party] , method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %>
         </td>
       </tr>
     <% end %>

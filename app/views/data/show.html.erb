@@ -10,7 +10,7 @@
   <table class="listing table table-striped">
   <thead>
       <tr class="header">
-        <th colspan="2"><span class="glyphicon glyphicon-info-sign"></span> Personal Info</th>
+        <th colspan="2"><span class="glyphicon glyphicon-info-sign"></span> PERSONAL INFO</th>
       </tr>
   </thead>  
 
@@ -85,22 +85,22 @@
   </td> </tr>
 
    <tr><td> 
-    <strong>Cvlink</strong></td><td>
+    <strong>Cv link</strong></td><td>
     <%= @datum.cvLink %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Declarationlink</strong></td><td>
+    <strong>Declaration link</strong></td><td>
     <%= @datum.declarationLink %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Quote1</strong></td><td>
+    <strong>Quote 1</strong></td><td>
     <%= @datum.quote1 %>
   </td> </tr>
 
   <tr><td> 
-    <strong>Quote2</strong></td><td>
+    <strong>Quote 2</strong></td><td>
     <%= @datum.quote2 %>
   </td> </tr>
 
@@ -160,6 +160,8 @@
 
   </table>
 </div>    
+
+<br/><br/>
 
 <div class="table-div">
   <table class="listing table table-striped">
@@ -310,9 +312,28 @@
     <%= @datum.politicalParty %>
   </td> </tr>
 
+  <%
+    party_image = ""  
+    ideology1 = 0.0
+    ideology2 = 0.0
+    ideology3 = 0.0
+    ideology4 = 0.0
+    ideology5 = 0.0
+
+    political_party = PoliticalParty.where("name LIKE ?",  '%'+@datum.politicalParty+'%')
+    political_party.each do |pp|
+      party_image = pp.image
+      ideology1 = pp.leaning_index
+      ideology2 = pp.leaning_index
+      ideology3 = pp.leaning_index
+      ideology4 = pp.leaning_index
+      ideology5 = pp.leaning_index
+    end  
+  %>
+
   <tr><td> 
     <strong>Political party image</strong></td><td>
-    <%= @datum.politicalPartyImage %>
+    <%= party_image %>
   </td> </tr>
 
   <tr><td> 
@@ -547,7 +568,7 @@
   </td> </tr>
 
    <tr><td> 
-    <strong>Knownf for link 2</strong></td><td>
+    <strong>Known for link 2</strong></td><td>
     <%= @datum.known_for_link2 %>
   </td> </tr>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020225244) do
+ActiveRecord::Schema.define(version: 20151021140828) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -175,11 +175,12 @@ ActiveRecord::Schema.define(version: 20151020225244) do
 
   create_table "political_parties", force: :cascade do |t|
     t.string   "name",          limit: 255
-    t.decimal  "leaning_index",             precision: 64, scale: 12
-    t.decimal  "decimal",                   precision: 64, scale: 12
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.decimal  "leaning_index",               precision: 64, scale: 12
+    t.decimal  "decimal",                     precision: 64, scale: 12
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
     t.integer  "region_id",     limit: 4
+    t.text     "image",         limit: 65535
   end
 
   create_table "regions", force: :cascade do |t|
