@@ -21,29 +21,29 @@ class ProcessController < ApplicationController
   end  
 
 
-  def scrape
-    region_id = params[:region_id]
+ # def scrape
+  #  region_id = params[:region_id]
 
-    region = Region.find(region_id)
-    region_code = region.iso3166_2 
+   # region = Region.find(region_id)
+   # region_code = region.iso3166_2 
 
-    region_file_name = region_code.gsub("-", "_")
+   # region_file_name = region_code.gsub("-", "_")
     
-    scrape_script = 'scraper_' +  region_file_name
-    scrape_update_script = 'scraper_update_' +  region_file_name
+   # scrape_script = 'scraper_' +  region_file_name
+   # scrape_update_script = 'scraper_update_' +  region_file_name
 
-    region_scraped = region.scraped
+   # region_scraped = region.scraped
 
-    if (region_scraped == false)
-      puts "running scrape script..."
-      %x[rake #{scrape_script}]
-    else
-      puts "running update script..."
-      %x[rake #{scrape_update_script}]
-    end
+   # if (region_scraped == false)
+   #   puts "running scrape script..."
+   #   %x[rake #{scrape_script}]
+   # else
+    #  puts "running update script..."
+     # %x[rake #{scrape_update_script}]
+   # end
     
-    redirect_to :back  
-  end 
+   # redirect_to :back  
+#  end 
 
 
 end
