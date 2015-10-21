@@ -11,14 +11,14 @@ task :scraper_NA_US => [:environment] do
 
 	agent = Mechanize.new
 
-	last_page_number = 1
+	last_page_number = 9
 
 	for pg_number in 1..last_page_number do
 
 		puts "Scrapping BEGINS... #{Time.now}"
 		puts "Scrapping page #{pg_number} ..."
 
-		page = agent.get("https://www.congress.gov/members?pageSize=25&page=#{pg_number}")
+		page = agent.get("https://www.congress.gov/members?pageSize=250&page=#{pg_number}")
 		page_links = page.links_with(href: %r{.*/member/\w+})
 
 		member_links = page_links
