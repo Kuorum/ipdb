@@ -1,19 +1,21 @@
 
 <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-7">
     <h1><span class="glyphicon glyphicon-user"></span> POLITICIANS</h1>
     <h5>GEOGRAPHICAL AREA: <span style="color:#95A5A6"><%= @region_name.titleize %></span></h5>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-5">
     <div style="margin:35px 0 0 0;text-align:right;">
       <table style="width:100%">
         <tr>
           <td>
-          <!--
+            <%= link_to "+ Add new politician", new_datum_path(:region_id => params[:region_id]), class: "btn btn-info btn-sm" %>&nbsp;
+          </td>
+          <td>
           <% if current_user.role_id == 1 %>
-            <%= link_to "Scrape new data", scrape_path(:region_id => params[:region_id]), class: "btn btn-primary btn-sm" %>&nbsp;&nbsp;
+            <%= link_to "Scrape new data", scrape_path(:region_id => params[:region_id]), class: "btn btn-primary btn-sm" %>&nbsp;
           <% end %>
-          -->  
+            
           </td>
           <td>
             <%= form_tag({controller: "process", action: "download_csv"}, method: "post") do |f| %>

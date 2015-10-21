@@ -45,11 +45,11 @@ class DataController < ApplicationController
   # POST /data
   # POST /data.json
   def create
-    @datum = Datum.new(datum_params)
+    @datum = Datum.new(datum_params.merge(:region_id => params[:datum][:region_id]))
 
     respond_to do |format|
       if @datum.save
-        format.html { redirect_to @datum, notice: 'Datum was successfully created.' }
+        format.html { redirect_to page_politicians_path(:region_id => params[:datum][:region_id]), notice: 'Politician was successfully added.' }
         format.json { render :show, status: :created, location: @datum }
       else
         format.html { render :new }
@@ -63,7 +63,7 @@ class DataController < ApplicationController
   def update
     respond_to do |format|
       if @datum.update(datum_params)
-        format.html { redirect_to @datum, notice: 'Datum was successfully updated.' }
+        format.html { redirect_to @datum, notice: 'Politician details was successfully updated.' }
         format.json { render :show, status: :ok, location: @datum }
       else
         format.html { render :edit }

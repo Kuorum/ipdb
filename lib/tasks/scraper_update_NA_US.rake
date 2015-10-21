@@ -73,8 +73,8 @@ task :scraper_update_NA_US => [:environment] do
 				  	data.save
 
 				  	if data.save					    
-					    country = Country.find_by_region('233')
-						country.touch
+					    region = Region.find_by_region('233')
+						region.touch
 						puts "Update successfull! #{Time.now}"
 					else
 						puts "Update Unsuccessfull! #{Time.now}"	

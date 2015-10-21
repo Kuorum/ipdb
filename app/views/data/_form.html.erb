@@ -283,27 +283,27 @@
 
    <div class="form-group">
     <%= f.label :ideology_1 %><br>
-    <%= f.number_field :ideology1, :class => "form-control" %>
+    <%= f.text_field :ideology1, :class => "form-control" %>
   </div>
   
   <div class="form-group">
     <%= f.label :ideolog_y2 %><br>
-    <%= f.number_field :ideology2, :class => "form-control" %>
+    <%= f.text_field :ideology2, :class => "form-control" %>
   </div>
   
   <div class="form-group">
     <%= f.label :ideology_3 %><br>
-    <%= f.number_field :ideology3, :class => "form-control" %>
+    <%= f.text_field :ideology3, :class => "form-control" %>
   </div>
   
   <div class="form-group">
     <%= f.label :ideology_4 %><br>
-    <%= f.number_field :ideology4, :class => "form-control" %>
+    <%= f.text_field :ideology4, :class => "form-control" %>
   </div>
   
   <div class="form-group">
     <%= f.label :ideology_5 %><br>
-    <%= f.number_field :ideology5, :class => "form-control" %>
+    <%= f.text_field :ideology5, :class => "form-control" %>
   </div>
   
 
@@ -846,7 +846,12 @@
   <br/><br/>
   
   <div class="actions">
-    <%= f.submit "Update", class: "btn btn-lg btn-block btn-success" %>
+    <% if @datum.new_record? %>
+      <%= f.hidden_field :region_id, :value => params[:region_id] %>
+      <%= f.submit "Add politician", class: "btn btn-lg btn-block btn-success" %>
+    <% else %>
+      <%= f.submit "Update", class: "btn btn-lg btn-block btn-success" %>
+    <% end %>
   </div>
 
   <br/>
