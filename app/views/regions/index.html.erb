@@ -91,7 +91,6 @@
     <li> 
       <h2>
         <%= link_to "#{alliance.name.titleize }", page_alliance_path(:alliance_id => alliance.id) %>
-        <%= link_to 'Destroy', alliance, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %>
       </h2> 
     </li>  
     <% end %>
