@@ -56,8 +56,8 @@ class PoliticalPartiesController < ApplicationController
   def update
     respond_to do |format|
       if @political_party.update(political_party_params)
-        format.html { redirect_to geo_area_political_parties_path(:geo_area_id => @political_party.geo_area_id), notice: 'Political party was successfully updated.' }
-        format.json { render :show, status: :ok, location: geo_area_political_parties_path(:geo_area_id => @political_party.geo_area_id) }
+        format.html { redirect_to region_political_parties_path(:region_id => @political_party.region_id), notice: 'Political party was successfully updated.' }
+        format.json { render :show, status: :ok, location: region_political_parties_path(:region_id => @political_party.region_id) }
       else
         format.html { render :edit }
         format.json { render json: @political_party.errors, status: :unprocessable_entity }

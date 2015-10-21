@@ -29,7 +29,7 @@
 
         <td>
           <%= link_to 'Show', [political_party.region, political_party] %> |
-          <%= link_to 'Edit', edit_political_party_path(political_party.region, political_party) %> |
+          <%= link_to 'Edit', edit_region_political_party_path(political_party.region, political_party)%> |
           <%= link_to 'Destroy', [political_party.region, political_party] , method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
