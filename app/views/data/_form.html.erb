@@ -288,15 +288,16 @@
       ideology4 = 0.0
       ideology5 = 0.0
 
-
-      political_party = PoliticalParty.where("name LIKE ?",  '%'+@datum.politicalParty+'%')
-      political_party.each do |pp|
-        party_image = pp.image
-        ideology1 = pp.leaning_index
-        ideology2 = pp.leaning_index
-        ideology3 = pp.leaning_index
-        ideology4 = pp.leaning_index
-        ideology5 = pp.leaning_index
+      if @datum.politicalParty == ""
+        political_party = PoliticalParty.where("name LIKE ?",  '%'+@datum.politicalParty+'%')
+        political_party.each do |pp|
+          party_image = pp.image
+          ideology1 = pp.leaning_index
+          ideology2 = pp.leaning_index
+          ideology3 = pp.leaning_index
+          ideology4 = pp.leaning_index
+          ideology5 = pp.leaning_index
+        end  
       end  
 
       #party_image =  political_party.region_id
