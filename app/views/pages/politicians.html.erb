@@ -15,7 +15,6 @@
           <% if current_user.role_id == 1 %>
             <%= link_to "Scrape new data", scrape_path(:region_id => params[:region_id]), class: "btn btn-primary btn-sm" %>&nbsp;
           <% end %>
-            
           </td>
           <td>
             <%= form_tag({controller: "process", action: "download_csv"}, method: "post") do |f| %>
