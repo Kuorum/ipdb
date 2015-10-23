@@ -11,11 +11,11 @@
           <td>
             <%= link_to "+ Add new politician", new_datum_path(:region_id => params[:region_id]), class: "btn btn-info btn-sm" %>&nbsp;
           </td>
-          <td>
           <% if current_user.role_id == 1 %>
-            <%= link_to "Scrape new data", scrape_path(:region_id => params[:region_id]), class: "btn btn-primary btn-sm" %>&nbsp;
+            <td>
+              <%= link_to "Scrape new data", scrape_path(:region_id => params[:region_id]), class: "btn btn-primary btn-sm" %>&nbsp;
+            </td>
           <% end %>
-          </td>
           <td>
             <%= form_tag({controller: "process", action: "download_csv"}, method: "post") do |f| %>
               <%= hidden_field_tag :region_id, params[:region_id] %>
