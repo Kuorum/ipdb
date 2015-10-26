@@ -1,5 +1,17 @@
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <script>
     $(function(){
+
+
+
+    	$('.datepicker').datepicker({ 
+    		dateFormat: 'dd/mm/yy 00:00',
+    		changeMonth: true,
+      		changeYear: true,
+      		yearRange: "1900:+nn" 
+    	})
+
 
     	var nations = [];
       	var states = [];
