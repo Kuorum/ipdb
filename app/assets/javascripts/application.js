@@ -17,9 +17,8 @@
 
 $(document).ready(function(){
 
-	
   //$(".alert" ).fadeOut(2000);
 
- 
+  //$('.datepicker').datepicker({ dateFormat: 'dd-mm-yy' })
 
 });
