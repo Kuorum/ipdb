@@ -755,49 +755,48 @@
 
       <div class="col-md-6">
 
-          <table class="region-table">
-            <tr>
-              <td class="region-label"><b>Region name: &nbsp;</td>
-              <td colspan="2"><%= f.text_field :region, :class => "form-control" %></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td class="region-label"><b> Region Code: </b></td>
-              <td>Alliance:</td>
-              <td>
-        <%= f.collection_select :region_code_alliance, Region.order(:iso3166_2).where("length(iso3166_2) = 2"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
-              </td>
-            </tr>
-
-            <tr>
-              <td></td>
-              <td class="region-label">Nation:</td>
-              <td>
-                <%= f.collection_select :region_code_nation, Region.order(:iso3166_2).where("length(iso3166_2) = 5"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td class="region-label">State:</td>
-              <td>
-                <%= f.collection_select :region_code_state, Region.order(:iso3166_2).where("length(iso3166_2) = 8"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td class="region-label">County:</td>
-              <td>
-                <%= f.collection_select :region_code_county, Region.order(:iso3166_2).where("length(iso3166_2) = 11"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td class="region-label">City:</td>
-              <td>
-                <%= f.collection_select :region_code_city, Region.order(:iso3166_2).where("length(iso3166_2) = 14"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
-              </td>
-            </tr>
-          </table>
+        <table class="region-table">
+          <tr>
+            <td class="region-label"><b>Region name: &nbsp;</td>
+            <td colspan="2"><%= f.text_field :region, :class => "form-control" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="region-label"><b> Region Code: </b></td>
+            <td>Alliance:</td>
+            <td>
+            <%= f.collection_select :region_code_alliance, Region.order(:iso3166_2).where("length(iso3166_2) = 2"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="region-label">Nation:</td>
+            <td>
+              <%= f.collection_select :region_code_nation, Region.order(:iso3166_2).where("length(iso3166_2) = 5"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="region-label">State:</td>
+            <td>
+              <%= f.collection_select :region_code_state, Region.order(:iso3166_2).where("length(iso3166_2) = 8"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="region-label">County:</td>
+            <td>
+              <%= f.collection_select :region_code_county, Region.order(:iso3166_2).where("length(iso3166_2) = 11"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="region-label">City:</td>
+            <td>
+              <%= f.collection_select :region_code_city, Region.order(:iso3166_2).where("length(iso3166_2) = 14"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
+            </td>
+          </tr>
+        </table>
 
       </div>
 

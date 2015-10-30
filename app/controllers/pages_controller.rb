@@ -34,4 +34,5 @@ class PagesController < ApplicationController
 	    @region_name = region.name
 	end
 
+
 end	

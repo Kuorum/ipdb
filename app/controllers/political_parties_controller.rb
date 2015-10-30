@@ -1,5 +1,6 @@
 class PoliticalPartiesController < ApplicationController
   before_action :set_political_party, only: [:show, :edit, :update, :destroy]
+  before_filter :require_permission, only: [:edit, :update, :destroy]
 
   # GET /political_parties
   # GET /political_parties.json
@@ -84,5 +85,28 @@ class PoliticalPartiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def political_party_params
       params.require(:political_party).permit(:name, :leaning_index, :image)
+    end
+
+    def require_permission  
+      region_id = @political_party.region_id
+
+      has_access = 0
+
+      permission = Permission.where(:user_id => current_user.id)
+      permission.each do |p|
+        regions =  eval(p.permission)
+        regions.each do |region|
+
+          if region == region_id.to_s || current_user.role_id == 1
+            has_access = 1
+          end  
+        
+        end  
+      end
+
+      if has_access == 0
+        redirect_to root_path
+      end  
+
     end
 end

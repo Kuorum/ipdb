@@ -1,0 +1,37 @@
+<h1><span class="glyphicon glyphicon-info-sign"></span> Permission</h1>
+
+<hr/>
+
+<br/>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @permission.user.full_name %>
+</p>
+
+<p>
+  <strong>Permission:</strong>
+  <br/>
+  <div class="row">
+  	<div class="col-md-12">
+	  <%      
+	    permissions = eval(@permission.permission)
+	    permissions.each do |p|
+	      region = Region.find(p)
+	  %>
+      	<div class="tag-cloud"><%= region.name.titleize %></div>  
+  	  <% end %>
+  	</div>  
+  </div>	  
+</p>
+
+
+<br/>
+
+<hr/>
+
+<%= link_to '< Back', permissions_path,  :class => "btn btn-primary btn-sm" %> &nbsp;
+<%= link_to 'Edit', edit_permission_path(@permission),  :class => "btn btn-success btn-sm"  %> 
+

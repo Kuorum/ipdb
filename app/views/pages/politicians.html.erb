@@ -52,7 +52,26 @@
         <td><%= @region_name.titleize %></td>
       	<td>
       		<%= link_to "View details", data, class: "btn btn-info btn-sm" %> &nbsp;
-      		<%= link_to "Edit", edit_datum_path(data), class: "btn btn-success btn-sm" %> 
+          <%
+            region_id = data.region_id
+
+            @has_access = 0
+
+            permission = Permission.where(:user_id => current_user.id)
+            permission.each do |p|
+              regions =  eval(p.permission)
+              regions.each do |region|
+
+                if region == region_id.to_s
+                  @has_access = 1
+                end  
+
+              end  
+            end
+          %>
+          <% if @has_access == 1 || current_user.role_id == 1 %>
+      		  <%= link_to "Edit", edit_datum_path(data), class: "btn btn-success btn-sm" %> 
+          <% end %>
       	</td>
       </tr>
       <% i += 1 %>

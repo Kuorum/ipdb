@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1><span class="glyphicon glyphicon-lock"></span> Permissions To Edit</h1>
+
+<hr/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+    <thead>
+      <tr class="header">
+        <th>ID</th>
+        <th>User</th>
+        <th>Editable Geo Areas</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @permissions.each do |permission| %>
+        <tr>
+          <td><%= permission.id %></td>
+          <td><%= permission.user.full_name %></td>
+          <td>
+            <%
+              
+              permissions = eval(permission.permission)
+              permissions.each do |p|
+                region = Region.find(p)
+            %>
+              <div class="tag-cloud"><%= region.name.titleize %></div>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to 'Show', permission %> &nbsp; | &nbsp;
+            <%= link_to 'Edit', edit_permission_path(permission) %> &nbsp; | &nbsp;
+            <%= link_to 'Destroy', permission, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<%= link_to '+ Add New Permission', new_permission_path, :class => "btn btn-md btn-success" %>

@@ -1,12 +1,12 @@
 class DataController < ApplicationController
   before_action :set_datum, only: [:show, :edit, :update, :destroy]
+  before_filter :require_permission, only: [:edit, :update, :destroy]
 
   # GET /data
   # GET /data.json
   def index
     @data = Datum.all
     @datum = Datum.all
-
 
 
     respond_to do |format|
@@ -92,4 +92,28 @@ class DataController < ApplicationController
     def datum_params
       params.require(:datum).permit(:sourceWebsite, :name, :picture, :politicalParty, :politicalPartyImage, :verified, :likes, :followers, :email, :twitter, :facebook, :linkedin, :googlePlus, :instagram, :pinterest, :blog, :youtubeChannel, :premium, :bio, :quote1, :quote2, :sourceActivity, :lastActivity1Date, :lastActivity2Date, :lastActivity3Date, :lastActivity4Date, :lastActivity5Date, :lastActivity1, :lastActivity2, :lastActivity3, :lastActivity4, :lastActivity5, :lastActivity1Action, :lastActivity2Action, :lastActivity3Action, :lastActivity4Action, :lastActivity5Action, :lastActivity1Outcome, :lastActivity2Outcome, :lastActivity3Outcome, :lastActivity4Outcome, :lastActivity5Outcome, :lastActivity1Link, :lastActivity2Link, :lastActivity3Link, :lastActivity4Link, :lastActivity5Link, :political_leaning_index, :ideology1, :ideology2, :ideology3, :ideology4, :ideology5, :following, :openProjects, :closedProjects, :proposals, :debates, :sponsorships, :victories, :dateOfBirth, :placeOfBirth, :institutionalAddress, :institutionalTelephone, :institutionalFax, :institutionalMobilePhone, :electoralAddress, :electoralTelephone, :electoralFax, :electoralMobile, :phone, :assistants, :completeName, :position, :region, :institution, :constituency, :studies,  :school, :university, :profession, :cvLink, :declarationLink, :officialWebsite, :political_experience1,  :political_experience2,  :political_experience3,  :political_experience4,  :political_experience5, :political_experience1_content, :political_experience2_content, :political_experience3_content, :political_experience4_content, :political_experience5_content, :political_experience1_date, :political_experience2_date, :political_experience3_date, :political_experience4_date, :political_experience5_date, :causes, :cause1, :cause2, :cause3, :cause4, :cause5, :region_code_alliance, :region_code_nation, :region_code_state, :region_code_county, :region_code_city, :constituency_code_alliance, :constituency_code_nation, :constituency_code_state, :constituency_code_country, :constituency_code_city, :known_for1, :known_for2, :known_for3, :known_for4, :known_for5, :known_for_link1, :known_for_link2, :known_for_link3, :known_for_link4, :known_for_link5)
     end
+
+    def require_permission  
+      region_id = @datum.region_id
+
+      has_access = 0
+
+      permission = Permission.where(:user_id => current_user.id)
+      permission.each do |p|
+        regions =  eval(p.permission)
+        regions.each do |region|
+
+          if region == region_id.to_s || current_user.role_id == 1
+            has_access = 1
+          end  
+        
+        end  
+      end
+
+      if has_access == 0
+        redirect_to root_path
+      end  
+
+    end
+
 end

@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :permissions
   resources :geo_area_categories
   resources :geo_areas
   resources :political_parties
   resources :regions
+
   devise_for :users, :controllers => { :registrations => "registrations" }, :skip => [:sessions]
   as :user do
     get 'sign-in' => 'devise/sessions#new', :as => :new_user_session
@@ -12,9 +14,11 @@ Rails.application.routes.draw do
     #get '/users/sign_out' => 'sessions#destroy'
     get '/users/sign_out' => 'devise/sessions#destroy'
 
+    resources :users_admin, :controller => 'users'
 
   end
 
+  resources :users
 
   resources :countries
   get 'home/index'

@@ -31,7 +31,27 @@
 
         <td>
           <%= link_to 'Show', [political_party.region, political_party], :class => "btn btn-sm btn-info" %> &nbsp;
-          <%= link_to 'Edit', edit_region_political_party_path(political_party.region, political_party), :class => "btn btn-sm btn-success" %> &nbsp;
+
+          <%
+            region_id = political_party.region_id
+
+            @has_access = 0
+
+            permission = Permission.where(:user_id => current_user.id)
+            permission.each do |p|
+              regions =  eval(p.permission)
+              regions.each do |region|
+
+                if region == region_id.to_s || current_user.role_id == 1
+                  @has_access = 1
+                end  
+
+              end  
+            end
+          %>
+          <% if @has_access == 1 %>
+            <%= link_to 'Edit', edit_region_political_party_path(political_party.region, political_party), :class => "btn btn-sm btn-success" %> &nbsp;
+          <% end %>
           <%= link_to 'Destroy', [political_party.region, political_party] , method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %>
         </td>
       </tr>

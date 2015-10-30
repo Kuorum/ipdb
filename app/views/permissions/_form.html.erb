@@ -1,0 +1,459 @@
+<style>
+  #region-checkboxes li{
+    list-style-type: none;
+  }
+</style>
+<script>
+$(function(){
+
+    $("#checkAll").change(function () {
+       $("input:checkbox").prop('checked', $(this).prop("checked"));
+    });
+
+    var nations = [];
+    var states = [];
+    var counties = [];
+    var cities = [];
+
+      
+    /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$####$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+    /*                   DYNAMIC DATA FOR REGIONS                  */
+    /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$####$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+
+    /* ################### SET DATA IF EDITING (WHEN THE PAGE FIRST LOAD) ################## */
+    if ( $("#region_code_alliance option:selected").val().length > 0 ) {
+
+      var value = $("#region_code_alliance option:selected").val();
+
+      if (nations.length == 0) {
+        $("#region_code_nation option").each(function(){
+            nations.push(this);
+        });
+      }    
+
+      $('#region_code_nation  option').each(function() {
+        var value2 = this.value
+
+        if (value2.indexOf(value) >= 0) { 
+          //do nothing
+        } else {
+          if (this.value != "") {
+            $(this).detach(); 
+          }
+        }
+        
+      });
+
+    }   
+
+    if ( $("#region_code_nation option:selected").val().length > 0 ) {
+
+      var value = $("#region_code_nation option:selected").val();
+        
+      if (states.length == 0) {
+        $("#region_code_state option").each(function(){
+            states.push(this);
+        });
+      } 
+
+      $('#region_code_state  option').each(function() {
+        var value2 = this.value
+
+        if (value2.indexOf(value) >= 0) { 
+          //do nothing
+          //alert(value2);
+        } else {
+          if (this.value != "") {
+            $(this).detach(); 
+            //alert("detach!");
+          }
+        }  
+      });
+
+    } 
+
+
+    if ( $("#region_code_state option:selected").val().length > 0 ) {
+
+      var value = $("#region_code_state option:selected").val();
+      
+      if (counties.length == 0) {
+        $("#region_code_county option").each(function(){
+            counties.push(this);
+        });
+      } 
+
+      $('#region_code_county  option').each(function() {
+          var value2 = this.value
+
+        if (value2.indexOf(value) >= 0) { 
+          //do nothing
+          //alert(value2);
+        } else {
+          if (this.value != "") {
+            $(this).detach(); 
+            //alert("detach!");
+          }
+        }
+      });
+    } 
+
+    if ( $("#region_code_county option:selected").val().length > 0 ) {
+
+      var value = $("#region_code_county option:selected").val();
+        
+      if (cities.length == 0) {
+        $("#region_code_city option").each(function(){
+            cities.push(this);
+        });
+      } 
+
+      $('#region_code_city  option').each(function() {
+        var value2 = this.value
+
+        if (value2.indexOf(value) >= 0) { 
+          //do nothing
+          //alert(value2);
+        } else {
+          if (this.value != "") {
+            $(this).detach(); 
+            //alert("detach!");
+          }
+        }
+      });
+
+    } 
+
+
+    /* ################### CHANGE DATA (Alliance - Nation)  ################## */
+        
+    $('#region_code_alliance').on('change', function(){
+        
+      var value = $('option:selected',this).attr('value');
+
+      if (nations.length == 0) {
+        $("#region_code_nation option").each(function(){
+            nations.push(this);        
+        });
+      } else {
+        $("#region_code_nation").append("");
+        $("#region_code_nation").append(nations);   
+      }
+
+
+      for (var i=0; i < nations.length; i++){
+
+        if ( nations[i].value != "" && nations[i].value.indexOf(value) >= 0) {   
+
+          var region_id =   nations[i].text.match(/\(([^)]+)\)/)[1]
+
+          $("#region-checkboxes").append('<li class="'+nations[i].value+'"><input class="region_id" name="region_ids[]" type="checkbox" value="' + region_id + '" />&nbsp;'+nations[i].text +'</li>');
+        } 
+
+      }
+
+    
+      $('#region_code_nation  option').each(function() {
+        var value2 = this.value
+
+        if (value2.indexOf(value) >= 0) { 
+          //do nothing
+        } else {
+          if (this.value != "") {
+            $(this).detach(); 
+          }
+        }
+      });
+
+      if (value == ""){
+          $("#region_code_nation").val("").change();
+          $("#region_code_state").val("").change();
+          $("#region_code_county").val("").change();
+          $("#region_code_city").val("").change();
+
+          for (var i=0; i < nations.length; i++){
+            $( "li[class*='"+nations[i].value+"']" ).remove();  
+          }
+
+      }
+
+      //$( "li[id^='"+value+"']" ).show();
+
+      //var i;
+      //for (i = 0; i < nations.length; ++i) {
+        //$("#region-checkboxes").html("<li>"+nations.size+"</li>");
+      //}
+
+    });
+
+
+    /* ################### CHANGE DATA (Nation - State)  ################## */
+    $('#region_code_nation').on('change', function(){
+        
+      var value = $('option:selected',this).attr('value');
+
+      if (states.length == 0) {
+        $("#region_code_state option").each(function(){
+            states.push(this);
+        });
+      } else {
+        $("#region_code_state").append("");
+        $("#region_code_state").append(states);
+      }
+
+      
+      for (var i=0; i < states.length; i++){
+
+        if ( states[i].value != "" && states[i].value.indexOf(value) >= 0) {  
+          var region_id =   states[i].text.match(/\(([^)]+)\)/)[1]
+
+          $("#region-checkboxes").append('<li class="'+states[i].value+'"><input class="region_id" name="region_ids[]" type="checkbox" value="' + region_id + '" />&nbsp;'+states[i].text +'</li>');
+        } 
+
+      }
+      
+
+    
+      $('#region_code_state option').each(function() {
+        var value2 = this.value
+
+        if (value2.indexOf(value) >= 0) { 
+          //do nothing
+        } else {
+          if (this.value != "") {
+            $(this).detach(); 
+          } 
+        }
+        });
+
+        if (value == ""){
+          $("#region_code_state").val("").change();
+          $("#region_code_county").val("").change();
+          $("#region_code_city").val("").change();
+
+          for (var i=0; i < states.length; i++){
+            $( "li[class*='"+states[i].value+"']" ).remove(); 
+          }
+        }
+      
+    });
+
+
+    /* ################### CHANGE DATA (State - County)  ################## */
+    $('#region_code_state').on('change', function(){
+        
+      var value = $('option:selected',this).attr('value');
+
+      if (counties.length == 0) {
+        $("#region_code_county option").each(function(){
+            counties.push(this);
+        });
+      } else {
+        $("#region_code_county").append("");
+        $("#region_code_county").append(counties);
+      }
+
+      for (var i=0; i < counties.length; i++){
+        if ( counties[i].value != "" && counties[i].value.indexOf(value) >= 0) {   
+          var region_id =   counties[i].text.match(/\(([^)]+)\)/)[1]  
+
+          $("#region-checkboxes").append('<li class="'+counties[i].value+'"><input class="region_id" name="region_ids[]" type="checkbox" value="' + region_id + '" />&nbsp;'+counties[i].text +'</li>');
+        } 
+      }
+
+    
+      $('#region_code_county option').each(function() {
+        var value2 = this.value
+
+        if (value2.indexOf(value) >= 0) { 
+          //do nothing
+        } else {
+          if (this.value != "") {
+            $(this).detach(); 
+          }
+        }
+        });
+
+        if (value == ""){
+          $("#region_code_county").val("").change();
+          $("#region_code_city").val("").change();
+
+          for (var i=0; i < counties.length; i++){
+            $( "li[class*='"+counties[i].value+"']" ).remove(); 
+          }
+        }
+
+    });
+
+
+    /* ################### CHANGE DATA (County - City)  ################## */
+    $('#region_code_county').on('change', function(){
+        
+      var value = $('option:selected',this).attr('value');
+
+      if (cities.length == 0) {
+        $("#region_code_city option").each(function(){
+            cities.push(this);
+        });
+      } else {
+        $("#region_code_city").append("");
+        $("#region_code_city").append(cities);
+      }
+
+      for (var i=0; i < cities.length; i++){
+        if ( cities[i].value != "" && cities[i].value.indexOf(value) >= 0) {  
+          var region_id =   cities[i].text.match(/\(([^)]+)\)/)[1]
+
+          $("#region-checkboxes").append('<li class="'+cities[i].value+'"><input class="region_id" name="region_ids[]" type="checkbox" value="' + region_id + '" />&nbsp;'+cities[i].text +'</li>');
+        } 
+      }
+    
+      $('#region_code_city option').each(function() {
+        var value2 = this.value
+
+        if (value2.indexOf(value) >= 0) { 
+          //do nothing
+        } else {
+          if (this.value != "") {
+            $(this).detach(); 
+          }
+        }
+      });
+
+      if (value == ""){
+          for (var i=0; i < cities.length; i++){
+            $( "li[class*='"+cities[i].value+"']" ).remove(); 
+          }
+      }
+
+    
+    });
+
+  var countChecked = function() {
+    
+    var sList = "";
+    $('input[type=checkbox]').each(function () {
+        var sThisVal = (this.checked ? "1" : "0");
+        sList += (sList=="" ? sThisVal : "," + sThisVal);
+    });
+  
+  };
+   
+  $( "input[type=checkbox]" ).on( "click", countChecked );
+
+
+});
+</script>
+
+<%= form_for(@permission) do |f| %>
+  <% if @permission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@permission.errors.count, "error") %> prohibited this permission from being saved:</h2>
+
+      <ul>
+      <% @permission.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <h4>User</h4><br/>
+      <%= f.collection_select :user_id, User.order(:id), :id, :full_name, {include_blank: true}, {class: "form-control"} %>
+  </div>
+
+  <br/>
+
+  <% if !@permission.new_record? %>
+    <div class="form-group">
+      <h4>Current Permission</h4>
+      <%      
+        permissions = eval(@permission.permission)
+        permissions.each do |p|
+          region = Region.find(p)
+      %>
+        <div class="tag-cloud"><%= region.name.titleize %></div>
+      <% end %>
+
+    </div>
+  <% end %>
+
+  <br/><br/><br/><br/>
+
+  <div class="form-group">
+    <h4> Change Permission</h4>
+    <p><i>&nbsp;&nbsp;&nbsp; Change Geo Areas that this user are allowed to edit</i></p>
+    
+    <hr/>
+
+    <div class="row">
+      <div class="col-md-6">
+        <table class="region-table">
+          <tr>
+            <td></td>
+            <td class="region-label">Alliance:</td>
+            <td>
+              <% @alliances = Region.order(:iso3166_2).where("length(iso3166_2) = 2") %>
+              <%= select_tag "region_code_alliance", options_from_collection_for_select(@alliances, :iso3166_2, :iso_and_name), { include_blank: true, class: "form-control"} %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="region-label">Nation:</td>
+            <td>
+              <% @nations = Region.order(:iso3166_2).where("length(iso3166_2) = 5") %>
+              <%= select_tag "region_code_nation", options_from_collection_for_select(@nations, :iso3166_2, :iso_and_name), { include_blank: true, class: "form-control"} %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="region-label">State:</td>
+            <td>
+              <% @nations = Region.order(:iso3166_2).where("length(iso3166_2) = 8") %>
+              <%= select_tag "region_code_state", options_from_collection_for_select(@nations, :iso3166_2, :iso_and_name), { include_blank: true, class: "form-control"} %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="region-label">County:</td>
+            <td>
+              <% @counties = Region.order(:iso3166_2).where("length(iso3166_2) = 11") %>
+              <%= select_tag "region_code_county", options_from_collection_for_select(@counties, :iso3166_2, :iso_and_name), { include_blank: true, class: "form-control"} %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="region-label">City:</td>
+            <td>
+              <% @cities = Region.order(:iso3166_2).where("length(iso3166_2) = 14") %>
+              <%= select_tag "region_code_city", options_from_collection_for_select(@cities, :iso3166_2, :iso_and_name), { include_blank: true, class: "form-control"} %>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <br/>
+        
+        <input type="checkbox" id="checkAll" class="checkAll" /> <b>Check All</b>
+        
+        <br/><br/>
+        
+        <ul id="region-checkboxes">
+        </ul>
+
+
+      </div>
+    </div>
+  </div>
+
+  <br/><br/>
+
+  <div class="actions">
+    <% if @permission.new_record? %>
+      <%= f.submit "Add permission", :class => "btn btn-success btn-lg btn-block" %>
+    <% else %>
+      <%= f.submit "Change permission", :class => "btn btn-success btn-lg btn-block" %>
+    <% end %>  
+  </div>
+<% end %>

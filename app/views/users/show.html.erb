@@ -1,0 +1,48 @@
+<h1><span class="glyphicon glyphicon-info-sign"></span> User info</h1>
+
+<hr/>
+
+<br/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+    <thead>
+      <tr class="header">
+        <th>Column</th>
+        <th>Details</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tr>
+      <td><b>ID</b></td>
+      <td><%= @user.id %><td>
+    </tr>
+
+    <tr>
+      <td><b>Full name</b></td>
+      <td><%= @user.full_name %><td>
+    </tr>
+
+    <tr>
+      <td><b>Email</b></td>
+      <td><%= @user.email %><td>
+    </tr>
+
+    <tr>
+      <td><b>Role</b></td>
+      <td>
+        <%= @user.role.name %>
+      <td>
+    </tr>
+
+    
+  </table>
+</div>  
+
+
+<br/>
+
+<hr/>
+
+<%= link_to '< Back', users_path, :class => "btn btn-md btn-primary" %>
+&nbsp; <%= link_to 'Edit', edit_user_path(@user), :class => "btn btn-success btn-md" %>
