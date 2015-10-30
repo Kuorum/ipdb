@@ -77,7 +77,7 @@ class UsersController < ApplicationController
     end
 
     def require_permission
-      if current_user.role_id != 3
+      if current_user.role_id != 1
         redirect_to root_path
       end 
     end 
