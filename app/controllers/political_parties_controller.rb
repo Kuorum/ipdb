@@ -97,12 +97,16 @@ class PoliticalPartiesController < ApplicationController
         regions =  eval(p.permission)
         regions.each do |region|
 
-          if region == region_id.to_s || current_user.role_id == 1
+          if region == region_id.to_s 
             has_access = 1
           end  
         
         end  
       end
+
+      if current_user.role_id == 1
+        has_access = 1
+      end  
 
       if has_access == 0
         redirect_to root_path
