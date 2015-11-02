@@ -220,10 +220,10 @@ class ProcessController < ApplicationController
   end  
 
 
- # def scrape
-  #  region_id = params[:region_id]
+  def scrape
+   #region_id = params[:region_id]
 
-   # region = Region.find(region_id)
+   #region = Region.find(region_id)
    # region_code = region.iso3166_2 
 
    # region_file_name = region_code.gsub("-", "_")
@@ -241,8 +241,8 @@ class ProcessController < ApplicationController
      # %x[rake #{scrape_update_script}]
    # end
     
-   # redirect_to :back  
-#  end 
+    redirect_to :back  
+  end 
 
 
 end
