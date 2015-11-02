@@ -95,16 +95,58 @@ class ProcessController < ApplicationController
           created_at = data.created_at
           updated_at = data.updated_at
           causes = data.causes
-          region_code_alliance = data.region_code_alliance
-          region_code_nation = data.region_code_nation
-          region_code_state = data.region_code_state
-          region_code_county = data.region_code_county
-          region_code_city = data.region_code_city
-          constituency_code_alliance = data.constituency_code_alliance
-          constituency_code_nation = data.constituency_code_nation
-          constituency_code_state = data.constituency_code_state
-          constituency_code_county = data.constituency_code_county
-          constituency_code_city = data.constituency_code_city
+          
+          region_code_alliance = ""  
+          if data.region_code_alliance != "" && !data.region_code_alliance.nil?
+            region_code_alliance = data.region_code_alliance.reverse[0..1].reverse
+          end
+          
+          region_code_nation = ""
+          if data.region_code_nation != "" && !data.region_code_nation.nil?
+            region_code_nation = data.region_code_nation.reverse[0..1].reverse
+          end
+
+          region_code_state = ""
+          if data.region_code_state != "" && !data.region_code_state.nil?
+            region_code_state = data.region_code_state.reverse[0..1].reverse
+          end
+
+          region_code_county = ""
+          if data.region_code_county != "" && !data.region_code_county.nil?
+            region_code_county = data.region_code_county.reverse[0..1].reverse
+          end
+
+          region_code_city = ""
+          if data.region_code_city != "" && !data.region_code_city.nil?
+            region_code_city = data.region_code_city.reverse[0..1].reverse
+          end
+
+          constituency_code_alliance = ""
+          if data.constituency_code_alliance != "" && !data.constituency_code_alliance.nil?
+            constituency_code_alliance = data.constituency_code_alliance.reverse[0..1].reverse
+          end
+
+          constituency_code_nation = ""
+          if data.constituency_code_nation != "" && !data.constituency_code_nation.nil?
+            constituency_code_nation = data.constituency_code_nation.reverse[0..1].reverse
+          end
+
+          constituency_code_state = ""
+          if data.constituency_code_state != "" && !data.constituency_code_state.nil?
+            constituency_code_state = data.constituency_code_state.reverse[0..1].reverse
+          end
+
+          constituency_code_county = ""
+          if data.constituency_code_county != "" && !data.constituency_code_county.nil?
+            constituency_code_county = data.constituency_code_county.reverse[0..1].reverse
+          end
+
+          constituency_code_city = ""
+          if data.constituency_code_city != "" && !data.constituency_code_city.nil?
+            constituency_code_city = data.constituency_code_city.reverse[0..1].reverse
+          end
+
+
           political_leaning_index = data.political_leaning_index
           cause1 = data.cause1
           cause2 = data.cause2
