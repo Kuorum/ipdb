@@ -307,58 +307,145 @@
     </tr>
   </thead> 
 
-  <tr><td> 
-    <strong>Political party</strong></td><td>
-    <%= @datum.politicalParty %>
-  </td> </tr>
-
-  <%
+  <%  
     party_image = ""  
+    leaning_index = 0.0
     ideology1 = 0.0
     ideology2 = 0.0
     ideology3 = 0.0
     ideology4 = 0.0
     ideology5 = 0.0
 
-    political_party = PoliticalParty.where("name LIKE ?",  '%'+@datum.politicalParty+'%')
-    political_party.each do |pp|
-      party_image = pp.image
-      ideology1 = pp.leaning_index
-      ideology2 = pp.leaning_index
-      ideology3 = pp.leaning_index
-      ideology4 = pp.leaning_index
-      ideology5 = pp.leaning_index
+    party_name = ""
+
+    if @datum.politicalParty != ""
+      political_party = PoliticalParty.where("name LIKE ?",  '%'+@datum.politicalParty+'%')
+      political_party.each do |pp|
+        
+        if @datum.politicalPartyImage != "" && !@datum.politicalPartyImage.blank? 
+          party_image = @datum.politicalPartyImage
+        else
+          party_image = pp.image
+        end
+
+        if @datum.political_leaning_index != "" && !@datum.political_leaning_index.blank? 
+          leaning_index = @datum.political_leaning_index        
+        else
+          leaning_index = pp.leaning_index
+        end
+
+        if @datum.ideology1 != "" && !@datum.ideology1.blank?
+          ideology1 = @datum.ideology1
+        else
+          ideology1 = pp.leaning_index  
+        end  
+
+        if @datum.ideology2 != "" && !@datum.ideology2.blank?
+          ideology2 = @datum.ideology2
+        else
+          ideology2 = pp.leaning_index  
+        end 
+
+        if @datum.ideology3 != "" && !@datum.ideology3.blank?
+          ideology3 = @datum.ideology3
+        else
+          ideology3 = pp.leaning_index  
+        end 
+
+        if @datum.ideology4 != "" && !@datum.ideology4.blank?
+          ideology4 = @datum.ideology4
+        else
+          ideology4 = pp.leaning_index  
+        end 
+
+        if @datum.ideology5 != "" && !@datum.ideology5.blank?
+          ideology5 = @datum.ideology5
+        else
+          ideology5 = pp.leaning_index  
+        end 
+        
+      end  
     end  
   %>
 
-  <tr><td> 
-    <strong>Political party image</strong></td><td>
-    <%= party_image %>
-  </td> </tr>
+  <tr>
+    <td> 
+      <strong>Political party</strong>
+    </td>
+    <td>
+      <%= @datum.politicalParty %>  
+    </td> 
+  </tr>
 
-  <tr><td> 
-    <strong>Ideology 1</strong></td><td>
-    <%= @datum.ideology1 %>
-  </td> </tr>
+  <tr>
+    <td><strong>Political party image</strong></td>
+    <td>
+      <% if @datum.politicalPartyImage != "" && !@datum.politicalPartyImage.nil? %>  
+        <%= @datum.politicalPartyImage %>
+      <% else %>  
+        <%= party_image %>
+      <% end %>
+    </td> 
+  </tr>
+
+  <tr>
+    <td>
+      <strong>Political party leaning index</strong>
+    </td>
+    <td>
+      <% if @datum. political_leaning_index != "" && !@datum. political_leaning_index.nil? %>  
+        <%= @datum. political_leaning_index %>
+      <% else %>
+        <%= leaning_index %>
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><strong>Ideology 1</strong></td>
+    <td>
+      <% if @datum.ideology1 != "" && !@datum.ideology1.nil? %> 
+        <%= @datum.ideology1 %>
+      <% else %>
+        <%= ideology1 %>  
+      <% end %>  
+    </td> 
+  </tr>
 
   <tr><td> 
     <strong>Ideology 2</strong></td><td>
-    <%= @datum.ideology2 %>
+      <% if @datum.ideology2 != "" && !@datum.ideology2.nil? %> 
+        <%= @datum.ideology2 %>
+      <% else %>
+        <%= ideology2 %>  
+      <% end %> 
   </td> </tr>
 
   <tr><td> 
     <strong>Ideology 3</strong></td><td>
-    <%= @datum.ideology3 %>
+      <% if @datum.ideology3 != "" && !@datum.ideology3.nil? %> 
+        <%= @datum.ideology3 %>
+      <% else %>
+        <%= ideology3 %>  
+      <% end %> 
   </td> </tr>
 
   <tr><td> 
     <strong>Ideology 4</strong></td><td>
-    <%= @datum.ideology4 %>
+    <% if @datum.ideology4 != "" && !@datum.ideology4.nil? %> 
+      <%= @datum.ideology4 %>
+    <% else %>
+      <%= ideology4 %>  
+    <% end %>
   </td> </tr>
 
   <tr><td> 
     <strong>Ideology 5</strong></td><td>
-    <%= @datum.ideology5 %>
+    <% if @datum.ideology5 != "" && !@datum.ideology5.nil? %> 
+      <%= @datum.ideology5 %>
+    <% else %>
+      <%= ideology5 %>  
+    <% end %>
   </td> </tr>
 
   </table>

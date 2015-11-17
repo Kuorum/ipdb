@@ -277,59 +277,164 @@
     <%= f.collection_select :politicalParty, PoliticalParty.order(:name), :name, :name, {include_blank: true}, {class: "form-control"} %>
   </div>
   
-  <div class="form-group">
-    <%= f.label :political_Party_Image %><br>
- 
-    <%  
-      party_image = ""  
-      ideology1 = 0.0
-      ideology2 = 0.0
-      ideology3 = 0.0
-      ideology4 = 0.0
-      ideology5 = 0.0
+  <%  
+    party_image = ""  
+    leaning_index = 0.0
+    ideology1 = 0.0
+    ideology2 = 0.0
+    ideology3 = 0.0
+    ideology4 = 0.0
+    ideology5 = 0.0
 
-      party_name = ""
+    party_name = ""
 
-      if @datum.politicalParty != ""
-        political_party = PoliticalParty.where("name LIKE ?",  '%'+@datum.politicalParty+'%')
-        political_party.each do |pp|
+    if @datum.politicalParty != ""
+      political_party = PoliticalParty.where("name LIKE ?",  '%'+@datum.politicalParty+'%')
+      political_party.each do |pp|
+        
+        if @datum.politicalPartyImage != "" && !@datum.politicalPartyImage.blank? 
+          party_image = @datum.politicalPartyImage
+        else
           party_image = pp.image
-          ideology1 = pp.leaning_index
-          ideology2 = pp.leaning_index
-          ideology3 = pp.leaning_index
-          ideology4 = pp.leaning_index
-          ideology5 = pp.leaning_index
-        end  
-      end  
+        end
 
-      #party_image =  political_party.region_id
-    %>
-    <%= f.text_field :politicalPartyImage, :class => "form-control", :value => party_image, :disabled => "disabled" %><br>
+        if @datum.political_leaning_index != "" && !@datum.political_leaning_index.blank? 
+          leaning_index = @datum.political_leaning_index        
+        else
+          leaning_index = pp.leaning_index
+        end
+
+        if @datum.ideology1 != "" && !@datum.ideology1.blank?
+          ideology1 = @datum.ideology1
+        else
+          ideology1 = pp.leaning_index  
+        end  
+
+        if @datum.ideology2 != "" && !@datum.ideology2.blank?
+          ideology2 = @datum.ideology2
+        else
+          ideology2 = pp.leaning_index  
+        end 
+
+        if @datum.ideology3 != "" && !@datum.ideology3.blank?
+          ideology3 = @datum.ideology3
+        else
+          ideology3 = pp.leaning_index  
+        end 
+
+        if @datum.ideology4 != "" && !@datum.ideology4.blank?
+          ideology4 = @datum.ideology4
+        else
+          ideology4 = pp.leaning_index  
+        end 
+
+        if @datum.ideology5 != "" && !@datum.ideology5.blank?
+          ideology5 = @datum.ideology5
+        else
+          ideology5 = pp.leaning_index  
+        end 
+
+      end  
+    end  
+  %>
+
+  <div class="form-group">
+    <%= f.label :political_leaning_indexs %><br>
+    
+    <% if @datum.new_record? %>
+      <%= f.text_field :political_leaning_index, :class => "form-control" %><br>    
+    <% else %>
+      <% if @datum.political_leaning_index != "" && !@datum.political_leaning_index.blank? %>
+        <%= f.text_field :political_leaning_index, :class => "form-control", :value => @datum.political_leaning_index %><br> 
+      <% else %>
+        <%= f.text_field :political_leaning_index, :class => "form-control", :value => leaning_index %><br>     
+      <% end %>
+    <% end %>
   </div>
 
-   <div class="form-group">
+  <div class="form-group">
+    <%= f.label :political_Party_Image %><br>
+    
+    <% if @datum.new_record? %>
+      <%= f.text_field :politicalPartyImage, :class => "form-control" %><br>    
+    <% else %>
+      <% if @datum.politicalPartyImage != "" && !@datum.politicalPartyImage.nil? %>
+        <%= f.text_field :politicalPartyImage, :class => "form-control", :value => @datum.politicalPartyImage %><br> 
+      <% else %>
+        <%= f.text_field :politicalPartyImage, :class => "form-control", :value => party_image %><br>     
+      <% end %>
+    <% end %>
+  
+  </div>
+
+  <div class="form-group">
     <%= f.label :ideology_1 %><br>
-    <%= f.text_field :ideology1, :class => "form-control", :value => ideology1, :disabled => "disabled"  %>
+
+    <% if @datum.new_record? %>
+      <%= f.text_field :ideology1, :class => "form-control" %><br>    
+    <% else %>
+      <% if @datum.ideology1 != "" && !@datum.ideology1.nil? %>
+        <%= f.text_field :ideology1, :class => "form-control", :value => @datum.ideology1 %><br> 
+      <% else %>
+        <%= f.text_field :ideology1, :class => "form-control", :value => ideology1 %><br> <br>     
+      <% end %>
+    <% end %>
   </div>
   
   <div class="form-group">
     <%= f.label :ideology_2 %><br>
-    <%= f.text_field :ideology2, :class => "form-control", :value => ideology2, :disabled => "disabled" %>
+
+    <% if @datum.new_record? %>
+      <%= f.text_field :ideology2, :class => "form-control" %><br>    
+    <% else %>
+      <% if @datum.ideology2 != "" && !@datum.ideology2.nil? %>
+        <%= f.text_field :ideology2, :class => "form-control", :value => @datum.ideology2 %><br> 
+      <% else %>
+        <%= f.text_field :ideology2, :class => "form-control", :value => ideology2 %><br> <br>     
+      <% end %>
+    <% end %>
   </div>
   
   <div class="form-group">
     <%= f.label :ideology_3 %><br>
-    <%= f.text_field :ideology3, :class => "form-control", :value => ideology3, :disabled => "disabled" %>
+    
+    <% if @datum.new_record? %>
+      <%= f.text_field :ideology3, :class => "form-control" %><br>    
+    <% else %>
+      <% if @datum.ideology3 != "" && !@datum.ideology3.nil? %>
+        <%= f.text_field :ideology3, :class => "form-control", :value => @datum.ideology3 %><br> 
+      <% else %>
+        <%= f.text_field :ideology3, :class => "form-control", :value => ideology3 %><br> <br>     
+      <% end %>
+    <% end %>
   </div>
   
   <div class="form-group">
     <%= f.label :ideology_4 %><br>
-    <%= f.text_field :ideology4, :class => "form-control", :value => ideology4, :disabled => "disabled" %>
+    
+    <% if @datum.new_record? %>
+      <%= f.text_field :ideology4, :class => "form-control" %><br>    
+    <% else %>
+      <% if @datum.ideology3 != "" && !@datum.ideology3.nil? %>
+        <%= f.text_field :ideology4, :class => "form-control", :value => @datum.ideology4 %><br> 
+      <% else %>
+        <%= f.text_field :ideology4, :class => "form-control", :value => ideology4 %><br> <br>     
+      <% end %>
+    <% end %>
   </div>
   
   <div class="form-group">
     <%= f.label :ideology_5 %><br>
-    <%= f.text_field :ideology5, :class => "form-control", :value => ideology5, :disabled => "disabled" %>
+
+    <% if @datum.new_record? %>
+      <%= f.text_field :ideology5, :class => "form-control" %><br>    
+    <% else %>
+      <% if @datum.ideology3 != "" && !@datum.ideology3.nil? %>
+        <%= f.text_field :ideology5, :class => "form-control", :value => @datum.ideology5 %><br> 
+      <% else %>
+        <%= f.text_field :ideology5, :class => "form-control", :value => ideology5 %><br> <br>     
+      <% end %>
+    <% end %>
   </div>
   
 

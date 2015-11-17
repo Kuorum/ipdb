@@ -13,7 +13,10 @@
           </td>
           <% if current_user.role_id == 1 %>
             <td>
-              <%= link_to "Scrape new data", scrape_path(:region_id => params[:region_id]), class: "btn btn-primary btn-sm" %>&nbsp;
+              <%= link_to "Soft Scrape", scrape_path(:region_id => params[:region_id]), class: "btn btn-primary btn-sm" %>&nbsp;
+            </td>
+            <td>
+              <%= link_to "Heavy Scrape", scrape_path(:region_id => params[:region_id]), class: "btn btn-danger btn-sm" %>&nbsp;
             </td>
           <% end %>
           <td>

@@ -19,20 +19,62 @@ class ProcessController < ApplicationController
           politicalParty = data.politicalParty
 
           party_image = ""  
+          leaning_index = 0.0
           ideology1 = 0.0
           ideology2 = 0.0
           ideology3 = 0.0
           ideology4 = 0.0
           ideology5 = 0.0
 
-          political_party = PoliticalParty.where("name LIKE ?",  '%'+data.politicalParty+'%')
-          political_party.each do |pp|
-            party_image = pp.image
-            ideology1 = pp.leaning_index
-            ideology2 = pp.leaning_index
-            ideology3 = pp.leaning_index
-            ideology4 = pp.leaning_index
-            ideology5 = pp.leaning_index
+          party_name = ""
+
+          if data.politicalParty != ""
+            political_party = PoliticalParty.where("name LIKE ?",  '%'+data.politicalParty+'%')
+            political_party.each do |pp|
+              
+              if data.politicalPartyImage != "" && !data.politicalPartyImage.blank? 
+                party_image = data.politicalPartyImage
+              else
+                party_image = pp.image
+              end
+
+              if data.political_leaning_index != "" && !data.political_leaning_index.blank? 
+                leaning_index = data.political_leaning_index        
+              else
+                leaning_index = pp.leaning_index
+              end
+
+              if data.ideology1 != "" && !data.ideology1.blank?
+                ideology1 = data.ideology1
+              else
+                ideology1 = pp.leaning_index  
+              end  
+
+              if data.ideology2 != "" && !data.ideology2.blank?
+                ideology2 = data.ideology2
+              else
+                ideology2 = pp.leaning_index  
+              end 
+
+              if data.ideology3 != "" && !data.ideology3.blank?
+                ideology3 = data.ideology3
+              else
+                ideology3 = pp.leaning_index  
+              end 
+
+              if data.ideology4 != "" && !data.ideology4.blank?
+                ideology4 = data.ideology4
+              else
+                ideology4 = pp.leaning_index  
+              end 
+
+              if data.ideology5 != "" && !data.ideology5.blank?
+                ideology5 = data.ideology5
+              else
+                ideology5 = pp.leaning_index  
+              end 
+              
+            end  
           end  
 
           politicalPartyImage = party_image      
