@@ -3,9 +3,8 @@ require 'date'
 require 'json'
 require 'rake-progressbar'
 
-region = '233' 
 region_abbreviation = 'NA-US' #Unites States
-source = 'https://www.congress.gov/'
+
 
 task :scraper_update_NA_US => [:environment] do
 

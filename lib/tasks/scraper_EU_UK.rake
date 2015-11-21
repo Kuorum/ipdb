@@ -10,14 +10,17 @@ task :scraper_EU_UK => [:environment] do
 
 	agent = Mechanize.new
 
-	last_page_number = 1
+	urls = %w[http://www.theyworkforyou.com/peers/ http://www.theyworkforyou.com/mps/]
 
-	for pg_number in 1..last_page_number do
+	url_counter = 1
 
-		puts "Scrapping BEGINS... #{Time.now}"
-		puts "Scrapping page #{pg_number} ..."
+	urls.each do |url|
 
-		page = agent.get("http://www.theyworkforyou.com/peers/")
+		puts "Scrapping page #{url_counter}.."
+		puts "#{Time.now}"
+
+
+		page = agent.get(url)
 		page_links = page.links_with(href: %r{.*/mp/\w+})
 
 		member_links = page_links
@@ -26,65 +29,94 @@ task :scraper_EU_UK => [:environment] do
 
 		  member = link.click
 
-		  source = link.href
+		  source = "http://www.theyworkforyou.com" + link.href
 
 		  name = member.search('.mp-name-and-position h1').text
+
+		  picture = ""
 
 		  if agent.page.image_with(:src => /mps/)
 		  	picture = agent.page.image_with(:src => /mps/).to_s()	
 		  end
 
 		  politicalParty = member.search('.party').text.strip 
+
+		  leaning_index = 0.5
 		 
+		  dateOfBirth = ""
+		  bio = ""
+
 		  # Data from Wiki
 		  if member.link_with(:text => /Wikipedia/)
 			  wiki = member.link_with(:text => /Wikipedia/).click
-			  birthday = wiki.search('.bday').text.strip
+			  dateOfBirth = wiki.search('.bday').text.strip
+			  
+			 
+			  if dateOfBirth != ""
+			  	dateOfBirth = dateOfBirth[0..9].to_time.strftime('%d/%m/%Y 00:00')
+			  end	
+
+			  bio = wiki.search('.vcard+ p').text.strip
+			  if bio == ""
+			  	bio = wiki.search('.mbox-small+ p').text.strip
+			  end	
+
 		  end
 
-		  # Political Activities
-		  activities = [];
 
-		  title = ""
+		officialWebsite = ""
+
+		# ACTIVITY LINK
+		if member.link_with(:text => /Personal website/)
+			officialWebsite = member.link_with(:text => /Personal website/).href
+		end	
+		
+		electoralAddress = ""
+
+		# SET REGION ID (refer data table in db)
+		region_id = 72
+
+		# GET REGION NAME & CODES
+		region_name = "united_kingdom"
+		region = "EU-UK"
+		region_code_alliance = "EU"
+		region_code_nation = "UK"
+		region_code_state = ""
+		region_code_county = ""
+		region_code_city = ""
+
+		constituency_name = ""
+		constituency = ""
+		constituency_code_alliance = "EU"
+		constituency_code_nation = "UK"
+		constituency_code_state = ""
+		constituency_code_county = ""
+		constituency_code_city = ""
+
+		institution = ""
+
+		# Political Activities
+		activities = [];
+
+		title = ""
 		  
-		  #search_link = member.link_with search: '.appearances a'
-		  #search_link = member.search('.appearances a[href]').to_s
-		  search_link = member.links_with search: '.appearances+ p a'
+		search_link = member.links_with search: '.appearances+ p a'
 
-		  #url1 = ""
-		  #match = /href\s*=\s*"([^"]*)"/.match(search_link)
-		  #if match
-			#url1 = match[1]
-		  #end
+		if search_link[0]
+			ap = search_link[0].click
 
-		  #puts "LINK IS: #{search_link.size}"	
-
-		  ap = search_link[0].click
-		  #pages = activity_page.map  do |page| 
-		  	  #ap = page.click	
-
-		  	  #title = ap.search('title').text.strip
-
-		  	  #puts "TITLE IS #{title}"
-
-			  activity_list = ap.search('.search-result--generic')
-			  #puts "TOTAL NO OF ACTIVITIES: #{activity_list.size} " 
-
-			  activity_list.each do |list| 
-
-			  	# ACTIVITY DATE
-			  	#activity_date = link.search('.date').text.strip
+			activity_list = ap.search('.search-result--generic')
+			
+			activity_list.each do |list| 
+			 	# ACTIVITY DATE
 			  	activity_date = list.search('.search-result__title').text.strip
 			  	date = activity_date.scan(/\w+/).values_at(-1, -2, -3)
 			  	activity_date = "#{date[2]}/#{date[1]}/#{date[0]}" 
 			  	activity_date = activity_date.to_time.strftime('%d/%m/%Y 00:00')
-			  	#activity_date = activity_date
-
+			
 			  	# ACTIVITY NAME
 			  	activity_name = list.search('.search-result__title a').text.strip
-			  	#puts "ACTIVITY IS: #{activity_name}" 
-			  	#puts list
-
+			
 			  	# ACTIVITY LINK
 				activity_link = list.at('.search-result__title a[href]').to_s
 				activity_url = ""
@@ -93,33 +125,47 @@ task :scraper_EU_UK => [:environment] do
 					activity_url = match[1]
 				end
 
+				if activity_url != ""
+					activity_url = "http://www.theyworkforyou.com" + activity_url   
+				end	
+
 				# FINAL ACTIVITY
 			  	activity = activity_date + "|" + activity_name + "|" + activity_url
-
-			  	#if (activity_date != "") && (activity_name != "") && (activity_link != "")  
-			  	#	activities.push(activity)
-			  	#end 
-			  	puts "ACTIVITY is: #{activity}"
-
-
-			  
+			  	activities.push(activity)
+			  	#puts "ACTIVITY is: #{activity}"		  
 			  end	
-		  #end
+		  	end
+		 
 
-		  lastActivity1Date = ""
-		  lastActivity2Date = ""
-		  lastActivity3Date = ""
-		  lastActivity1 = ""
-		  lastActivity2 = ""
-		  lastActivity3 = ""
-		  lastActivity1Link = ""
-		  lastActivity2Link = ""
-		  lastActivity3Link = ""
+		lastActivity1Date = ""
+		lastActivity2Date = ""
+		lastActivity3Date = ""
+		lastActivity4Date = ""
+		lastActivity5Date = ""
+		lastActivity1 = ""
+		lastActivity2 = ""
+		lastActivity3 = ""
+		lastActivity4 = ""
+		lastActivity5 = ""
+		lastActivity1Action = ""
+		lastActivity2Action = ""
+		lastActivity3Action = ""
+		lastActivity4Action = ""
+		lastActivity5Action = ""
+		lastActivity1Outcome = ""
+		lastActivity2Outcome = ""
+		lastActivity3Outcome = ""
+		lastActivity4Outcome = ""
+		lastActivity5Outcome = ""
+		lastActivity1Link = ""
+		lastActivity2Link = ""
+		lastActivity3Link = ""
+		lastActivity4Link = ""
+		lastActivity5Link = ""
 
-		  counter = 1
-		  activities.each do |activity|
-		  	
-		  	if counter == 1
+		counter = 1
+		activities.each do |activity|  	
+			if counter == 1
 			  	lastActivity1Date = activity.split('|')[0]
 			  	lastActivity1 = activity.split('|')[1]
 			  	lastActivity1Link = activity.split('|')[2]
@@ -131,79 +177,97 @@ task :scraper_EU_UK => [:environment] do
 		 		lastActivity3Date = activity.split('|')[0]
 		 		lastActivity3 = activity.split('|')[1]
 		    	lastActivity3Link = activity.split('|')[2]
+		    elsif counter == 4
+		 		lastActivity4Date = activity.split('|')[0]
+		 		lastActivity4 = activity.split('|')[1]
+		    	lastActivity4Link = activity.split('|')[2]
+		    elsif counter == 5
+		 		lastActivity5Date = activity.split('|')[0]
+		 		lastActivity5 = activity.split('|')[1]
+		    	lastActivity5Link = activity.split('|')[2]		
 		   	end	
 
 		   	counter += 1
-		  end  
+		end  
 
+		#puts "#{name} | #{birthday} | #{picture} | #{politicalParty} | #{lastActivity5Date} | #{lastActivity5} | #{lastActivity5Link}  "
 
-		  if (lastActivity1Date != "") 
-		  	converted_ldate1 = lastActivity1Date.to_time.strftime('%d/%m/%Y 00:00')
-		  else
-		    converted_ldate1 = lastActivity1Date
-		  end
-
-		  if (lastActivity2Date != "") 
-		  	converted_ldate2 = lastActivity2Date.to_time.strftime('%d/%m/%Y 00:00')
-		  else
-		    converted_ldate2 = lastActivity2Date
-		  end
-
-		  if (lastActivity3Date != "") 
-		  	converted_ldate3 = lastActivity3Date.to_time.strftime('%d/%m/%Y 00:00')
-		  else
-		    converted_ldate3 = lastActivity3Date
-		  end
-
-
-		  url1 = ""
-		  url2 = ""
-		  url3 = ""
-		  url4 = ""
-		  url5 = ""
-
-		  match = /href\s*=\s*"([^"]*)"/.match(lastActivity1Link)
-		  if match
-			url1 = match[1]
-		  end
-
-		  match = /href\s*=\s*"([^"]*)"/.match(lastActivity2Link)
-		  if match
-			url2 = match[1]
-		  end
-
-		  match = /href\s*=\s*"([^"]*)"/.match(lastActivity3Link)
-		  if match
-			url3 = match[1]
-		  end
-
-
-		  #puts "#{name} | #{birthday} | #{picture} | #{politicalParty} | #{lastActivity1Date} | #{lastActivity1} | #{url1} | #{title} "
-
-
-		  # GENERATE JSON
-		  {
-
-		  }
+		# GENERATE JSON
+		{
+			sourceWebsite: source,	
+			name: name.strip,
+			picture: picture,
+			politicalParty: politicalParty,
+			political_leaning_index: leaning_index,
+			ideology1: leaning_index,
+			ideology2: leaning_index,
+			ideology3: leaning_index,
+			ideology4: leaning_index,
+			ideology5: leaning_index,
+			bio: bio,
+			lastActivity1Date:lastActivity1Date,
+			lastActivity2Date:lastActivity2Date,
+			lastActivity3Date:lastActivity3Date,
+			lastActivity4Date:lastActivity4Date,
+			lastActivity5Date:lastActivity5Date,
+			lastActivity1:lastActivity1,
+			lastActivity2:lastActivity2,
+			lastActivity3:lastActivity3,
+			lastActivity4:lastActivity4,
+			lastActivity5:lastActivity5,
+			lastActivity1Action:lastActivity1Action,
+			lastActivity2Action:lastActivity2Action,
+			lastActivity3Action:lastActivity3Action,
+			lastActivity4Action:lastActivity4Action,
+			lastActivity5Action:lastActivity5Action,
+			lastActivity1Outcome:lastActivity1Outcome,
+			lastActivity2Outcome:lastActivity2Outcome,
+			lastActivity3Outcome:lastActivity3Outcome,
+			lastActivity4Outcome:lastActivity4Outcome,
+			lastActivity5Outcome:lastActivity5Outcome,
+			lastActivity1Link:lastActivity1Link,
+			lastActivity2Link:lastActivity2Link,
+			lastActivity3Link:lastActivity3Link,
+			lastActivity4Link:lastActivity4Link,
+			lastActivity5Link:lastActivity5Link,
+			dateOfBirth: dateOfBirth,
+			electoralAddress: electoralAddress,
+			region_id: region_id,
+			region:region_name,
+			region_code_alliance:region_code_alliance,
+			region_code_nation:region_code_nation,
+			region_code_state:region_code_state,
+			region_code_county:region_code_county,
+			region_code_city:region_code_city,
+			constituency:constituency_name,
+			constituency_code_alliance:constituency_code_alliance,
+			constituency_code_nation:constituency_code_nation,
+			constituency_code_state:constituency_code_state,
+			constituency_code_county:constituency_code_county,
+			constituency_code_city:constituency_code_city,
+			institution: institution,
+			officialWebsite: officialWebsite
+		}
 
 		end
+	
+		url_counter = url_counter + 1
 
-		#puts JSON.pretty_generate(members)
-
+		puts JSON.pretty_generate(members)
 
 		# Insert data to database
-		#Datum.create!(members)
+		Datum.create!(members)
+
+	end	
 
 
-		# Set country as scraped
-		#country = Country.find_by_region(region_id)
-		#country.scraped = true
-		#country.save
+	# Set country as scraped
+	#country = Country.find_by_region(region_id)
+	#country.scraped = true
+	#country.save
 
 
-		puts "Scrapping ENDS... #{Time.now}"
-		#puts "Total number of records being scraped: #{count}"
-
-	end
+	puts "Scrapping ENDS... #{Time.now}"
+	#puts "Total number of records being scraped: #{count}"
 
 end
