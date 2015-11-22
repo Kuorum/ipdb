@@ -247,7 +247,7 @@ task :scraper_EU_UK => [:environment] do
 		}
 	end
 	#puts JSON.pretty_generate(members)
-	#Datum.create!(members)
+	Datum.create!(members)
 
 	puts "Scrapping Part 2.."
 	puts "#{Time.now}"
@@ -481,7 +481,7 @@ task :scraper_EU_UK => [:environment] do
 		}
 	end
 	#puts JSON.pretty_generate(members)
-	#Datum.create!(members)
+	Datum.create!(members)
 	
 
 	# Set country as scraped
