@@ -33,6 +33,8 @@ task :scraper_EU_UK => [:environment] do
 
 		  name = member.search('.mp-name-and-position h1').text
 
+		  puts name
+
 		  picture = ""
 
 		  if agent.page.image_with(:src => /mps/)
@@ -253,7 +255,7 @@ task :scraper_EU_UK => [:environment] do
 	
 		url_counter = url_counter + 1
 
-		puts JSON.pretty_generate(members)
+		#puts JSON.pretty_generate(members)
 
 		# Insert data to database
 		Datum.create!(members)
