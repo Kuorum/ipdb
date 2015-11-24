@@ -288,7 +288,7 @@
 
     party_name = ""
 
-    if @datum.politicalParty != ""
+    if @datum.politicalParty != "" && !@datum.new_record? 
       political_party = PoliticalParty.where("name LIKE ?",  '%'+@datum.politicalParty+'%')
       political_party.each do |pp|
         
