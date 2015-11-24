@@ -255,7 +255,7 @@ $(function(){
 
       for (var i=0; i < counties.length; i++){
         if ( counties[i].value != "" && counties[i].value.indexOf(value) >= 0) {   
-          var region_id =   counties[i].text.match(/\(([^)]+)\)/)[1]  
+          var region_id =   counties[i].text.match(/\(([^)]+)\)/)[1]
 
           $("#region-checkboxes").append('<li class="'+counties[i].value+'"><input class="region_id" name="region_ids[]" type="checkbox" value="' + region_id + '" />&nbsp;'+counties[i].text +'</li>');
         } 
@@ -382,6 +382,7 @@ $(function(){
   <br/><br/><br/><br/>
 
   <div class="form-group">
+  <br/><br/><br/><br/><br/>
     <h4> Change Permission</h4>
     <p><i>&nbsp;&nbsp;&nbsp; Change Geo Areas that this user are allowed to edit</i></p>
     
@@ -395,7 +396,7 @@ $(function(){
             <td class="region-label">Alliance:</td>
             <td>
               <% @alliances = Region.order(:iso3166_2).where("length(iso3166_2) = 2") %>
-              <%= select_tag "region_code_alliance", options_from_collection_for_select(@alliances, :iso3166_2, :iso_and_name), { include_blank: true, class: "form-control"} %>
+              <%= select_tag "region_code_alliance", options_from_collection_for_select(@alliances, :iso3166_2, :iso_and_name2), { include_blank: true, class: "form-control"} %>
             </td>
           </tr>
           <tr>
@@ -403,7 +404,7 @@ $(function(){
             <td class="region-label">Nation:</td>
             <td>
               <% @nations = Region.order(:iso3166_2).where("length(iso3166_2) = 5") %>
-              <%= select_tag "region_code_nation", options_from_collection_for_select(@nations, :iso3166_2, :iso_and_name), { include_blank: true, class: "form-control"} %>
+              <%= select_tag "region_code_nation", options_from_collection_for_select(@nations, :iso3166_2, :iso_and_name2), { include_blank: true, class: "form-control"} %>
             </td>
           </tr>
           <tr>
@@ -411,7 +412,7 @@ $(function(){
             <td class="region-label">State:</td>
             <td>
               <% @nations = Region.order(:iso3166_2).where("length(iso3166_2) = 8") %>
-              <%= select_tag "region_code_state", options_from_collection_for_select(@nations, :iso3166_2, :iso_and_name), { include_blank: true, class: "form-control"} %>
+              <%= select_tag "region_code_state", options_from_collection_for_select(@nations, :iso3166_2, :iso_and_name2), { include_blank: true, class: "form-control"} %>
             </td>
           </tr>
           <tr>
@@ -419,7 +420,7 @@ $(function(){
             <td class="region-label">County:</td>
             <td>
               <% @counties = Region.order(:iso3166_2).where("length(iso3166_2) = 11") %>
-              <%= select_tag "region_code_county", options_from_collection_for_select(@counties, :iso3166_2, :iso_and_name), { include_blank: true, class: "form-control"} %>
+              <%= select_tag "region_code_county", options_from_collection_for_select(@counties, :iso3166_2, :iso_and_name2), { include_blank: true, class: "form-control"} %>
             </td>
           </tr>
           <tr>
@@ -427,7 +428,7 @@ $(function(){
             <td class="region-label">City:</td>
             <td>
               <% @cities = Region.order(:iso3166_2).where("length(iso3166_2) = 14") %>
-              <%= select_tag "region_code_city", options_from_collection_for_select(@cities, :iso3166_2, :iso_and_name), { include_blank: true, class: "form-control"} %>
+              <%= select_tag "region_code_city", options_from_collection_for_select(@cities, :iso3166_2, :iso_and_name2), { include_blank: true, class: "form-control"} %>
             </td>
           </tr>
         </table>

@@ -11,52 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+   <div class="form-group">
     <%= f.label :full_name %><br>
-    <%= f.text_field :full_name %>
+    <%= f.text_field :full_name, :class => "form-control" %>
   </div>
-    <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
-  </div>
-    <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :class => "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :mobile %><br>
-    <%= f.text_field :mobile %>
+  <div class="form-group">
+    <%= f.label :password %><br>
+    <%= f.password_field :password, :class => "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :current_residence %><br>
-    <%= f.text_field :current_residence %>
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation, :class => "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :bank_name %><br>
-    <%= f.text_field :bank_name %>
-  </div>
-  <div class="field">
-    <%= f.label :account_no %><br>
-    <%= f.number_field :account_no %>
-  </div>
-  <div class="field">
-    <%= f.label :sort_code %><br>
-    <%= f.text_field :sort_code %>
-  </div>
-  <div class="field">
-    <%= f.label :no_of_landlord_properties %>(if Landlord)<br>
-    <%= f.number_field :landlord_properties %>
-  </div>
-  <div class="field">
-    <%= f.label :no_of_agent_properties %>(if Agent)<br>
-    <%= f.number_field :agent_properties %>
+  <div class="form-group">
+    <%= f.label :role_id %><br>
+    <%= f.collection_select :role_id, Role.order(:id), :id, :name, {include_blank: true}, {class: "form-control"} %>
   </div>
 
-  <br/>
 
   <div class="actions">
     <%= f.submit %>
