@@ -15,6 +15,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Role</th>
         <th></th>
       </tr>
     </thead>
@@ -25,6 +26,7 @@
           <td><b><%= user.id %></b></td>
           <td><%= user.full_name %></td>
           <td><%= user.email %></td>
+          <td><%= user.role.name %></td>
           <td>
             <%= link_to 'View', user, :class => "btn btn-info btn-sm" %> 
             &nbsp; <%= link_to 'Edit', edit_user_path(user), :class => "btn btn-success btn-sm" %>
