@@ -16,6 +16,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Role</th>
+        <th>Supervisor</th>
         <th></th>
       </tr>
     </thead>
@@ -27,6 +28,14 @@
           <td><%= user.full_name %></td>
           <td><%= user.email %></td>
           <td><%= user.role.name %></td>
+          <td>
+            <% if user.supervisor != "" && !user.supervisor.nil? && !user.supervisor.blank? %>
+              <% supervisor = User.find(user.supervisor.to_i)%>
+              <%= supervisor.full_name %>
+            <% else %>
+              -
+            <% end %>
+          </td>
           <td>
             <%= link_to 'View', user, :class => "btn btn-info btn-sm" %> 
             &nbsp; <%= link_to 'Edit', edit_user_path(user), :class => "btn btn-success btn-sm" %>
@@ -43,4 +52,4 @@
 <hr/>
 
 <%= link_to '< Back', root_path, :class => "btn btn-primary btn-md" %> &nbsp;
-<%= link_to 'New User', new_user_path, :class => "btn btn-md btn-success" %>
+<%= link_to '+ New User', new_user_path, :class => "btn btn-md btn-success" %>

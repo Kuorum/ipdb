@@ -35,6 +35,18 @@
       <td>
     </tr>
 
+    <tr>
+      <td><b>Supervisor</b></td>
+      <td>
+        <% if @user.supervisor != "" && !@user.supervisor.nil? && !@user.supervisor.blank? %>
+          <% supervisor = User.find(@user.supervisor.to_i)%>
+          <%= supervisor.full_name %>
+        <% else %>
+          -
+        <% end %>
+      <td>
+    </tr>
+
     
   </table>
 </div>  

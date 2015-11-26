@@ -1,6 +1,6 @@
 class DataController < ApplicationController
   before_action :set_datum, only: [:show, :edit, :update, :destroy]
-  before_filter :require_permission, only: [:edit, :update, :destroy]
+  before_filter :require_permission, only: [:create, :edit, :update, :destroy]
 
   # GET /data
   # GET /data.json
@@ -63,6 +63,7 @@ class DataController < ApplicationController
   def update
     respond_to do |format|
       if @datum.update(datum_params)
+
         format.html { redirect_to @datum, notice: 'Politician details was successfully updated.' }
         format.json { render :show, status: :ok, location: @datum }
       else
