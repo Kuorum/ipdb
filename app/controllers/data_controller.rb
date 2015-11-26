@@ -110,7 +110,7 @@ class DataController < ApplicationController
         end  
       end
 
-      if current_user.role_id == 1 || current_user.role_id == 3
+      if current_user.role_id == 1 
         has_access = 1
       end  
 
