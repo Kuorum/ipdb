@@ -49,11 +49,11 @@ ActiveRecord::Schema.define(version: 20151126143147) do
     t.text     "lastActivity2",                 limit: 65535
     t.text     "lastActivity3",                 limit: 65535
     t.text     "lastActivity4",                 limit: 65535
-    t.decimal  "ideology1",                                   precision: 64, scale: 12
-    t.decimal  "ideology2",                                   precision: 64, scale: 12
-    t.decimal  "ideology3",                                   precision: 64, scale: 12
-    t.decimal  "ideology4",                                   precision: 64, scale: 12
-    t.decimal  "ideology5",                                   precision: 64, scale: 12
+    t.decimal  "ideology1",                                        precision: 64, scale: 12
+    t.decimal  "ideology2",                                        precision: 64, scale: 12
+    t.decimal  "ideology3",                                        precision: 64, scale: 12
+    t.decimal  "ideology4",                                        precision: 64, scale: 12
+    t.decimal  "ideology5",                                        precision: 64, scale: 12
     t.integer  "following",                     limit: 4
     t.integer  "openProjects",                  limit: 4
     t.integer  "closedProjects",                limit: 4
@@ -84,8 +84,8 @@ ActiveRecord::Schema.define(version: 20151126143147) do
     t.string   "cvLink",                        limit: 255
     t.string   "declarationLink",               limit: 255
     t.string   "officialWebsite",               limit: 255
-    t.datetime "created_at",                                                            null: false
-    t.datetime "updated_at",                                                            null: false
+    t.datetime "created_at",                                                                 null: false
+    t.datetime "updated_at",                                                                 null: false
     t.text     "politicalExperience",           limit: 65535
     t.text     "causes",                        limit: 65535
     t.string   "region_code_alliance",          limit: 255
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20151126143147) do
     t.string   "constituency_code_state",       limit: 255
     t.string   "constituency_code_county",      limit: 255
     t.string   "constituency_code_city",        limit: 255
-    t.decimal  "political_leaning_index",                     precision: 64, scale: 12
+    t.decimal  "political_leaning_index",                          precision: 64, scale: 12
     t.string   "cause1",                        limit: 255
     t.string   "cause2",                        limit: 255
     t.string   "cause3",                        limit: 255
@@ -125,11 +125,11 @@ ActiveRecord::Schema.define(version: 20151126143147) do
     t.string   "lastActivity3Action",           limit: 255
     t.string   "lastActivity4Action",           limit: 255
     t.string   "lastActivity5Action",           limit: 255
-    t.string   "lastActivity1Outcome",          limit: 255
-    t.string   "lastActivity2Outcome",          limit: 255
-    t.string   "lastActivity3Outcome",          limit: 255
-    t.string   "lastActivity4Outcome",          limit: 255
-    t.string   "lastActivity5Outcome",          limit: 255
+    t.text     "lastActivity1Outcome",          limit: 4294967295
+    t.text     "lastActivity2Outcome",          limit: 4294967295
+    t.text     "lastActivity3Outcome",          limit: 4294967295
+    t.text     "lastActivity4Outcome",          limit: 4294967295
+    t.text     "lastActivity5Outcome",          limit: 4294967295
     t.string   "political_experience1",         limit: 255
     t.string   "political_experience2",         limit: 255
     t.string   "political_experience3",         limit: 255

@@ -4,7 +4,7 @@ require 'time'
 require 'json'
 
 
-region_abbreviation = 'EU-ES' #Unites States
+region_abbreviation = 'EU-ES' # Espana (Spain)
 
 task :scraper_EU_ES => [:environment] do
 
@@ -185,6 +185,7 @@ task :scraper_EU_ES => [:environment] do
 				activity_outcome = "Tramitado"
 			elsif activity.search(".fa-clock-o")
 				activity_outcome = "En tramitación"
+			else	
 			end	
 
 			link = activity.at('.enlaceExtIcon[href]').to_s
@@ -197,17 +198,17 @@ task :scraper_EU_ES => [:environment] do
 			if counter == 1 
 			  	lastActivity1Date = activity_date
 			  	lastActivity1 = activity_name
-			  	lastActivity1Outcome = activity_name
+			  	lastActivity1Outcome = activity_outcome
 			  	lastActivity1Link = activity_link
 			elsif counter == 2
 				lastActivity2Date = activity_date
 			  	lastActivity2 = activity_name
-			  	lastActivity2Outcome = activity_name
+			  	lastActivity2Outcome = activity_outcome
 			  	lastActivity2Link = activity_link
 			elsif counter == 3
 				lastActivity3Date = activity_date
 			  	lastActivity3 = activity_name
-			  	lastActivity3Outcome = activity_name
+			  	lastActivity3Outcome = activity_outcome
 			  	lastActivity3Link = activity_link
 			end 	
 
@@ -336,10 +337,10 @@ task :scraper_EU_ES => [:environment] do
 
 	end
 
-	puts JSON.pretty_generate(members)
+	#puts JSON.pretty_generate(members)
 
 	# Insert data to database
-	#Datum.create!(members)
+	Datum.create!(members)
 
 	puts "Scrapping ENDS... #{Time.now}"
 
