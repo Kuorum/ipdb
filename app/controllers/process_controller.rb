@@ -5,6 +5,7 @@ class ProcessController < ApplicationController
     region_id = params[:region_id]
     @datum = Datum.where(:region_id => region_id)
 
+    region = ""
 
     csv_string = CSV.generate do |csv|
          #csv << Datum.column_names
@@ -19,12 +20,12 @@ class ProcessController < ApplicationController
           politicalParty = data.politicalParty
 
           party_image = ""  
-          leaning_index = 0.0
-          ideology1 = 0.0
-          ideology2 = 0.0
-          ideology3 = 0.0
-          ideology4 = 0.0
-          ideology5 = 0.0
+          leaning_index = 0.5
+          ideology1 = 0.5
+          ideology2 = 0.5
+          ideology3 = 0.5
+          ideology4 = 0.5
+          ideology5 = 0.5
 
           party_name = ""
 
@@ -254,10 +255,12 @@ class ProcessController < ApplicationController
 
          end
     end         
+
+   date = Time.now.strftime("%Y%m%d")
   
    send_data csv_string,
    :type => 'text/csv; charset=iso-8859-1; header=present',
-   :disposition => "attachment; filename=politicians.csv" 
+   :disposition => "attachment; filename=#{date}_#{region}.csv" 
 
   end  
 

@@ -47,6 +47,7 @@
    	  	<th></th>
    	  	<th>Name</th>
    	  	<th>Country</th>
+        <th>Political Party</th>
    	  	<th></th>
    	  </tr>
     </thead>  
@@ -58,6 +59,7 @@
 
         <td><%= link_to "#{data.name}", data %></td>
         <td><%= @region_name.titleize %></td>
+        <td><%= data.politicalParty %></td>
       	<td>
       		<%= link_to "View details", data, class: "btn btn-info btn-sm" %> &nbsp;
           <%

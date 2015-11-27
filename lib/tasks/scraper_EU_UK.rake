@@ -327,7 +327,7 @@ task :scraper_EU_UK => [:environment] do
 		institution = ""
 
 		# Political Activities
-		activities = [];
+		activities = []
 
 		title = ""
 		  
