@@ -30,7 +30,7 @@ class ProcessController < ApplicationController
           party_name = ""
 
           if data.politicalParty != ""
-            political_party = PoliticalParty.where("name LIKE ?",  '%'+data.politicalParty+'%')
+            political_party = PoliticalParty.where("name = ?",  "#{data.politicalParty}")
             political_party.each do |pp|
               
               if data.politicalPartyImage != "" && !data.politicalPartyImage.blank? 

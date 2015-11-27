@@ -274,7 +274,12 @@
 
   <div class="form-group">
     <%= f.label :political_Party %><br>
-    <%= f.collection_select :politicalParty, PoliticalParty.order(:name), :name, :name, {include_blank: true}, {class: "form-control"} %>
+    <% if @datum.new_record?  %>
+      <%= f.collection_select :politicalParty, PoliticalParty.where(:region_id => params[:region_id]).order(:name), :name, :name, {include_blank: true}, {class: "form-control"} %>
+    <% else %>
+      <%= f.collection_select :politicalParty, PoliticalParty.where(:region_id => @datum.region_id).order(:name), :name, :name, {include_blank: true}, {class: "form-control"} %>
+    <% end %>
+  
   </div>
   
   <%  

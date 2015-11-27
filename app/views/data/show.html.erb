@@ -318,8 +318,11 @@
 
     party_name = ""
 
-    if @datum.politicalParty != ""
-      political_party = PoliticalParty.where("name LIKE ?",  '%'+@datum.politicalParty+'%')
+
+    if @datum.politicalParty != "" && !@datum.politicalParty.blank? 
+     
+
+      political_party = PoliticalParty.where("name = ?",  "#{@datum.politicalParty}")
       political_party.each do |pp|
         
         if @datum.politicalPartyImage != "" && !@datum.politicalPartyImage.blank? 
