@@ -317,13 +317,15 @@
     ideology5 = 0.0
 
     party_name = ""
-
+    party_id = 0
 
     if @datum.politicalParty != "" && !@datum.politicalParty.blank? 
      
 
       political_party = PoliticalParty.where("name = ?",  "#{@datum.politicalParty}")
       political_party.each do |pp|
+
+        party_id = pp.id
         
         if @datum.politicalPartyImage != "" && !@datum.politicalPartyImage.blank? 
           party_image = @datum.politicalPartyImage
@@ -370,6 +372,15 @@
       end  
     end  
   %>
+
+  <tr>
+    <td> 
+      <strong>Political party id</strong>
+    </td>
+    <td>
+      <%= party_id %>  
+    </td> 
+  </tr>
 
   <tr>
     <td> 
