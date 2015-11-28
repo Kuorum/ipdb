@@ -26,7 +26,11 @@ task :scraper_EU_ES => [:environment] do
 		source = "http://quehacenlosdiputados.net" + link.href
 
 		# Get name
-		name = member.search('.nombre').text.strip
+		name = member.search('.title').text.strip
+		
+		#name = name.gsub("Diputado", "")
+
+		puts "name is #{name}"
 
 		picture = ""
 		if agent.page.image_with(:src => /imagenesDipus/)
@@ -340,7 +344,7 @@ task :scraper_EU_ES => [:environment] do
 	#puts JSON.pretty_generate(members)
 
 	# Insert data to database
-	Datum.create!(members)
+	#Datum.create!(members)
 
 	puts "Scrapping ENDS... #{Time.now}"
 
