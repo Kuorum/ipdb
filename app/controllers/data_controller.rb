@@ -1,6 +1,6 @@
 class DataController < ApplicationController
   before_action :set_datum, only: [:show, :edit, :update, :destroy]
-  before_filter :require_permission, only: [:create, :edit, :update, :destroy]
+  before_filter :require_permission, only: [:new, :edit, :update, :destroy]
 
   # GET /data
   # GET /data.json
@@ -95,7 +95,7 @@ class DataController < ApplicationController
     end
 
     def require_permission  
-      region_id = @datum.region_id
+      region_id = params[:region_id] 
 
       has_access = 0
 

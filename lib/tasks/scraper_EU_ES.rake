@@ -30,7 +30,7 @@ task :scraper_EU_ES => [:environment] do
 		
 		#name = name.gsub("Diputado", "")
 
-		puts "name is #{name}"
+		#puts "name is #{name}"
 
 		picture = ""
 		if agent.page.image_with(:src => /imagenesDipus/)
@@ -234,7 +234,7 @@ task :scraper_EU_ES => [:environment] do
 		# GET REGION NAME & CODES
 		region = "espana"
 		region_code_alliance = "EU"
-		region_code_nation = "EU-ES"
+		region_code_nation = "ES"
 		region_code_state = ""
 		region_code_county = ""
 		region_code_city = ""
@@ -282,8 +282,8 @@ task :scraper_EU_ES => [:environment] do
 
 		constituency = state_name.downcase.gsub(/\s/, '_')
 		constituency_code_alliance = "EU"
-		constituency_code_nation = "EU-ES"
-		constituency_code_state = constituency_code_nation + state_code.split('-')[2]
+		constituency_code_nation = "ES"
+		constituency_code_state = state_code.split('-')[2]
 		constituency_code_county = ""
 		constituency_code_city = ""
 
