@@ -317,15 +317,12 @@
     ideology5 = 0.0
 
     party_name = ""
-    party_id = 0
 
     if @datum.politicalParty != "" && !@datum.politicalParty.blank? 
      
 
-      political_party = PoliticalParty.where("name = ?",  "#{@datum.politicalParty}")
+      political_party = PoliticalParty.where("lower(name) = ?",  @datum.politicalParty.downcase)
       political_party.each do |pp|
-
-        party_id = pp.id
         
         if @datum.politicalPartyImage != "" && !@datum.politicalPartyImage.blank? 
           party_image = @datum.politicalPartyImage
@@ -333,37 +330,37 @@
           party_image = pp.image
         end
 
-        if @datum.political_leaning_index != "" && !@datum.political_leaning_index.blank? 
+        if @datum.political_leaning_index != "" && !@datum.political_leaning_index.blank? && @datum.political_leaning_index != 0.0
           leaning_index = @datum.political_leaning_index        
         else
           leaning_index = pp.leaning_index
         end
 
-        if @datum.ideology1 != "" && !@datum.ideology1.blank?
+        if @datum.ideology1 != "" && !@datum.ideology1.blank? && @datum.ideology1 != 0.0
           ideology1 = @datum.ideology1
         else
           ideology1 = pp.leaning_index  
         end  
 
-        if @datum.ideology2 != "" && !@datum.ideology2.blank?
+        if @datum.ideology2 != "" && !@datum.ideology2.blank? && @datum.ideology2 != 0.0
           ideology2 = @datum.ideology2
         else
           ideology2 = pp.leaning_index  
         end 
 
-        if @datum.ideology3 != "" && !@datum.ideology3.blank?
+        if @datum.ideology3 != "" && !@datum.ideology3.blank? && @datum.ideology3 != 0.0
           ideology3 = @datum.ideology3
         else
           ideology3 = pp.leaning_index  
         end 
 
-        if @datum.ideology4 != "" && !@datum.ideology4.blank?
+        if @datum.ideology4 != "" && !@datum.ideology4.blank? && @datum.ideology4 != 0.0
           ideology4 = @datum.ideology4
         else
           ideology4 = pp.leaning_index  
         end 
 
-        if @datum.ideology5 != "" && !@datum.ideology5.blank?
+        if @datum.ideology5 != "" && !@datum.ideology5.blank? && @datum.ideology5 != 0.0
           ideology5 = @datum.ideology5
         else
           ideology5 = pp.leaning_index  
@@ -398,7 +395,7 @@
       <strong>Political party leaning index</strong>
     </td>
     <td>
-      <% if @datum.political_leaning_index != "" && !@datum.political_leaning_index.blank? %>  
+      <% if @datum.political_leaning_index != "" && !@datum.political_leaning_index.blank? && @datum.political_leaning_index != 0.0 %>  
         <%= @datum.political_leaning_index %>
       <% else %>
         <%= leaning_index %>
@@ -409,7 +406,7 @@
   <tr>
     <td><strong>Ideology 1</strong></td>
     <td>
-      <% if @datum.ideology1 != "" && !@datum.ideology1.blank? %> 
+      <% if @datum.ideology1 != "" && !@datum.ideology1.blank? && @datum.ideology1 != 0.0 %> 
         <%= @datum.ideology1 %>
       <% else %>
         <%= ideology1 %>  
@@ -419,7 +416,7 @@
 
   <tr><td> 
     <strong>Ideology 2</strong></td><td>
-      <% if @datum.ideology2 != "" && !@datum.ideology2.blank? %> 
+      <% if @datum.ideology2 != "" && !@datum.ideology2.blank? && @datum.ideology2 != 0.0 %> 
         <%= @datum.ideology2 %>
       <% else %>
         <%= ideology2 %>  
@@ -428,7 +425,7 @@
 
   <tr><td> 
     <strong>Ideology 3</strong></td><td>
-      <% if @datum.ideology3 != "" && !@datum.ideology3.blank? %> 
+      <% if @datum.ideology3 != "" && !@datum.ideology3.blank? && @datum.ideology3 != 0.0 %> 
         <%= @datum.ideology3 %>
       <% else %>
         <%= ideology3 %>  
@@ -437,7 +434,7 @@
 
   <tr><td> 
     <strong>Ideology 4</strong></td><td>
-    <% if @datum.ideology4 != "" && !@datum.ideology4.blank? %> 
+    <% if @datum.ideology4 != "" && !@datum.ideology4.blank? && @datum.ideology4 != 0.0 %> 
       <%= @datum.ideology4 %>
     <% else %>
       <%= ideology4 %>  
@@ -446,7 +443,7 @@
 
   <tr><td> 
     <strong>Ideology 5</strong></td><td>
-    <% if @datum.ideology5 != "" && !@datum.ideology5.blank? %> 
+    <% if @datum.ideology5 != "" && !@datum.ideology5.blank? && @datum.ideology5 != 0.0 %> 
       <%= @datum.ideology5 %>
     <% else %>
       <%= ideology5 %>  
@@ -715,27 +712,37 @@
 
 <tr><td> 
     <strong>Region Alliance</strong></td><td>
-    <%= @datum.region_code_alliance.reverse[0..1].reverse %>
+    <% if @datum.region_code_alliance != "" && !@datum.region_code_alliance.blank? %>
+      <%= @datum.region_code_alliance.reverse[0..1].reverse %>
+    <% end %>
   </td> </tr>
 
   <tr><td> 
     <strong>Region Nation</strong></td><td>
-    <%= @datum.region_code_nation.reverse[0..1].reverse %>
+    <% if @datum.region_code_nation != "" && !@datum.region_code_nation.blank? %>
+      <%= @datum.region_code_nation.reverse[0..1].reverse %>
+    <% end %>
   </td> </tr>
 
   <tr><td> 
     <strong>Region State</strong></td><td>
-    <%= @datum.region_code_state.reverse[0..1].reverse %>
+    <% if @datum.region_code_state != "" && !@datum.region_code_state.blank? %>
+      <%= @datum.region_code_state.reverse[0..1].reverse %>
+    <% end %>
   </td> </tr>
 
   <tr><td> 
     <strong>Region County</strong></td><td>
-    <%= @datum.region_code_county.reverse[0..1].reverse %>
+    <% if @datum.region_code_county != "" && !@datum.region_code_county.blank? %>
+      <%= @datum.region_code_county.reverse[0..1].reverse %>
+    <% end %>
   </td> </tr>
 
   <tr><td> 
     <strong>Region City</strong></td><td>
-    <%= @datum.region_code_city.reverse[0..1].reverse %>
+    <% if @datum.region_code_city != "" && !@datum.region_code_city.blank? %>
+      <%= @datum.region_code_city.reverse[0..1].reverse %>
+    <% end %>
   </td> </tr>
 
   <tr><td> 
@@ -745,27 +752,37 @@
 
   <tr><td> 
     <strong>Constituency Alliance</strong></td><td>
-    <%= @datum.region_code_alliance.reverse[0..1].reverse %>
+    <% if @datum.constituency_code_alliance != "" && !@datum.constituency_code_alliance.blank? %>
+      <%= @datum.constituency_code_alliance.reverse[0..1].reverse %>
+    <% end %>
   </td> </tr>
 
   <tr><td> 
     <strong>Constituency Nation</strong></td><td>
-    <%= @datum.constituency_code_nation.reverse[0..1].reverse %>
+    <% if @datum.constituency_code_nation != "" && !@datum.constituency_code_nation.blank? %>
+      <%= @datum.constituency_code_nation.reverse[0..1].reverse %>
+    <% end %>
   </td> </tr>
 
   <tr><td> 
     <strong>Constituency State</strong></td><td>
-    <%= @datum.constituency_code_state.reverse[0..1].reverse %>
+    <% if @datum.constituency_code_state != "" && !@datum.constituency_code_state.blank? %>
+      <%= @datum.constituency_code_state.reverse[0..1].reverse %>
+    <% end %>
   </td> </tr>
 
   <tr><td> 
     <strong>Constituency County</strong></td><td>
-    <%= @datum.constituency_code_county.reverse[0..1].reverse %>
+    <% if @datum.constituency_code_county != "" && !@datum.constituency_code_county.blank? %>
+      <%= @datum.constituency_code_county.reverse[0..1].reverse %>
+    <% end %>
   </td> </tr>
 
   <tr><td> 
     <strong>Constituency City</strong></td><td>
-    <%= @datum.constituency_code_city.reverse[0..1].reverse %>
+    <% if @datum.constituency_code_city != "" && !@datum.constituency_code_city.blank? %>
+      <%= @datum.constituency_code_city.reverse[0..1].reverse %>
+    <% end %>
   </td> </tr>
 
   </table>
