@@ -47,6 +47,10 @@
             end  
           end
 
+          if current_user.role_id == 1
+            has_access == 1
+          end  
+
         %>
 
         <% if has_access == 1 %>
