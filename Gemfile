@@ -80,3 +80,7 @@ gem "devise"
 gem 'execjs'
 
 gem 'therubyracer', :platforms => :ruby
+
+gem 'paper_trail', '~> 4.0'
+
+gem 'diffy'

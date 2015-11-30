@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :ban, :unban]
     before_filter :authenticate_user!
-    before_filter :require_permission, only: [:index, :create, :destroy]
+    before_filter :require_permission_all, only: [:index, :edit, :create, :destroy]
+    before_filter :require_permission_show, only: [:show]
 
   # GET /users
   # GET /users.json
@@ -65,6 +66,38 @@ class UsersController < ApplicationController
     end
   end
 
+  def ban
+    @user.status = 0
+    
+    if @user.save
+      respond_to do |format|
+        format.html { redirect_to :back , notice: 'User was successfully banned.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to :back , notice: 'Opps..something wrong!' }
+        format.json { head :no_content }
+      end
+    end
+  end
+
+  def unban
+    @user.status = 1
+    
+    if @user.save
+      respond_to do |format|
+        format.html { redirect_to :back , notice: 'User was successfully unbanned.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to :back , notice: 'Opps..something wrong!' }
+        format.json { head :no_content }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -76,8 +109,14 @@ class UsersController < ApplicationController
       params.require(:user).permit(:full_name, :role_id, :email, :password, :supervisor)
     end
 
-    def require_permission
-      if current_user.role_id != 1
+    def require_permission_show
+      if current_user.role_id != 1 && current_user.role_id != 4
+        redirect_to root_path
+      end 
+    end 
+
+    def require_permission_all
+      if current_user.role_id != 1 
         redirect_to root_path
       end 
     end 

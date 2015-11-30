@@ -4,9 +4,9 @@ require 'time'
 require 'json'
 
 # REGION_ID [development]
-region_id = 411
+#region_id = 411
 # REGION_ID [production]
-#region_id = 0
+region_id = 411
 
 
 region_abbreviation = 'EU-DE' 

@@ -14,11 +14,15 @@ Rails.application.routes.draw do
     #get '/users/sign_out' => 'sessions#destroy'
     get '/users/sign_out' => 'devise/sessions#destroy'
 
+    get "users/ban/:id" => 'users#ban', :as => "users_ban"
+    get "users/unban/:id" => 'users#unban', :as => "users_unban"
+
     resources :users_admin, :controller => 'users'
 
   end
 
   resources :users
+  resources :versions
 
   resources :countries
   get 'home/index'
@@ -51,6 +55,8 @@ Rails.application.routes.draw do
   
   get "pages/politicians" => "pages/politicians", :as => "page/politicians"
   get "pages/parties" => "pages/parties", :as => "page/parties"
+
+
 
 
   resources :regions do

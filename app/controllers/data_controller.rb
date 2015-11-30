@@ -95,7 +95,7 @@ class DataController < ApplicationController
     end
 
     def require_permission  
-      region_id = params[:region_id] 
+      @region_id = @datum.region_id
 
       has_access = 0
 
@@ -104,14 +104,16 @@ class DataController < ApplicationController
         regions =  eval(p.permission)
         regions.each do |region|
 
-          if region == region_id.to_s
-            has_access = 1
-          end  
+          if current_user.role_id == 2 || current_user.role_id == 4 
+            if region == @region_id.to_s 
+              has_access = 1
+            end  
+          end
         
         end  
       end
 
-      if current_user.role_id == 1 
+      if current_user.role_id == 1
         has_access = 1
       end  
 

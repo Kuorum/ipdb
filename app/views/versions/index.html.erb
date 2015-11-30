@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<h1><span class="glyphicon glyphicon-copy"></span> Audit changes</h1>
+
+<hr/>
+
+<br/>
+
+<div class="table-div">
+  <table class="listing table table-striped">
+    <thead>
+      <tr class="header">
+        <th>ID</th>
+        <th>Date</th>
+        <th>Author</th>
+        <th>Item Changed</th>
+        <th>Region</th>
+        <th>Action</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @versions.reverse.each do |version| %>
+        <%
+          has_access = 0
+
+          region_id = 0
+          if version.item_type == "Datum"
+            data = Datum.find(version.item_id) 
+            region = Region.find(data.region_id)
+            region_id = region.id
+          elsif version.item_type == "PoliticalParty"
+            party = PoliticalParty.find(version.item_id)
+            region = Region.find(party.region_id)
+            region_id = region.id
+          end  
+
+          permission = Permission.where(:user_id => current_user.id)
+          permission.each do |p|
+            regions =  eval(p.permission)
+            regions.each do |region|
+              if region_id == region_id.to_i
+                has_access = 1      
+              end  
+            end  
+          end
+
+        %>
+
+        <% if has_access == 1 %>
+          <tr>
+            <td><%= version.id %></td>
+            <td><%= version.created_at.strftime('%d %b %Y at %H:%m%P') %></td>
+            <td>
+            	<% author = User.find(version.whodunnit) %>
+            	<%= link_to "#{author.full_name}", author %>
+            </td>
+            <td>
+              <% if version.item_type == "Datum" %>
+                Politician (<%= link_to "#{data.name.titleize}", data %>)
+              <%  elsif version.item_type == "PoliticalParty" %>
+                Political Party (<%= link_to "#{party.name}", party %>)
+              <% else %>  
+              <% end %>
+            </td>
+            <td><%= region.name.titleize %></td>
+            <td><%= version.event.humanize %></td>
+            <td><%= link_to 'View Changes', version, :class => "btn btn-md btn-info" %></td>
+          </tr>
+        <% end %>  
+
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br/>
+
+<hr/>
+
+<%= link_to '< Back', url_for(:back), class: "btn btn-primary btn-md" %>
+
+<br/>

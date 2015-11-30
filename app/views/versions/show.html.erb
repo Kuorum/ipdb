@@ -1,0 +1,41 @@
+<h1><span class="glyphicon glyphicon-info-sign"></span> Changes details</h1>
+
+<hr/>
+
+<br/>
+
+<div class='row mt'>
+  <div class='col-sm-12'>
+
+    <style><%= Diffy::CSS %></style>
+    
+    <div class='well diff'>
+
+      <% 
+        @changes.each do |change|     
+      %>
+      <p>
+        <% if change[0] != "updated_at" && change[0] != "created_at" %>
+
+          <strong><%= change[0].titleize %>:</strong>
+          <%= diff(change[1][0], change[1][1]) %>
+      
+        <% end %>
+      </p>  
+      <%    
+        end
+      %>
+
+
+    </div>
+    <p>
+    Changes authored by <%= link_to "#{@author_name}", @author %> 
+    on <b><%= @version.created_at.strftime('%d %b %Y at %H:%m%P') %></b>
+    <br/>
+
+    </p>
+  </div>
+</div>
+<div class='fr'> 
+  <%= link_to '< Back', versions_path, :class => "btn btn-md btn-primary" %>
+</div>
