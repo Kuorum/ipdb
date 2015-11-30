@@ -70,7 +70,7 @@
 <%= link_to '< Back', users_path, :class => "btn btn-md btn-primary" %>
 
 <% if @has_access == 1 || current_user.role_id == 1  %>
-  &nbsp; <%= link_to 'Edit', edit_user_path(user), :class => "btn btn-success btn-sm" %>
+  &nbsp; <%= link_to 'Edit', edit_user_path(@user), :class => "btn btn-success btn-md" %>
 <% else %>
   &nbsp; <%= link_to "Edit", "#", class: "btn btn-default disabled btn-md", style: "background-color:#F9F9F9;color:#ccc;" %>
 <% end %>
