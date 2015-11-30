@@ -40,7 +40,7 @@ class PagesController < ApplicationController
     def permission  
 		region_id = params[:region_id] 
 
-		has_access = 0
+		@has_access = 0
 
 		permission = Permission.where(:user_id => current_user.id)
 		permission.each do |p|
@@ -49,7 +49,7 @@ class PagesController < ApplicationController
 
 			  if current_user.role_id == 2 || current_user.role_id == 3 || current_user.role_id == 4
 			    if region == region_id.to_s  
-			      has_access = 1
+			      @has_access = 1
 			    end  
 			  end
 
@@ -57,11 +57,11 @@ class PagesController < ApplicationController
 		end
 
 		if current_user.role_id == 1
-		has_access = 1
+			@has_access = 1
 		end  
 
-		if has_access == 0
-		redirect_to root_path
+		if @has_access == 0
+			redirect_to root_path
 		end  
     end
 
