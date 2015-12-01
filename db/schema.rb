@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130133354) do
+ActiveRecord::Schema.define(version: 20151201201338) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 20151130133354) do
     t.text     "lastActivity3Link",             limit: 65535
     t.text     "lastActivity4Link",             limit: 65535
     t.text     "lastActivity5Link",             limit: 65535
+    t.string   "cause6",                        limit: 255
   end
 
   create_table "geo_area_categories", force: :cascade do |t|
