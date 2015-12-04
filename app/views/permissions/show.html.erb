@@ -12,7 +12,7 @@
 </p>
 
 <p>
-  <strong>Permission:</strong>
+  <strong>Geo Area Permission:</strong>
   <br/>
   <div class="row">
   	<div class="col-md-12">
@@ -25,6 +25,23 @@
   	  <% end %>
   	</div>  
   </div>	  
+</p>
+
+<p>
+  <strong>Political Party Permission:</strong>
+  <br/>
+  <div class="row">
+    <div class="col-md-12">
+    <% 
+      parties = eval(@permission.party_permission)
+      parties.each do |party|
+        party = PoliticalParty.find(party)
+        party_name = party.name 
+    %>   
+        <div class="tag-cloud tag-cloud-party"><%= party_name %></div>
+      <% end %>
+    </div>  
+  </div>    
 </p>
 
 

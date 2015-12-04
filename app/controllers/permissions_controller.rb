@@ -1,5 +1,5 @@
 class PermissionsController < ApplicationController
-  before_action :set_permission, only: [:show, :edit, :edit2, :update, :destroy]
+  before_action :set_permission, only: [:show, :edit, :edit2, :update, :update2, :destroy]
   before_filter :require_permission
 
   # GET /permissions
@@ -66,9 +66,9 @@ class PermissionsController < ApplicationController
 
   def update2
     respond_to do |format|
-      region_ids = params[:region_ids]
+      party_ids = params[:party_permission]
 
-      if @permission.update(permission_params.merge(:permission => region_ids))
+      if @permission.update(permission_params.merge(:party_permission => party_ids))
         format.html { redirect_to @permission, notice: 'Permission was successfully updated.' }
         format.json { render :show, status: :ok, location: @permission }
       else
@@ -96,7 +96,7 @@ class PermissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def permission_params
-      params.require(:permission).permit(:user_id, :permission)
+      params.require(:permission).permit(:user_id, :permission, :party_permission)
     end
 
     def require_permission

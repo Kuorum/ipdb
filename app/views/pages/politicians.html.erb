@@ -66,26 +66,50 @@
             region_id = data.region_id
 
             @has_access = 0
+            geoPermission = 0
+            partyPermission = 0
 
             permission = Permission.where(:user_id => current_user.id)
             permission.each do |p|
-            regions =  eval(p.permission)
-              regions.each do |region|
 
+              # GEO AREAS PERMISSION
+              regions =  eval(p.permission)
+              regions.each do |region|
                 if current_user.role_id == 2 || current_user.role_id == 4 
                   if region == region_id.to_s  
-                    @has_access = 1
+                    geoPermission = 1
                   end  
                 end
+              end
 
+              political_party_id = 0
+              political_party_name = ""
+              political_party = PoliticalParty.where("lower(name) LIKE ?",  '%'+data.politicalParty.downcase+'%')
+              political_party.each do |pp|
+                 political_party_id = pp.id  
+                 political_party_name = pp.name            
+              end              
+              
+              # PARTY PERMISSION
+              party_permissions =  eval(p.party_permission)
+              party_permissions.each do |party_permission|
+                if current_user.role_id == 2 || current_user.role_id == 4
+                  puts "#{party_permission} | #{political_party_id} | #{political_party_name}"  
+                  if party_permission.to_i == political_party_id.to_i
+                    partyPermission = 1
+                  end  
+                end
               end  
+
             end
           %>
-          <% if @has_access == 1 || current_user.role_id == 1  %>
+
+          <% if (geoPermission == 1 && partyPermission == 1) || current_user.role_id == 1  %>
             <%= link_to "Edit", edit_datum_path(data, :region_id => region_id), class: "btn btn-success btn-sm" %> <%= @region_id %>
           <% elsif current_user.role_id == 3  %>
             <%= link_to "Edit", "#", class: "btn btn-default disabled btn-sm", style: "background-color:#F9F9F9;color:#ccc;" %>
           <% else %>
+            <%= link_to "Edit", "#", class: "btn btn-default disabled btn-sm", style: "background-color:#F9F9F9;color:#ccc;" %>
           <% end %>
       	</td>
       </tr>

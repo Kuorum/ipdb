@@ -11,18 +11,23 @@ $(function(){
     });
 
     $("#accordion > li > div").click(function(){
- 
-    if(false == $(this).next().is(':visible')) {
-        $('#accordion ul').slideUp(300);
-    }
-    $(this).next().slideToggle(300);
+      $("#accordion > li").toggleClass("display")
+      if(false == $(this).next().is(':visible')) {
+          $('#accordion ul').slideUp(300);
+      }
+      $(this).next().slideToggle(300);
     });
      
+
+    //clicking the parent checkbox should check or uncheck all child checkboxes
+    $(".parentCheckBox").on('click', function() {
+        $(this).closest('ul').find('.childCheckBox').prop('checked', this.checked);
+    }); 
     
 });    
 </script>    
 
-<%= form_for(@permission) do |f| %>
+<%= form_for @permission, :url => {:action => "update2"} do |f| %>
   <% if @permission.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@permission.errors.count, "error") %> prohibited this permission from being saved:</h2>
@@ -35,37 +40,65 @@ $(function(){
     </div>
   <% end %>
 
-  <div class="form-group">
-    <h4>User</h4><br/>
+
+<table>
+  <tr>
+    <td>
+      <h4>User</h4>
+      <hr/>
       <%= f.collection_select :user_id, User.order(:id), :id, :full_name, {include_blank: true}, {class: "form-control"} %>
-  </div>
+      <br/><br/>
+    </td>
+  </tr>
 
-  <br/><br/>
-
-  <div class="form-group">
-    <h4>Political Parties</h4><br/>
-     <ul id="accordion">
-    <% 
-      permissions = eval(@permission.permission)
-      permissions.each do |p|
-        region = Region.find(p)
-        region_id = region.id
-    %>   
-   
-        <li><div><input type="checkbox" id="checkAll" /><a href="#"><%= region.name.titleize %></a></div>
-          <ul> 
-      
-    <%
-        political_parties = PoliticalParty.where(:region_id => region_id) 
-        political_parties.each do |pp| 
-    %>    
-          <li><input type="checkbox" name="party_permission[]" value="#{pp.id}"><%= pp.name %></li>
-        <% end %>
-          </ul>
-        </li>
+  <tr>
+    <td>
+      <h4>Current Permission</h4>
+      <hr/>
+      <% if @permission.party_permission != "" && !@permission.party_permission.blank? %>
+        <% 
+          parties = eval(@permission.party_permission)
+          parties.each do |party|
+            party = PoliticalParty.find(party)
+            party_name = party.name 
+        %>   
+            <div class="tag-cloud tag-cloud-party"><%= party_name %></div>
+          <% end %>
       <% end %>  
-    </ul>  
-  </div> 
+      <br/>    
+    </td>    
+  </tr>
+
+  <tr>
+    <td>
+      <br/>
+      <h4>Political Parties</h4>
+      <hr/>
+       <ul id="accordion">
+      <% 
+        permissions = eval(@permission.permission)
+        permissions.each do |p|
+          region = Region.find(p)
+          region_id = region.id
+      %>   
+     
+          <li><div><input type="checkbox" class="parentCheckBox" /><a href="#"><%= region.name.titleize %></a></div>
+            <ul>
+        
+      <%
+          political_parties = PoliticalParty.where(:region_id => region_id) 
+          political_parties.each do |pp| 
+      %>    
+            <li><input type="checkbox" name="party_permission[]" value="<%= pp.id %>" class="childCheckBox"><%= pp.name %></li>
+          <% end %>
+            </ul>
+          </li>
+        <% end %>  
+      </ul>
+      <br/>
+    </td>  
+  </tr> 
+</table>
 
   <div class="actions">
       <%= f.submit "Update permission", :class => "btn btn-success btn-lg btn-block" %>

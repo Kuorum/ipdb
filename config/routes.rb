@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get "process/scrape" => "process/scrape", :as => "scrape"
 
   get "permissions/:id/edit2" => "permissions#edit2", :as => "edit_permission2"
+  patch "permissions/:id/update2" => "permissions#update2", :as => "update_permission2"
 
   
   get "foo/bar", as: "update_text"
