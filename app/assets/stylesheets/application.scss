@@ -71,4 +71,45 @@ tr.header{
 	border:1px solid #5BC0DE;color:#fff;margin:5px;padding:5px;background-color:#5BC0DE;border-radius:5px;float:left;
 }
 
+.tag-cloud-party{
+	background-color:#5CB85C;
+	border:1px solid #5CB85C;
+}
 
+#accordion {
+    list-style: none;
+    padding: 0 0 0 0;
+    width: 170px;
+}
+#accordion div {
+    display: block;
+    background-color: #333;
+    font-weight: bold;
+    margin: 1px;
+    cursor: pointer;
+    padding: 5 5 5 7px;
+    list-style: circle;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+#accordion ul {
+    list-style: none;
+    padding: 0 0 0 0;
+}
+#accordion ul{
+    display: none;
+}
+#accordion ul li {
+    font-weight: normal;
+    cursor: auto;
+    background-color: #fff;
+    padding: 0 0 0 7px;
+}
+#accordion a {
+    text-decoration: none;
+    color:#fff;
+}
+#accordion a:hover {
+    text-decoration: underline;
+}

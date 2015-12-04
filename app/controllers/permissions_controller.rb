@@ -1,5 +1,5 @@
 class PermissionsController < ApplicationController
-  before_action :set_permission, only: [:show, :edit, :update, :destroy]
+  before_action :set_permission, only: [:show, :edit, :edit2, :update, :destroy]
   before_filter :require_permission
 
   # GET /permissions
@@ -20,6 +20,11 @@ class PermissionsController < ApplicationController
 
   # GET /permissions/1/edit
   def edit
+  end
+
+  # GET /permissions/1/edit
+  def edit2
+
   end
 
   # POST /permissions
@@ -46,6 +51,20 @@ class PermissionsController < ApplicationController
   # PATCH/PUT /permissions/1
   # PATCH/PUT /permissions/1.json
   def update
+    respond_to do |format|
+      region_ids = params[:region_ids]
+
+      if @permission.update(permission_params.merge(:permission => region_ids))
+        format.html { redirect_to @permission, notice: 'Permission was successfully updated.' }
+        format.json { render :show, status: :ok, location: @permission }
+      else
+        format.html { render :edit }
+        format.json { render json: @permission.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update2
     respond_to do |format|
       region_ids = params[:region_ids]
 

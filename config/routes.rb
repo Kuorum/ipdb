@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   post "process/download_csv" => "process/download_csv", :as => "download_csv"
   get "process/scrape" => "process/scrape", :as => "scrape"
 
+  get "permissions/:id/edit2" => "permissions#edit2", :as => "edit_permission2"
+
   
   get "foo/bar", as: "update_text"
 

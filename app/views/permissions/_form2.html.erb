@@ -1,0 +1,73 @@
+<style>
+  #region-checkboxes li{
+    list-style-type: none;
+  }
+</style>
+<script>
+$(function(){
+
+    $("#checkAll").change(function () {
+       $("input:checkbox").prop('checked', $(this).prop("checked"));
+    });
+
+    $("#accordion > li > div").click(function(){
+ 
+    if(false == $(this).next().is(':visible')) {
+        $('#accordion ul').slideUp(300);
+    }
+    $(this).next().slideToggle(300);
+    });
+     
+    
+});    
+</script>    
+
+<%= form_for(@permission) do |f| %>
+  <% if @permission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@permission.errors.count, "error") %> prohibited this permission from being saved:</h2>
+
+      <ul>
+      <% @permission.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <h4>User</h4><br/>
+      <%= f.collection_select :user_id, User.order(:id), :id, :full_name, {include_blank: true}, {class: "form-control"} %>
+  </div>
+
+  <br/><br/>
+
+  <div class="form-group">
+    <h4>Political Parties</h4><br/>
+     <ul id="accordion">
+    <% 
+      permissions = eval(@permission.permission)
+      permissions.each do |p|
+        region = Region.find(p)
+        region_id = region.id
+    %>   
+   
+        <li><div><input type="checkbox" id="checkAll" /><a href="#"><%= region.name.titleize %></a></div>
+          <ul> 
+      
+    <%
+        political_parties = PoliticalParty.where(:region_id => region_id) 
+        political_parties.each do |pp| 
+    %>    
+          <li><input type="checkbox" name="party_permission[]" value="#{pp.id}"><%= pp.name %></li>
+        <% end %>
+          </ul>
+        </li>
+      <% end %>  
+    </ul>  
+  </div> 
+
+  <div class="actions">
+      <%= f.submit "Update permission", :class => "btn btn-success btn-lg btn-block" %>
+  </div>
+<% end %>

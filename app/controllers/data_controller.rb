@@ -95,7 +95,11 @@ class DataController < ApplicationController
     end
 
     def require_permission  
-      @region_id = @datum.region_id
+      if params[:region_id] != ""
+        @region_id = params[:region_id]
+      else  
+        @region_id = @datum.region_id
+      end
 
       has_access = 0
 
