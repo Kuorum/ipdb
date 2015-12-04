@@ -16,13 +16,15 @@
   <br/>
   <div class="row">
   	<div class="col-md-12">
-	  <%      
-	    permissions = eval(@permission.permission)
-	    permissions.each do |p|
-	      region = Region.find(p)
-	  %>
-      	<div class="tag-cloud"><%= region.name.titleize %></div>  
-  	  <% end %>
+    <% if @permission.permission != "" && !@permission.permission.blank? %>
+  	  <%      
+  	    permissions = eval(@permission.permission)
+  	    permissions.each do |p|
+  	      region = Region.find(p)
+  	  %>
+        	<div class="tag-cloud"><%= region.name.titleize %></div>  
+    	 <% end %>
+    <% end %>  
   	</div>  
   </div>	  
 </p>
@@ -32,6 +34,7 @@
   <br/>
   <div class="row">
     <div class="col-md-12">
+    <% if @permission.party_permission != "" && !@permission.party_permission.blank? %>
     <% 
       parties = eval(@permission.party_permission)
       parties.each do |party|
@@ -40,6 +43,7 @@
     %>   
         <div class="tag-cloud tag-cloud-party"><%= party_name %></div>
       <% end %>
+    <% end %>  
     </div>  
   </div>    
 </p>
