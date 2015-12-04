@@ -36,25 +36,28 @@
             <% end %>
           </td>
           <td width="22%">
-            <% party_size = 0 %>
-            <% 
-              permissions.each do |p|
-                region = Region.find(p)
-                region_id = region.id
-
-                political_parties = PoliticalParty.where(:region_id => region_id).limit(3) 
-                political_parties.each do |pp|
+       
+            <% if permission.party_permission != "" && !permission.party_permission.blank? %>
+              <% 
+                party_size = 0 
+                parties = eval(permission.party_permission)
+                parties.each do |party|
                   party_size += 1 
+
+                  party = PoliticalParty.find(party)
+                  party_name = party.name 
                   if party_size <= 4
-            %>     
-                    <div class="tag-cloud tag-cloud-party"> <%= pp.name %> </div>
-                  <% end %>
-                <% end %>
-            <% end  %>
-            <% if party_size > 4 %>
-              <div style="font-size:22px;">...</div>
-              <div style="clear:both;margin:5px;"><%= link_to "Edit party permission", edit_permission2_path(permission) %></div>
-            <% end %>
+              %>   
+                  <div class="tag-cloud tag-cloud-party"> <%= party.name %> </div>
+              <%  
+                  end
+                end 
+              %>
+              <% if party_size > 4 %>
+                <div style="font-size:22px;">...</div>
+                <div style="clear:both;margin:5px;"><%= link_to "Edit party permission", edit_permission2_path(permission) %></div>
+              <% end %>
+            <% end %>  
           </td>
           <td width="21%">
             <%= link_to 'Show', permission %> &nbsp; | &nbsp;
