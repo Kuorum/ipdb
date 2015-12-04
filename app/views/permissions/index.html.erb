@@ -55,9 +55,10 @@
               %>
               <% if party_size > 4 %>
                 <div style="font-size:22px;">...</div>
-                <div style="clear:both;margin:5px;"><%= link_to "Edit party permission", edit_permission2_path(permission) %></div>
-              <% end %>
+              <% end %>  
             <% end %>  
+            
+            <div style="clear:both;margin:5px;"><%= link_to "Edit party permission", edit_permission2_path(permission) %></div>
           </td>
           <td width="21%">
             <%= link_to 'Show', permission %> &nbsp; | &nbsp;
