@@ -75,7 +75,7 @@
 	            <h3>
 	              <%= city.name.titleize %> &nbsp;
 	              <%= link_to "Politicians", page_politicians_path(:region_id => city.id), :class => "btn btn-sm btn-info" %> 
-	              <%= link_to "Parties", region_political_parties_path(:region_id => state.id), :class => "btn btn-sm btn-primary" %>
+	              <%= link_to "Parties", region_political_parties_path(:region_id => city.id), :class => "btn btn-sm btn-primary" %>
 	            </h3> 
 	        </li>  
 		<% end %> 
