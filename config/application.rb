@@ -30,8 +30,8 @@ module Kuorum
     ActionMailer::Base.smtp_settings = {
       :address              => 'smtp.mandrillapp.com',
       :port                 => 587,
-      :user_name            => "inaki.dominguez@kuorum.org ",
-      :password             => "bFjj1j2PNOYLOoBHqv9qyQ",
+      :user_name            => ENV["SMTP_USER"],
+      :password             => ENV["SMTP_PASS"],
       :authentication       => 'login',
       :enable_starttls_auto => true
     }
