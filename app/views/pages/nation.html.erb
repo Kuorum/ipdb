@@ -67,8 +67,8 @@
 			<li>
 	            <h3>
 	              <%= link_to "#{ state.name.titleize }", page_state_path(:alliance_id => alliance.id, :nation_id => nation.id,:state_id => state.id) %> &nbsp;
-	              <%= link_to "Politicians", page_politicians_path(:region_id => state.id), :class => "btn btn-sm btn-info" %> 
-	              <%= link_to "Parties", region_political_parties_path(:region_id => state.id), :class => "btn btn-sm btn-primary" %>
+	              <%= link_to "Politicians", page_politicians_path(:region_id => state.id, :alliance_id => params[:alliance_id], :county_id => params[:county_id],:nation_id => nation.id, :state_id => state.id, :city_id => params[:city_id]), :class => "btn btn-sm btn-info" %> 
+	              <%= link_to "Parties", region_political_parties_path(:region_id => state.id, :alliance_id => params[:alliance_id], :county_id => params[:county_id],:nation_id => nation.id, :state_id => state.id, :city_id => params[:city_id]), :class => "btn btn-sm btn-primary" %>
 	            </h3> 
 	        </li>  
 		<% end %> 

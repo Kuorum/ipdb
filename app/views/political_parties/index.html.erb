@@ -1,7 +1,52 @@
 <div class="row">
   <div class="col-md-10">
     <h1>Political Parties</h1>
-    <h5>GEOGRAPHICAL AREA: <span style="color:#95A5A6"><%= @region_name.titleize %></span></h5>
+    <h5 class="breadcrumb">
+      <b>GEOGRAPHICAL AREA: </b>
+      <% if params[:alliance_id] && !params[:alliance_id].empty? %>
+        <% if params[:alliance_id] == params[:region_id] %>
+          <span style="color:#95A5A6"><%= @region_name.titleize %></span>
+        <% else %>
+          <%= link_to "#{get_region_name(params[:alliance_id])}", page_alliance_path(:alliance_id => params[:alliance_id]) %>
+        <% end %>      
+      <% end %>
+
+      <% if params[:nation_id] && !params[:nation_id].empty? %>
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <% if params[:nation_id] == params[:region_id] %>
+          <span style="color:#95A5A6"><%= @region_name.titleize %></span>
+        <% else %> 
+          <%= link_to "#{get_region_name(params[:nation_id])}", page_nation_path(:alliance_id => params[:alliance_id], :nation_id => params[:nation_id] ) %> 
+        <% end %>    
+      <% end %>
+
+      <% if params[:state_id] && !params[:state_id].empty? %>
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <% if params[:state_id] == params[:region_id] %>
+          <span style="color:#95A5A6"><%= @region_name.titleize %></span>
+        <% else %>
+          <%= link_to "#{get_region_name(params[:state_id])}", page_state_path(:alliance_id => params[:alliance_id], :nation_id => params[:nation_id], :state_id => params[:state_id])  %>  
+        <% end %>     
+      <% end %>
+
+      <% if params[:county_id] && !params[:county_id].empty? %>
+        <span class="glyphicon glyphicon-chevron-right"></span>  
+        <% if params[:county_id] == params[:region_id] %>
+          <span style="color:#95A5A6"><%= @region_name.titleize %></span>
+        <% else %>
+          <%= link_to "#{get_region_name(params[:county_id])}", page_county_path(:alliance_id => params[:alliance_id], :nation_id => params[:nation_id], :state_id => params[:state_id], :county_id => params[:county_id] ) %>          
+        <% end %>      
+      <% end %>
+
+      <% if params[:city_id] && !params[:city_id].empty? %>
+        <span class="glyphicon glyphicon-chevron-right"></span> 
+        <% if params[:city_id] == params[:region_id] %>
+          <span style="color:#95A5A6"><%= @region_name.titleize %></span> 
+        <% else %>
+          <%= link_to "#{get_region_name(params[:city_id])}", page_city_path(:alliance_id => params[:alliance_id], :nation_id => params[:nation_id], :state_id => params[:state_id], :county_id => params[:county_id], :city_id => params[:city_id])  %>
+        <% end %>       
+      <% end %>
+    </h5>
   </div>
   <div class="col-md-2">
     <%= link_to '+ New Political party', new_region_political_party_path(:region_id => params[:region_id]), :class => "btn btn-md btn-success", :style => "margin-top:35px;" %>

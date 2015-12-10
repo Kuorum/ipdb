@@ -2,6 +2,8 @@ class PoliticalPartiesController < ApplicationController
   before_action :set_political_party, only: [:show, :edit, :update, :destroy]
   before_filter :require_permission, only: [:edit, :update, :destroy]
 
+  helper_method :get_region_name
+
   # GET /political_parties
   # GET /political_parties.json
   def index
@@ -75,6 +77,11 @@ class PoliticalPartiesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def get_region_name(region_id)
+    region = Region.find(region_id)
+    return region.name.titleize
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.

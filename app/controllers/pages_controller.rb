@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+	helper_method :get_region_name
+
 	def politicians
 		#@datum = Datum.where(geo_area_id: params[:geo_area_id])
 	end
@@ -27,6 +29,11 @@ class PagesController < ApplicationController
 		@region = Region.new
 	end
 
+	def get_region_name(region_id)
+		region = Region.find(region_id)
+		return region.name.titleize
+	end	
+
 	def politicians
 		@datum = Datum.where(region_id: params[:region_id])
 
@@ -35,7 +42,6 @@ class PagesController < ApplicationController
 
 	    permission
 	end
-
 	
     def permission  
 		region_id = params[:region_id] 
