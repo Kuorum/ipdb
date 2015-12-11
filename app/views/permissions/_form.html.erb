@@ -7,19 +7,84 @@
 $(function(){
 
 
-  $(".accordion > li > div").click(function(){
-    $(".accordion > li").toggleClass("display")
-    if(false == $(this).next().is(':visible')) {
-        $('.accordion ul').slideUp(300);
-    }
-    $(this).next().slideToggle(300);
-  });
-   
+    $(".accordion-parent1 > li > div").click(function(){
 
-  //clicking the parent checkbox should check or uncheck all child checkboxes
-  $(".parentCheckBox").on('click', function() {
-      $(this).closest('ul').find('.childCheckBox').prop('checked', this.checked);
-  }); 
+      $(".accordion-sub1").toggleClass("display")
+    
+      if(false == $(this).next().is(':visible')) {
+          $('.accordion-parent1 ul').slideUp(300);
+      }
+      $(this).next().slideToggle(300);
+
+    });
+    
+    $(".accordion-parent2 > li > div").click(function(){
+
+      $(".accordion-sub2").toggleClass("display")
+    
+      if(false == $(this).next().is(':visible')) {
+          $('.accordion-parent2 ul').slideUp(300);
+      }
+      $(this).next().slideToggle(300);
+  
+    });
+    
+    $(".accordion-parent3 > li > div").click(function(){
+
+      $(".accordion-sub3").toggleClass("display")
+    
+      if(false == $(this).next().is(':visible')) {
+          $('.accordion-parent3 ul').slideUp(300);
+      }
+      $(this).next().slideToggle(300);
+  
+    });
+    
+    $(".accordion-parent4 > li > div").click(function(){
+
+      $(".accordion-sub4").toggleClass("display")
+    
+      if(false == $(this).next().is(':visible')) {
+          $('.accordion-parent4 ul').slideUp(300);
+      }
+      $(this).next().slideToggle(300);
+  
+    });
+    
+    $(".accordion-parent5 > li > div").click(function(){
+
+      $(".accordion-sub5").toggleClass("display")
+    
+      if(false == $(this).next().is(':visible')) {
+          $('.accordion-parent5 ul').slideUp(300);
+      }
+      $(this).next().slideToggle(300);
+  
+    });
+
+         
+    $(".parentCheckBox1").on('click', function() {
+      $(this).closest('ul > li').find('.childCheckBox1').prop('checked', this.checked);
+      $(this).closest('ul > li').find('.childCheckBox2').prop('checked', this.checked);
+      $(this).closest('ul > li').find('.childCheckBox3').prop('checked', this.checked);
+      $(this).closest('ul > li').find('.childCheckBox4').prop('checked', this.checked);
+    }); 
+    $(".parentCheckBox2").on('click', function() {
+      $(this).closest('ul > li').find('.childCheckBox2').prop('checked', this.checked);
+      $(this).closest('ul > li').find('.childCheckBox3').prop('checked', this.checked);
+      $(this).closest('ul > li').find('.childCheckBox4').prop('checked', this.checked);
+    }); 
+    $(".parentCheckBox3").on('click', function() {
+      $(this).closest('ul > li').find('.childCheckBox3').prop('checked', this.checked);
+      $(this).closest('ul > li').find('.childCheckBox4').prop('checked', this.checked);
+    });
+    $(".parentCheckBox4").on('click', function() {
+      $(this).closest('ul > li').find('.childCheckBox4').prop('checked', this.checked);
+    });
+    $(".parentCheckBox5").on('click', function() {
+      $(this).closest('ul > li').find('.childCheckBox5').prop('checked', this.checked);
+    });
+
 
 });
 </script>
@@ -37,140 +102,184 @@ $(function(){
     </div>
   <% end %>
 
-  <div class="form-group">
-    <h4>User</h4><br/>
-      <%= f.collection_select :user_id, User.order(:id), :id, :full_name, {include_blank: true}, {class: "form-control"} %>
-  </div>
 
-  <br/>
+  <table>
+    <tr>
+      <td style="padding:10px 0 10px 0;">
+        <div class="form-group">
+          <h4>User</h4>
+          <hr/><br/>
+          <%= f.collection_select :user_id, User.order(:id), :id, :full_name, {include_blank: true}, {class: "form-control"} %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:10px 0 10px 0;">
+          <br/><br/>
+          <h4> Change Permission</h4>
+          <p><i>&nbsp;&nbsp;&nbsp; Change Geo Areas that this user are allowed to edit</i></p>
+          <hr/>  
 
-  <% if !@permission.new_record? %>
-    <div class="form-group">
-      <h4>Current Permission</h4>
-      <%      
-        permissions = eval(@permission.permission)
-        permissions.each do |p|
-          region = Region.find(p)
-      %>
-        <div class="tag-cloud"><%= region.name.titleize %></div>
-      <% end %>
+          <% if @permission.new_record? %>
+            <div>
+              <ul class="accordion accordion-parent1">
+                <% @alliances = Region.order(:iso3166_2).where("length(iso3166_2) = 2") %>
+                <% @alliances.each do |alliance| %>
+                  <li class="accordion-sub1">
+                    <div><input type="checkbox" class="parentCheckBox1" value="<%= alliance.id %>" name="region_ids[]" /><a href="#"><%= alliance.iso_and_name %></a></div>
+                    <ul class="accordion accordion-parent2">
+                      <% @nations = Region.order(:iso3166_2).where("length(iso3166_2) = 5 AND iso3166_2 like '%#{alliance.iso3166_2}%' ") %>
+                      <% @nations.each do |nation| %>
+                        <li class="accordion-sub2">
+                          <div><input type="checkbox" class="childCheckBox1 parentCheckBox2" value="<%= nation.id %>" name="region_ids[]"  /><a href="#"><%= nation.iso_and_name %></a></div>
+                          <ul class="accordion accordion-parent3">
+                            <% @states = Region.order(:iso3166_2).where("length(iso3166_2) = 8 AND iso3166_2 like '%#{nation.iso3166_2}%' ") %>
+                            <% @states.each do |state| %>
+                              <li class="accordion-sub3">
+                                <div><input type="checkbox" class="childCheckBox2 parentCheckBox3" value="<%= state.id %>" name="region_ids[]"  /><a href="#"><%= state.iso_and_name %></a></div>
+                                <ul class="accordion accordion-parent4">
+                                  <% @counties = Region.order(:iso3166_2).where("length(iso3166_2) = 11 AND iso3166_2 like '%#{state.iso3166_2}%' ") %>
+                                  <% @counties.each do |county| %>
+                                    <li class="accordion-sub4">
+                                      <input type="checkbox" class="childCheckBox3 parentCheckBox4" value="<%= county.id %>" name="region_ids[]"  /><%= county.iso_and_name %>
+                                      <ul class="accordion accordion-parent4">
+                                        <% @cities = Region.order(:iso3166_2).where("length(iso3166_2) = 11 AND iso3166_2 like '%#{county.iso3166_2}%' ") %>
+                                        <% @cities.each do |city| %>
+                                          <li class="accordion-sub5">
+                                            <div>
+                                              <input type="checkbox" class="childCheckBox4 parentCheckBox5" value="<%= city.id %>" name="region_ids"  />
+                                              <a href="#"><%= city.iso_and_name %></a>
+                                            </div>
+                                          </li>
+                                        <% end %>
+                                      </ul>
+                                    </li>
+                                  <% end %>
+                                </ul>
+                              </li>
+                            <% end %>
+                          </ul>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% else %>
+            <div>
+              <ul class="accordion accordion-parent1">
+                <% @alliances = Region.order(:iso3166_2).where("length(iso3166_2) = 2") %>
+                <% @alliances.each do |alliance| %>
+                  <li class="accordion-sub1">
+                    <div>  
+                      <%      
+                        match = 0
+                        permissions = eval(@permission.permission)
+                        permissions.each do |p|
+                          if p.to_i == alliance.id
+                            match = 1       
+                          end
+                        end         
+                      %>
+                      <input type="checkbox" class="parentCheckBox1" value="<%= alliance.id %>" name="region_ids[]" 
+                        <% if match == 1 %>
+                            checked="checked"    
+                        <% end %> 
+                      />  
+                      <a href="#"><%= alliance.iso_and_name %></a>
+                    </div>
+                    <ul class="accordion accordion-parent2">
+                      <% @nations = Region.order(:iso3166_2).where("length(iso3166_2) = 5 AND iso3166_2 like '%#{alliance.iso3166_2}%' ") %>
+                      <% @nations.each do |nation| %>
+                        <li class="accordion-sub2">
+                          <div>                            
+                            <%      
+                              match = 0
+                              permissions = eval(@permission.permission)
+                              permissions.each do |p|
+                                if p.to_i == nation.id
+                                  match = 1       
+                                end
+                              end         
+                            %>
+                            <input type="checkbox" class="childCheckBox1 parentCheckBox2" value="<%= nation.id %>" name="region_ids[]" 
+                              <% if match == 1 %>
+                                  checked="checked"    
+                              <% end %> 
+                            />  
 
-    </div>
-  <% end %>
+                            <a href="#"><%= nation.iso_and_name %></a>
+                          </div>
+                          <ul class="accordion accordion-parent3">
+                            <% @states = Region.order(:iso3166_2).where("length(iso3166_2) = 8 AND iso3166_2 like '%#{nation.iso3166_2}%' ") %>
+                            <% @states.each do |state| %>
+                              <li class="accordion-sub3">
+                                <div>
+                                  <%      
+                                    match = 0
+                                    permissions = eval(@permission.permission)
+                                    permissions.each do |p|
+                                      if p.to_i == nation.id
+                                        match = 1       
+                                      end
+                                    end         
+                                  %>
+                                  <input type="checkbox" class="childCheckBox2 parentCheckBox3" value="<%= state.id %>" name="region_ids[]"  
+                                    <% if match == 1 %>
+                                        checked="checked"    
+                                    <% end %> 
+                                  />  
 
-  <br/><br/><br/><br/>
+                                  <a href="#"><%= state.iso_and_name %></a></div>
+                                <ul class="accordion accordion-parent4">
+                                  <% @counties = Region.order(:iso3166_2).where("length(iso3166_2) = 11 AND iso3166_2 like '%#{state.iso3166_2}%' ") %>
+                                  <% @counties.each do |county| %>
+                                    <li class="accordion-sub4">
+                                      <input type="checkbox" class="childCheckBox3 parentCheckBox4" value="<%= county.id %>" name="region_ids[]"  /><%= county.iso_and_name %>
+                                      <ul class="accordion accordion-parent4">
+                                        <% @cities = Region.order(:iso3166_2).where("length(iso3166_2) = 11 AND iso3166_2 like '%#{county.iso3166_2}%' ") %>
+                                        <% @cities.each do |city| %>
+                                          <li class="accordion-sub5">
+                                            <div>
+                                              <%      
+                                                match = 0
+                                                permissions = eval(@permission.permission)
+                                                permissions.each do |p|
+                                                  if p.to_i == nation.id
+                                                    match = 1       
+                                                  end
+                                                end         
+                                              %>
+                                              <input type="checkbox" class="childCheckBox4 parentCheckBox5" value="<%= city.id %>" name="region_ids"  
+                                                <% if match == 1 %>
+                                                    checked="checked"    
+                                                <% end %> 
+                                              /> 
+                                              <a href="#"><%= city.iso_and_name %></a>
+                                            </div>
+                                          </li>
+                                        <% end %>
+                                      </ul>
+                                    </li>
+                                  <% end %>
+                                </ul>
+                              </li>
+                            <% end %>
+                          </ul>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-  <div class="form-group">
-  <br/><br/><br/><br/><br/>
-    <h4> Change Permission</h4>
-    <p><i>&nbsp;&nbsp;&nbsp; Change Geo Areas that this user are allowed to edit</i></p>
-    
-    <hr/>
-
-    <!--
-    <div class="row">
-      <div class="col-md-6">
-        <table class="region-table">
-          <tr>
-            <td></td>
-            <td class="region-label">Alliance:</td>
-            <td>
-              <% @alliances = Region.order(:iso3166_2).where("length(iso3166_2) = 2") %>
-              <%= select_tag "region_code_alliance", options_from_collection_for_select(@alliances, :iso3166_2, :iso_and_name2), { include_blank: true, class: "form-control"} %>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td class="region-label">Nation:</td>
-            <td>
-              <% @nations = Region.order(:iso3166_2).where("length(iso3166_2) = 5") %>
-              <%= select_tag "region_code_nation", options_from_collection_for_select(@nations, :iso3166_2, :iso_and_name2), { include_blank: true, class: "form-control"} %>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td class="region-label">State:</td>
-            <td>
-              <% @states = Region.order(:iso3166_2).where("length(iso3166_2) = 8") %>
-              <%= select_tag "region_code_state", options_from_collection_for_select(@states, :iso3166_2, :iso_and_name2), { include_blank: true, class: "form-control"} %>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td class="region-label">County:</td>
-            <td>
-              <% @counties = Region.order(:iso3166_2).where("length(iso3166_2) = 11") %>
-              <%= select_tag "region_code_county", options_from_collection_for_select(@counties, :iso3166_2, :iso_and_name2), { include_blank: true, class: "form-control"} %>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td class="region-label">City:</td>
-            <td>
-              <% @cities = Region.order(:iso3166_2).where("length(iso3166_2) = 14") %>
-              <%= select_tag "region_code_city", options_from_collection_for_select(@cities, :iso3166_2, :iso_and_name2), { include_blank: true, class: "form-control"} %>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="col-md-6">
-        <br/>
-        
-        <input type="checkbox" id="checkAll" class="checkAll" /> <b>Check All</b>
-        
-        <br/><br/>
-        
-        <ul id="region-checkboxes">
-        </ul>
-
-
-      </div>
-    </div>
-    -->
-
-  </div>
-
-  <br/><br/>
-
-  <div>
-    <ul class="accordion">
-      <% @alliances.each do |alliance| %>
-        <li>
-          <div><input type="checkbox" class="parentCheckBox" /><a href="#"><%= alliance.iso_and_name %></a></div>
-          <ul class="accordion">
-            <% @nations = Region.order(:iso3166_2).where("length(iso3166_2) = 5 AND iso3166_2 like '%#{alliance.iso3166_2}%' ") %>
-            <% @nations.each do |nation| %>
-              <li>
-                <div><input type="checkbox" class="parentCheckBox2 childCheckBox" /><a href="#"><%= nation.iso_and_name %></a></div>
-                <ul>
-                  <% @states = Region.order(:iso3166_2).where("length(iso3166_2) = 8 AND iso3166_2 like '%#{nation.iso3166_2}%' ") %>
-                  <% @states.each do |state| %>
-                    <li>
-                      <div><input type="checkbox" class="parentCheckBox2 childCheckBox" /><%= state.iso_and_name %>
-                      <ul>
-                        <% @counties = Region.order(:iso3166_2).where("length(iso3166_2) = 11 AND iso3166_2 like '%#{state.iso3166_2}%' ") %>
-                        <% @counties.each do |county| %>
-                          <li>
-                            <%= county.iso_and_name %>
-                            <ul>
-                              <% @cities = Region.order(:iso3166_2).where("length(iso3166_2) = 11 AND iso3166_2 like '%#{county.iso3166_2}%' ") %>
-                              <% @cities.each do |city| %>
-                                <li><%= city.iso_and_name %></li>
-                              <% end %>
-                            </ul>
-                          </li>
-                        <% end %>
-                      </ul>
-                    </li>
-                  <% end %>
-                </ul>
-              </li>
-            <% end %>
-          </ul>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+          <br/><br/>
+      </td>
+    </tr>
+  </table>
 
 
 
