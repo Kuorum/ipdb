@@ -549,8 +549,21 @@
 <div style="display:none" id="region_code_temp">
 </div>
 
-<h1><span class="glyphicon glyphicon-edit"></span> Editing Data</h1>
+
+<div class="row">
+	<div class="col-md-7">
+		<h1><span class="glyphicon glyphicon-edit"></span> Editing Data</h1>
+	</div>
+	<div class="col-md-5">
+		<div style="margin:20px 0 0 0;text-align:right;">
+			<%= link_to '< Back', page_politicians_path(:region_id => params[:region_id], :alliance_id => params[:alliance_id], :county_id => params[:county_id], :nation_id => params[:nation_id], :state_id => params[:state_id], :city_id => params[:city_id]), class: "btn btn-primary btn-md" %>
+			<%= link_to 'View', {:controller => "data", :action => "show", :id => @datum.id, :alliance_id => params[:alliance_id], :county_id => params[:county_id],:nation_id => params[:nation_id], :state_id => params[:state_id], :city_id => params[:city_id], :region_id => params[:region_id] }, class: "btn btn-info btn-md" %> 
+		</div>
+	</div>
+</div>
+
 <hr/>
+
 
 <br/>
 
@@ -561,7 +574,7 @@
 
 <hr/>
 
-<%= link_to '< Back', url_for(:back), class: "btn btn-primary btn-md" %>
+<%= link_to '< Back', page_politicians_path(:region_id => params[:region_id], :alliance_id => params[:alliance_id], :county_id => params[:county_id], :nation_id => params[:nation_id], :state_id => params[:state_id], :city_id => params[:city_id]), class: "btn btn-primary btn-md" %>
 <%= link_to 'View', @datum, class: "btn btn-info btn-md" %> 
 
 <br/><br/>

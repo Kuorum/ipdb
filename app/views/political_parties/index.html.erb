@@ -3,7 +3,16 @@
     <h1>Political Parties</h1>
     <h5 class="breadcrumb">
       <b>GEOGRAPHICAL AREA: </b>
+      <%  
+        alliance = 0
+        nation = 0
+        state = 0
+        county = 0
+        city = 0
+      %>
+
       <% if params[:alliance_id] && !params[:alliance_id].empty? %>
+        <% alliance = 1 %>
         <% if params[:alliance_id] == params[:region_id] %>
           <span style="color:#95A5A6"><%= @region_name.titleize %></span>
         <% else %>
@@ -12,6 +21,7 @@
       <% end %>
 
       <% if params[:nation_id] && !params[:nation_id].empty? %>
+        <% nation = 1 %>
         <span class="glyphicon glyphicon-chevron-right"></span>
         <% if params[:nation_id] == params[:region_id] %>
           <span style="color:#95A5A6"><%= @region_name.titleize %></span>
@@ -21,6 +31,7 @@
       <% end %>
 
       <% if params[:state_id] && !params[:state_id].empty? %>
+        <% state = 1 %>
         <span class="glyphicon glyphicon-chevron-right"></span>
         <% if params[:state_id] == params[:region_id] %>
           <span style="color:#95A5A6"><%= @region_name.titleize %></span>
@@ -30,6 +41,7 @@
       <% end %>
 
       <% if params[:county_id] && !params[:county_id].empty? %>
+        <% county = 1 %>
         <span class="glyphicon glyphicon-chevron-right"></span>  
         <% if params[:county_id] == params[:region_id] %>
           <span style="color:#95A5A6"><%= @region_name.titleize %></span>
@@ -39,6 +51,7 @@
       <% end %>
 
       <% if params[:city_id] && !params[:city_id].empty? %>
+        <% city = 1 %>
         <span class="glyphicon glyphicon-chevron-right"></span> 
         <% if params[:city_id] == params[:region_id] %>
           <span style="color:#95A5A6"><%= @region_name.titleize %></span> 
@@ -49,7 +62,7 @@
     </h5>
   </div>
   <div class="col-md-2">
-    <%= link_to '+ New Political party', new_region_political_party_path(:region_id => params[:region_id]), :class => "btn btn-md btn-success", :style => "margin-top:35px;" %>
+    <%= link_to '+ New Political party', new_region_political_party_path(:region_id => params[:region_id]), :class => "btn btn-md btn-success", :style => "margin-top:58px;" %>
   </div>
 </div>
 
@@ -112,6 +125,13 @@
 
 <hr/>
 
-<%= link_to '< Back', root_path, class: "btn btn-primary btn-md" %>
+<% if alliance == 1 && nation == 1 && state == 1 && county == 1 %>
+    <%= link_to '< Back', page_state_path(:alliance_id => params[:alliance_id], :nation_id => params[:nation_id], :state_id => params[:state_id], :county_id => params[:county_id], :city_id => params[:city_id]), class: "btn btn-primary btn-md" %>
+<% elsif alliance == 1 && nation == 1 && state == 1  %>
+    <%= link_to '< Back', page_nation_path(:alliance_id => params[:alliance_id], :nation_id => params[:nation_id], :state_id => params[:state_id], :county_id => params[:county_id], :city_id => params[:city_id]), class: "btn btn-primary btn-md" %>
+<% elsif alliance == 1 && nation == 1 %>
+     <%= link_to '< Back', page_alliance_path(:alliance_id => params[:alliance_id], :nation_id => params[:nation_id], :state_id => params[:state_id], :county_id => params[:county_id], :city_id => params[:city_id]), class: "btn btn-primary btn-md" %>
+<% else %>
+<% end %>
 
 

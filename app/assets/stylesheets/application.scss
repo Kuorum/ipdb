@@ -78,12 +78,12 @@ tr.header{
 
 
 
-#accordion {
+.accordion {
     list-style: none;
     padding: 0 0 0 0;
     width: 170px;
 }
-#accordion div {
+.accordion div {
     display: block;
     background-color: #333;
     font-weight: bold;
@@ -95,24 +95,24 @@ tr.header{
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
-#accordion ul {
+.accordion ul {
     list-style: none;
     padding: 0 0 0 0;
 }
-#accordion ul{
+.accordion ul{
     display: none;
 }
-#accordion ul li {
+.accordion ul li {
     font-weight: normal;
     cursor: auto;
     background-color: #fff;
     padding: 0 0 0 7px;
 }
-#accordion a {
+.accordion a {
     text-decoration: none;
     color:#fff;
 }
-#accordion a:hover {
+.accordion a:hover {
     text-decoration: underline;
 }
 

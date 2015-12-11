@@ -258,10 +258,12 @@ class ProcessController < ApplicationController
     end         
 
    date = Time.now.strftime("%Y%m%d")
+   region = Region.find(region_id)
+   region_name = region.name.titleize
   
    send_data csv_string,
    :type => 'text/csv; charset=iso-8859-1; header=present',
-   :disposition => "attachment; filename=#{date}_#{region}.csv" 
+   :disposition => "attachment; filename=#{date}_#{region_name}.csv" 
 
   end  
 

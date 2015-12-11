@@ -954,7 +954,7 @@
             </tr>
             <tr>
               <td></td>
-              <td>Country:</td>
+              <td>County:</td>
               <td>
                  <%= f.collection_select :constituency_code_county, Region.order(:iso3166_2).where("length(iso3166_2) = 11"), :iso3166_2, :iso_and_name, {include_blank: true}, {class: "form-control"} %>
               </td>

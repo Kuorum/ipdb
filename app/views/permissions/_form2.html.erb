@@ -10,10 +10,10 @@ $(function(){
        $("input:checkbox").prop('checked', $(this).prop("checked"));
     });
 
-    $("#accordion > li > div").click(function(){
-      $("#accordion > li").toggleClass("display")
+    $(".accordion > li > div").click(function(){
+      $(".accordion > li").toggleClass("display")
       if(false == $(this).next().is(':visible')) {
-          $('#accordion ul').slideUp(300);
+          $('.accordion ul').slideUp(300);
       }
       $(this).next().slideToggle(300);
     });
@@ -74,7 +74,7 @@ $(function(){
       <br/>
       <h4>Political Parties</h4>
       <hr/>
-       <ul id="accordion">
+       <ul class="accordion">
       <% 
         permissions = eval(@permission.permission)
         permissions.each do |p|
