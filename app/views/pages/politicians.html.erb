@@ -54,7 +54,7 @@
       <table style="width:100%">
         <tr>
           <td>        
-            <% if @has_access == 1 || current_user.role_id == 1  %>
+            <% if current_user.role_id == 1  %>
               <%= link_to "+ Add new politician", new_datum_path(:region_id => params[:region_id]), class: "btn btn-info btn-sm" %>&nbsp;
             <% elsif current_user.role_id == 3  %>
               <%= link_to "+ Add new politician", new_datum_path(:region_id => params[:region_id]), class: "btn btn-default disabled btn-sm", style: "background-color:#F9F9F9;color:#ccc;" %>&nbsp;

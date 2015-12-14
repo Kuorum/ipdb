@@ -40,7 +40,7 @@ class PagesController < ApplicationController
 	    region = Region.find(params[:region_id])
 	    @region_name = region.name
 
-	    permission
+	    #permission
 	end
 	
     def permission  
