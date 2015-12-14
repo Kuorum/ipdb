@@ -33,6 +33,7 @@
 
 			<ul class="nav navbar-nav navbar-right">
 			  	<% if user_signed_in? %>
+			  		<li><div style="font-size:13px;color:#fff;margin:5px 10px 0 0;">Hi, <%= current_user.name.titleize %>!</div></li>
 					<li><%= button_to 'Setting', edit_user_registration_path, :class => "btn btn-sm btn-info", :method => :get %></li>
 					<li><%= button_to 'Sign out', users_sign_out_path, :class => "btn btn-sm btn-primary", :method => :get %></li>
 		        <% end %>    
