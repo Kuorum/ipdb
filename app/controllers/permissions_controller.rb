@@ -2,6 +2,8 @@ class PermissionsController < ApplicationController
   before_action :set_permission, only: [:show, :edit, :edit2, :update, :update2, :destroy]
   before_filter :require_permission
 
+  skip_before_filter :verify_authenticity_token
+
   # GET /permissions
   # GET /permissions.json
   def index
@@ -32,7 +34,7 @@ class PermissionsController < ApplicationController
   def create
     region_ids = params[:region_ids]
 
-    #region_ids.each { |id| puts id }
+    region_ids.each { |id| puts "id is #{id}" }
    
 
     @permission = Permission.new(permission_params.merge(:permission => region_ids))

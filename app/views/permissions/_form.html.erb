@@ -174,16 +174,16 @@ $(function(){
                   <li class="accordion-sub1">
                     <div>  
                       <%      
-                        match = 0
+                        match1 = 0
                         permissions = eval(@permission.permission)
                         permissions.each do |p|
                           if p.to_i == alliance.id
-                            match = 1       
+                            match1 = 1       
                           end
                         end         
                       %>
                       <input type="checkbox" class="parentCheckBox1" value="<%= alliance.id %>" name="region_ids[]" 
-                        <% if match == 1 %>
+                        <% if match1 == 1 %>
                             checked="checked"    
                         <% end %> 
                       />  
@@ -195,16 +195,16 @@ $(function(){
                         <li class="accordion-sub2">
                           <div>                            
                             <%      
-                              match = 0
+                              match2 = 0
                               permissions = eval(@permission.permission)
                               permissions.each do |p|
                                 if p.to_i == nation.id
-                                  match = 1       
+                                  match2 = 1       
                                 end
                               end         
                             %>
                             <input type="checkbox" class="childCheckBox1 parentCheckBox2" value="<%= nation.id %>" name="region_ids[]" 
-                              <% if match == 1 %>
+                              <% if match2 == 1 %>
                                   checked="checked"    
                               <% end %> 
                             />  
@@ -217,16 +217,16 @@ $(function(){
                               <li class="accordion-sub3">
                                 <div>
                                   <%      
-                                    match = 0
+                                    match3 = 0
                                     permissions = eval(@permission.permission)
                                     permissions.each do |p|
                                       if p.to_i == nation.id
-                                        match = 1       
+                                        match3 = 1       
                                       end
                                     end         
                                   %>
                                   <input type="checkbox" class="childCheckBox2 parentCheckBox3" value="<%= state.id %>" name="region_ids[]"  
-                                    <% if match == 1 %>
+                                    <% if match3 == 1 %>
                                         checked="checked"    
                                     <% end %> 
                                   />  
@@ -243,16 +243,16 @@ $(function(){
                                           <li class="accordion-sub5">
                                             <div>
                                               <%      
-                                                match = 0
+                                                match4 = 0
                                                 permissions = eval(@permission.permission)
                                                 permissions.each do |p|
                                                   if p.to_i == nation.id
-                                                    match = 1       
+                                                    match4 = 1       
                                                   end
                                                 end         
                                               %>
                                               <input type="checkbox" class="childCheckBox4 parentCheckBox5" value="<%= city.id %>" name="region_ids"  
-                                                <% if match == 1 %>
+                                                <% if match4 == 1 %>
                                                     checked="checked"    
                                                 <% end %> 
                                               /> 

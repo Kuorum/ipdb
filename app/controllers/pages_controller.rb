@@ -53,7 +53,7 @@ class PagesController < ApplicationController
 		regions =  eval(p.permission)
 			regions.each do |region|
 
-			  if current_user.role_id == 2 || current_user.role_id == 3 || current_user.role_id == 4
+			  if current_user.role_id == 2 || current_user.role_id == 4
 			    if region == region_id.to_s  
 			      @has_access = 1
 			    end  
@@ -62,7 +62,7 @@ class PagesController < ApplicationController
 			end  
 		end
 
-		if current_user.role_id == 1
+		if current_user.role_id == 1 || current_user.role_id == 3 
 			@has_access = 1
 		end  
 
