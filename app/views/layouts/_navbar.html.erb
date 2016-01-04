@@ -35,7 +35,7 @@
 			  	<% if user_signed_in? %>
 					<li style="margin-right:10px;">
 						<div class="dropdown">
-						  <button class="btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown"><%= current_user.name %>
+						  <button class="btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown"><%= current_user.full_name %>
 						  <span class="caret"></span></button>
 						  <ul class="dropdown-menu dropdown-menu-admin">
 							<li><%= link_to 'Sign out', users_sign_out_path, :method => :get %></li>
