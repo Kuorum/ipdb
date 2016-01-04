@@ -64,7 +64,7 @@ class DataController < ApplicationController
     respond_to do |format|
       if @datum.update(datum_params)
 
-        format.html { redirect_to :back, notice: 'Politician details was successfully updated.' }
+        format.html { redirect_to :back}
         format.json { render :show, status: :ok, location: @datum }
       else
         format.html { render :edit }
