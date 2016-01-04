@@ -367,7 +367,7 @@ task :scraper_SA_CL => [:environment] do
 		#puts "#{phone}"
 
 		# SET REGION ID 
-		region_id = 415
+		region_id = 422
 
 		# GET REGION NAME & CODES
 		region = "chile"
