@@ -38,11 +38,11 @@
 						  <button class="btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown"><%= current_user.full_name %>
 						  <span class="caret"></span></button>
 						  <ul class="dropdown-menu dropdown-menu-admin">
-							<li><%= link_to 'Sign out', users_sign_out_path, :method => :get %></li>
+							<li><%= link_to 'Setting', edit_user_registration_path, :method => :get %></li>
 						  </ul>
 						</div>
 					</li>
-					<li><%= button_to 'Setting', edit_user_registration_path, :class => "btn btn-sm btn-info", :method => :get %></li>
+					<li><%= button_to 'Sign out', users_sign_out_path, :class => "btn btn-sm btn-danger", :method => :get %></li>
 		        <% end %>    
 			</ul>
 
