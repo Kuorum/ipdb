@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104074040) do
+ActiveRecord::Schema.define(version: 20160104113935) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -156,6 +156,31 @@ ActiveRecord::Schema.define(version: 20160104074040) do
     t.text     "lastActivity4Link",             limit: 65535
     t.text     "lastActivity5Link",             limit: 65535
     t.string   "cause6",                        limit: 255
+    t.string   "news1date",                     limit: 255
+    t.string   "news2date",                     limit: 255
+    t.string   "news3date",                     limit: 255
+    t.string   "news4date",                     limit: 255
+    t.string   "news5date",                     limit: 255
+    t.text     "news1title",                    limit: 65535
+    t.text     "news2title",                    limit: 65535
+    t.text     "news3title",                    limit: 65535
+    t.text     "news4title",                    limit: 65535
+    t.text     "news5title",                    limit: 65535
+    t.text     "news1content",                  limit: 65535
+    t.text     "news2content",                  limit: 65535
+    t.text     "news3content",                  limit: 65535
+    t.text     "news4content",                  limit: 65535
+    t.text     "news5content",                  limit: 65535
+    t.text     "news1link",                     limit: 65535
+    t.text     "news2link",                     limit: 65535
+    t.text     "news3link",                     limit: 65535
+    t.text     "news4link",                     limit: 65535
+    t.text     "news5link",                     limit: 65535
+    t.text     "news1picture",                  limit: 65535
+    t.text     "news2picture",                  limit: 65535
+    t.text     "news3picture",                  limit: 65535
+    t.text     "news4picture",                  limit: 65535
+    t.text     "news5picture",                  limit: 65535
   end
 
   create_table "geo_area_categories", force: :cascade do |t|
