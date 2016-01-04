@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211054848) do
+ActiveRecord::Schema.define(version: 20160104074040) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20151211054848) do
     t.string   "known_for_link3",               limit: 255
     t.string   "known_for_link4",               limit: 255
     t.string   "known_for_link5",               limit: 255
-    t.string   "lastActivity5",                 limit: 255
+    t.text     "lastActivity5",                 limit: 65535
     t.string   "lastActivity1Date",             limit: 255
     t.string   "lastActivity2Date",             limit: 255
     t.string   "lastActivity3Date",             limit: 255

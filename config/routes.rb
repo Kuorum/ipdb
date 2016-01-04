@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'kuorum/index'
+
   resources :permissions
   resources :geo_area_categories
   resources :geo_areas
@@ -60,6 +62,7 @@ Rails.application.routes.draw do
   get "pages/parties" => "pages/parties", :as => "page/parties"
 
 
+  get 'kuorum/index'
 
 
   resources :regions do

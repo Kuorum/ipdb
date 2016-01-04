@@ -86,3 +86,6 @@ gem 'paper_trail', '~> 4.0'
 gem 'diffy'
 
 gem "figaro"
+
+# For API integration
+gem 'httparty', '~> 0.13.7'

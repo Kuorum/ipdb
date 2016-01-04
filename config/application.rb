@@ -36,6 +36,6 @@ module Kuorum
       :enable_starttls_auto => true
     }
 
-
+    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end
 end
