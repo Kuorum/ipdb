@@ -368,6 +368,7 @@ task :scraper_SA_CL => [:environment] do
 
 		# SET REGION ID 
 		region_id = 422
+		region_id = 422
 
 		# GET REGION NAME & CODES
 		region = "chile"
