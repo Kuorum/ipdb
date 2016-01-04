@@ -8,4 +8,9 @@
   <%= @political_party.leaning_index %>
 </p>
 
-<%= link_to 'Back', region_political_parties_path(:region_id => @political_party.region_id) %>
+<p>
+  <strong>Image:</strong>
+  <%= @political_party.image %>
+</p>
+
+<%= link_to '< Back', region_political_parties_path(:region_id => @political_party.region_id, :alliance_id => params[:alliance_id], :nation_id => params[:nation_id]), :class => "btn btn-primary btn-sm" %>

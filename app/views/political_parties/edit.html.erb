@@ -11,6 +11,6 @@
 <hr/>
 
 
-<%= link_to '< Back', region_political_parties_path(:geo_area_id => @political_party.region_id), :class => "btn btn-primary"  %>
+<%= link_to '< Back', region_political_parties_path(:geo_area_id => @political_party.region_id, :alliance_id => params[:alliance_id], :nation_id => params[:nation_id]), :class => "btn btn-primary"  %>
 &nbsp;
-<%= link_to 'Show', region_political_party_path(:geo_area_id => @political_party.region_id), :class => "btn btn-info" %> 
+<%= link_to 'Show', region_political_party_path(:geo_area_id => @political_party.region_id, :alliance_id => params[:alliance_id], :nation_id => params[:nation_id]), :class => "btn btn-info" %> 

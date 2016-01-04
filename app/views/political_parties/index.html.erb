@@ -88,7 +88,7 @@
         <td><%= political_party.image %></td>
 
         <td>
-          <%= link_to 'Show', [political_party.region, political_party], :class => "btn btn-sm btn-info" %> &nbsp;
+          <%= link_to 'View', [political_party.region, political_party, :alliance_id => params[:alliance_id], :nation_id => params[:nation_id]], :class => "btn btn-sm btn-info" %> &nbsp;
 
           <%
             region_id = political_party.region_id
@@ -112,9 +112,9 @@
             end  
           %>
           <% if @has_access == 1 %>
-            <%= link_to 'Edit', edit_region_political_party_path(political_party.region, political_party), :class => "btn btn-sm btn-success" %> &nbsp;
+            <%= link_to 'Edit', edit_region_political_party_path(political_party.region, political_party, :alliance_id => params[:alliance_id], :nation_id => params[:nation_id]), :class => "btn btn-sm btn-success" %> &nbsp;
           <% end %>
-          <%= link_to 'Destroy', [political_party.region, political_party] , method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %>
+          <%= link_to 'Destroy', [political_party.region, political_party, :alliance_id => params[:alliance_id], :nation_id => params[:nation_id]] , method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-danger" %>
         </td>
       </tr>
     <% end %>
