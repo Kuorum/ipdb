@@ -371,14 +371,14 @@ task :scraper_SA_CL => [:environment] do
 		# GET REGION NAME & CODES
 		region = "chile"
 		region_code_alliance = "SA"
-		region_code_nation = "CL"
+		region_code_nation = "SA-CL"
 		region_code_state = ""
 		region_code_county = ""
 		region_code_city = ""
 
 		constituency = ""
 		constituency_code_alliance = "SA"
-		constituency_code_nation = "CL"
+		constituency_code_nation = "SA-CL"
 		constituency_code_state = ""
 		constituency_code_county = ""
 		constituency_code_city = ""
