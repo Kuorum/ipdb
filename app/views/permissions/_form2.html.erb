@@ -74,25 +74,23 @@ $(function(){
       <br/>
       <h4>Political Parties</h4>
       <hr/>
-       <ul class="accordion">
-      <% 
-        permissions = eval(@permission.permission)
-        permissions.each do |p|
-          region = Region.find(p)
-          region_id = region.id
-      %>   
-     
-          <li><div><input type="checkbox" class="parentCheckBox" /><a href="#"><%= region.name.titleize %></a></div>
-            <ul>
-        
-      <%
-          political_parties = PoliticalParty.where(:region_id => region_id) 
-          political_parties.each do |pp| 
-      %>    
-            <li><input type="checkbox" name="party_permission[]" value="<%= pp.id %>" class="childCheckBox"><%= pp.name %></li>
+      <ul class="accordion">
+          <% 
+              permissions = eval(@permission.permission)
+              permissions.each do |p|
+                region = Region.find(p)
+                region_id = region.id
+          %>   
+            <li><div><input type="checkbox" class="parentCheckBox" /><a href="#"><%= region.name.titleize %></a></div>
+              <ul>       
+          <%
+                political_parties = PoliticalParty.where(:region_id => region_id) 
+                political_parties.each do |pp| 
+          %>    
+              <li><input type="checkbox" name="party_permission[]" value="<%= pp.id %>" class="childCheckBox"><%= pp.name %></li>
           <% end %>
-            </ul>
-          </li>
+              </ul>
+            </li>
         <% end %>  
       </ul>
       <br/>
