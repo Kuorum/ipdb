@@ -81,13 +81,33 @@ $(function(){
                 region = Region.find(p)
                 region_id = region.id
           %>   
-            <li><div><input type="checkbox" class="parentCheckBox" /><a href="#"><%= region.name.titleize %></a></div>
+            <li><div>&nbsp;&nbsp;<a href="#"><%= region.name.titleize %></a></div>
               <ul>       
           <%
                 political_parties = PoliticalParty.where(:region_id => region_id) 
                 political_parties.each do |pp| 
           %>    
-              <li><input type="checkbox" name="party_permission[]" value="<%= pp.id %>" class="childCheckBox"><%= pp.name %></li>
+              <li>
+                <%
+                  match = 0
+                  user_permissions = Permission.where(:user_id => @permission.user_id)
+                  user_permissions.each do |user_permission|
+                    if  !user_permission.party_permission.blank?
+                      party_permissions = eval(user_permission.party_permission)
+                      party_permissions.each do |party_permission|
+                        match = 1
+                      end  
+                    end
+                  end  
+                %>
+                
+                <input type="checkbox" name="party_permission[]" value="<%= pp.id %>" class="childCheckBox"
+                  <% if match == 1 %>
+                      checked="checked"    
+                  <% end %> 
+                >
+                <%= pp.name %>
+              </li>
           <% end %>
               </ul>
             </li>

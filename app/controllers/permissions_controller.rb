@@ -35,9 +35,16 @@ class PermissionsController < ApplicationController
     region_ids = params[:region_ids]
 
     region_ids.each { |id| puts "id is #{id}" }
-   
+    party_permissions = []
+    region_ids.each do |region_id|
+       political_parties = PoliticalParty.where(:region_id => region_id) 
+       political_parties.each do |pp| 
+          party_permissions.push(pp.id)
+       end 
+    end 
 
-    @permission = Permission.new(permission_params.merge(:permission => region_ids))
+    #, :party_permission => party_permissions
+    @permission = Permission.new(permission_params.merge(:permission => region_ids, :party_permission => party_permissions))
 
     respond_to do |format|
       if @permission.save
@@ -56,7 +63,16 @@ class PermissionsController < ApplicationController
     respond_to do |format|
       region_ids = params[:region_ids]
 
-      if @permission.update(permission_params.merge(:permission => region_ids))
+      region_ids.each { |id| puts "id is #{id}" }
+      party_permissions = []
+      region_ids.each do |region_id|
+         political_parties = PoliticalParty.where(:region_id => region_id) 
+         political_parties.each do |pp| 
+            party_permissions.push(pp.id)
+         end 
+      end 
+
+      if @permission.update(permission_params.merge(:permission => region_ids, :party_permission => party_permissions))
         format.html { redirect_to @permission, notice: 'Permission was successfully updated.' }
         format.json { render :show, status: :ok, location: @permission }
       else
