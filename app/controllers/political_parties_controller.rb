@@ -59,7 +59,7 @@ class PoliticalPartiesController < ApplicationController
   def update
     respond_to do |format|
       if @political_party.update(political_party_params)
-        format.html { redirect_to region_political_parties_path(:region_id => @political_party.region_id), notice: 'Political party was successfully updated.' }
+        format.html { redirect_to request.referrer, notice: 'Political party was successfully updated.' }
         format.json { render :show, status: :ok, location: region_political_parties_path(:region_id => @political_party.region_id) }
       else
         format.html { render :edit }
