@@ -81,7 +81,7 @@ $(function(){
                 region = Region.find(p)
                 region_id = region.id
           %>   
-            <li><div>&nbsp;&nbsp;<a href="#"><%= region.name.titleize %></a></div>
+            <li><div><input type="checkbox" class="parentCheckBox" /><a href="#"><%= region.name.titleize %></a></div>
               <ul>       
           <%
                 political_parties = PoliticalParty.where(:region_id => region_id) 
