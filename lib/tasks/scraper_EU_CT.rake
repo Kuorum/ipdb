@@ -69,7 +69,7 @@ task :scraper_EU_CT => [:environment] do
 			name =  name.gsub('Sra.','').strip 
 		end	
 
-		puts "#{completeName} | #{name}"
+		#puts "#{completeName} | #{name}"
 
 
 		if agent.page.image_with(:src => /imgweb/)
@@ -195,7 +195,7 @@ task :scraper_EU_CT => [:environment] do
 	puts JSON.pretty_generate(members)
 
 	# Insert data to database
-	#Datum.create!(members)
+	Datum.create!(members)
 
 	puts "Scrapping ENDS... #{Time.now}"
 
