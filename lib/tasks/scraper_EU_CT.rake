@@ -118,7 +118,7 @@ task :scraper_EU_CT => [:environment] do
 			institutionalTelephone = address_page.search('tr:nth-child(5) .siaptitolcamp').text.strip
 
 			# GET REGION NAME & CODES
-			region_id = 23
+			region_id = 22
 			region_name = "cataluna"	
 			region_code_alliance = "EU"
 			region_code_nation = "DE"
