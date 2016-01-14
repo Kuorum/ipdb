@@ -19,7 +19,7 @@ task :scraper_EU_CT => [:environment] do
 	member_counter = 0
 	members = member_links.map do |link|	
 
-		sourceWebsite = link.href
+		sourceWebsite = "http://www.parlament.cat" + link.href
 		p_codi = sourceWebsite.split('=')[1]
 
 		previous_link = member_links[member_counter-1]
